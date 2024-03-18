@@ -22,19 +22,18 @@ jobs:
 
       - name: Install package
         shell: bash -l {0}
-        working-directory: docs
+        working-directory: .
         run: |
           python -m pip install -r requirements.txt
 
       - name: Build Documentation
         shell: bash -l {0}
-        working-directory: docs
+        working-directory: .
         run: |
-          cd docs
           make html
 
       - name: Deploy Documentation
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs/_build/html
+          folder: ./_build/html
           branch: gh-pages
