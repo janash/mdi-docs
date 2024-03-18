@@ -4,7 +4,7 @@ Commands that influence the flow of the simulation, such as starting or stopping
 
 ## Simulation Initialization
 
-### @INIT_MC
+### `@INIT_MC`: Initialize Monte Carlo Simulation
 
 The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, proceeding to the `@INIT_MC` node.
 
@@ -41,7 +41,7 @@ MDI_Send_Command("@INIT_MC", mdi_engine);
 
 ::::
 
-### @INIT_MD
+### `@INIT_MD`: Initialize Molecular Dynamics Simulation
 
 The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the `@INIT_MD` node.
 
@@ -85,7 +85,7 @@ MDI_Send_Command("@INIT_MD", mdi_engine);
 ::::
 
 
-### @INIT_OPTG
+### `@INIT_OPTG`: Initialize Geometry Optimization
 
 The engine performs any initialization operations that are necessary before a geometry optimization can be performed, proceeding to the `@INIT_OPTG ` node.
 

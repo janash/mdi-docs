@@ -467,8 +467,8 @@ document.write(`
 <p>Commands that influence the flow of the simulation, such as starting or stopping processes, initializing different types of simulations. Each of these commands is used with the <code class="docutils literal notranslate"><span class="pre">MDI_Send_Command</span></code> function.</p>
 <section id="simulation-initialization">
 <h2>Simulation Initialization<a class="headerlink" href="#simulation-initialization" title="Link to this heading">#</a></h2>
-<section id="init-mc">
-<h3>&#64;INIT_MC<a class="headerlink" href="#init-mc" title="Link to this heading">#</a></h3>
+<section id="init-mc-initialize-monte-carlo-simulation">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;INIT_MC</span></code>: Initialize Monte Carlo Simulation<a class="headerlink" href="#init-mc-initialize-monte-carlo-simulation" title="Link to this heading">#</a></h3>
 <p>The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, proceeding to the <code class="docutils literal notranslate"><span class="pre">&#64;INIT_MC</span></code> node.</p>
 <section id="example">
 <h4>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
@@ -502,8 +502,8 @@ C++</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
-<section id="init-md">
-<h3>&#64;INIT_MD<a class="headerlink" href="#init-md" title="Link to this heading">#</a></h3>
+<section id="init-md-initialize-molecular-dynamics-simulation">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;INIT_MD</span></code>: Initialize Molecular Dynamics Simulation<a class="headerlink" href="#init-md-initialize-molecular-dynamics-simulation" title="Link to this heading">#</a></h3>
 <p>The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the <code class="docutils literal notranslate"><span class="pre">&#64;INIT_MD</span></code> node.</p>
 <div class="caution admonition">
 <p class="admonition-title">Warning</p>
@@ -541,8 +541,8 @@ C++</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
-<section id="init-optg">
-<h3>&#64;INIT_OPTG<a class="headerlink" href="#init-optg" title="Link to this heading">#</a></h3>
+<section id="init-optg-initialize-geometry-optimization">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;INIT_OPTG</span></code>: Initialize Geometry Optimization<a class="headerlink" href="#init-optg-initialize-geometry-optimization" title="Link to this heading">#</a></h3>
 <p>The engine performs any initialization operations that are necessary before a geometry optimization can be performed, proceeding to the <code class="docutils literal notranslate"><span class="pre">&#64;INIT_OPTG</span> </code> node.</p>
 <div class="caution admonition">
 <p class="admonition-title">Warning</p>
@@ -635,15 +635,15 @@ This command is not valid at the <code class="docutils literal notranslate"><spa
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-initialization">Simulation Initialization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-mc">@INIT_MC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-mc-initialize-monte-carlo-simulation"><code class="docutils literal notranslate"><span class="pre">@INIT_MC</span></code>: Initialize Monte Carlo Simulation</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-md">@INIT_MD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-md-initialize-molecular-dynamics-simulation"><code class="docutils literal notranslate"><span class="pre">@INIT_MD</span></code>: Initialize Molecular Dynamics Simulation</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-optg">@INIT_OPTG</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-optg-initialize-geometry-optimization"><code class="docutils literal notranslate"><span class="pre">@INIT_OPTG</span></code>: Initialize Geometry Optimization</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-flow-control-node-management">Simulation Flow Control - Node Management</a><ul class="visible nav section-nav flex-column">
