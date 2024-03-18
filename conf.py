@@ -48,13 +48,9 @@ extensions = [
     'sphinx.ext.extlinks',
     'sphinx_design',
     'sphinx_copybutton',
-    'breathe',
     'myst_parser'
 ]
 
-breathe_projects = { "mdi_docs": "../docs/xml" }
-
-breathe_default_project = "mdi_docs"
 
 myst_enable_extensions = ["colon_fence"]    
 
