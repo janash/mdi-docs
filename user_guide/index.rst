@@ -17,3 +17,4 @@ In total, MDI consists of the following components:
 
    installation
    mdi_standard
+   mdi_ecosystem/index
