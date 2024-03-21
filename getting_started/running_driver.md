@@ -6,7 +6,7 @@ Completion of this tutoral requires installing Docker.
 Docker is a platform that allows you to run software in a container, which is a standalone environment with everything needed to run the software, including the software itself and all its dependencies.
 If you don't have Docker installed already, we recommend downloading and installing [Docker Desktop](https://www.docker.com/products/docker-desktop) for your operating system.
 
-You will also need to have `mdimechanic. 
+You will also need to have `mdimechanic`. 
 We recommend using an environment manager like `conda` or `pipenv` to install `mdimechanic` in a clean environment.
 
 To install `mdimechanic`, you can use the following command:
