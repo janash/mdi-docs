@@ -458,6 +458,120 @@ document.write(`
                   
   <section id="driver-use-tutorial-running-an-aimd-simulation">
 <h1>Driver Use Tutorial: Running an AIMD Simulation<a class="headerlink" href="#driver-use-tutorial-running-an-aimd-simulation" title="Link to this heading">#</a></h1>
+<div class="admonition-prerequisites admonition">
+<p class="admonition-title">Prerequisites</p>
+<p>Completion of this tutoral requires installing Docker.
+Docker is a platform that allows you to run software in a container, which is a standalone environment with everything needed to run the software, including the software itself and all its dependencies.
+If you don’t have Docker installed already, we recommend downloading and installing <a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> for your operating system.</p>
+<p>You will also need to have <code class="docutils literal notranslate"><span class="pre">mdimechanic.</span>&#160; <span class="pre">We</span> <span class="pre">recommend</span> <span class="pre">using</span> <span class="pre">an</span> <span class="pre">environment</span> <span class="pre">manager</span> <span class="pre">like</span> </code>conda<code class="docutils literal notranslate"><span class="pre">or</span></code>pipenv<code class="docutils literal notranslate"><span class="pre">to</span> <span class="pre">install</span></code>mdimechanic` in a clean environment.</p>
+<p>To install <code class="docutils literal notranslate"><span class="pre">mdimechanic</span></code>, you can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>mdimechanic
+</pre></div>
+</div>
+<p>We also recommend using <code class="docutils literal notranslate"><span class="pre">git</span></code>, though it is not absolutely necessary.</p>
+</div>
+<p>In this tutorial we will use an MDI driver to perform a simple <em>Ab Initio</em> Molecular Dynamics (AIMD) simulation, using Quantum ESPRESSO (QE) to calculate forces and LAMMPS to update the atomic coordinates each time step.
+In an AIMD simulation, the forces on the atoms are calculated using quantum mechanics, and the atomic coordinates are updated using classical mechanics.
+Thus, we will use a QM code (in this case, Quantum ESPRESSO) to calculate the forces, and an MM code (in this case, LAMMPS) to perform the time integration.</p>
+<p>LAMMPS is a code that simulates chemical systems using molecular mechanics (MM) force fields, which are computationally very efficient to evaluate and can be used for lengthy dynamics simulations of large systems.
+Quantum ESPRESSO is a code that runs quantum mechanics (QM) calculations, which are much more computationally expensive, but can be applied much more straigtforwardly to chemically reactive systems and other specific use cases.</p>
+<p>MM codes like LAMMPS often offer time integration features that are not widely available in QM codes, so it can be desirable to be able to mix the time integration functionality of an MM code with the force evaluation functionality of a QM code.</p>
+<p>Although we will be using QE and LAMMPS as the MDI engines in this tutorial, you could do similar calculations using other MDI engines. This means you could switch out LAMMPS for another MM code, or QE for another QM code, and the MDI driver would still work as long as you had files to set up the input of the new codes.</p>
+<p>A list of codes that support MDI can be found \ref mdi_ecosystem “here”.</p>
+<section id="obtaining-the-mdi-driver-and-engines">
+<h2>Obtaining the MDI Driver and Engines<a class="headerlink" href="#obtaining-the-mdi-driver-and-engines" title="Link to this heading">#</a></h2>
+<p>Often in computational chemistry, one of the hardest steps to performing a calculation is setting up the software.
+Fortunately, we have compiled Docker images that contain the MDI-enabled codes we will use in this tutorial and can use for other calculations.
+This means you do not have to compile the codes, you just have to install Docker and “pull” (download) the images.</p>
+<p>To get started with this tutorial, first download the necessary files using <code class="docutils literal notranslate"><span class="pre">git</span></code> (note: You can also download the files as a zip file from the GitHub repository if you don’t have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed using <a class="reference external" href="https://github.com/janash/MDI_AIMD_user_tutorial/archive/refs/heads/main.zip">this link</a>):</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-0">
+BASH</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:janash/MDI_AIMD_user_tutorial.git
+<span class="nb">cd</span><span class="w"> </span>MDI_AIMD_user_tutorial
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-up-the-aimd-simulation">
+<h2>Setting Up the AIMD Simulation<a class="headerlink" href="#setting-up-the-aimd-simulation" title="Link to this heading">#</a></h2>
+<p>When using an already-made MDI driver, you will be using a software package that someone else has prepared that performs some kind of molecular science calculation.
+In this case, the MDI Driver performs ab-initio molecular dynamics (AIMD) calculations.
+As far as the MDI driver is concerned, the only thing you need to know is how to run it and what files it needs to run.
+You will need to specify what program you would like to use for the QM portion, and what program you would like to use for the MM portion along with input files for your choice of program.
+The MDI driver will then take care of the rest.</p>
+<p>To summarize, to use the AIMD Driver, you will need to provide:</p>
+<ul class="simple">
+<li><p>Input files for your MDI-enabled QM program of choice.</p></li>
+<li><p>Input files for your MDI-enabled MM program of choice.</p></li>
+</ul>
+<p>This means you have freedom over your input parameters for each program, and freedom over the input system that you simulate.</p>
+<p>For the purposes of this tutorial, we will use prepared input files to simulate a small water system using Quantum ESPRESSO and LAMMPS.
+You can find input files for this simulation in <code class="docutils literal notranslate"><span class="pre">simulation_files/starting</span></code> in the repository you just cloned.</p>
+<p>When viewing the contents of this directory, you will see inputs for lammps (<code class="docutils literal notranslate"><span class="pre">lammps.in</span></code>, <code class="docutils literal notranslate"><span class="pre">lammps.data</span></code>) and input files for Quantum ESPRESSO (<code class="docutils literal notranslate"><span class="pre">qe.in</span></code>, <code class="docutils literal notranslate"><span class="pre">pseudo</span></code> - directory containing pseudopotential parameters).
+If you wanted to simulate a different system using AIMD, you would use the same driver, but change these input files.</p>
+<p>To build our AIMD simulation program, we will execute the following command:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-1">
+BASH</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mdimechanic<span class="w"> </span>build
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-the-aimd-simulation">
+<h2>Running the AIMD Simulation<a class="headerlink" href="#running-the-aimd-simulation" title="Link to this heading">#</a></h2>
+<p>After you have the input files, you can run the AIMD simulation using the MDI driver.
+When we use this AIMD Driver, LAMMPS and Quantum ESPRESSO will both be running, but the Driver will be sending information between the two programs.
+This Driver works in the following way:</p>
+<ol class="arabic simple">
+<li><p>Both programs are initialized with their respective input files.</p></li>
+<li><p>Forces are calculated in our water system using Quantum ESPRESSO.</p></li>
+<li><p>The AIMD Driver retrieves the forces from Quantum ESPRESSO and replaces the forces in the LAMMPS program for that time-step with these forces.</p></li>
+<li><p>LAMMPS is used to update the atomic coordinates using the forces from Quantum ESPRESSO.</p></li>
+<li><p>The AIMD Driver retrieves the new atomic coordinates from LAMMPS and sends them to Quantum ESPRESSO to calculate the forces for the next time step.</p></li>
+</ol>
+<p>Our output will be the atomic coordinates and forces at each time step written by LAMMPS, which we can use to analyze the dynamics of our water system.</p>
+<p>To start our simulation, we’ll first copy our starting files to a new directory to ensure that we don’t overwrite them.
+Note that you must use this exact file name for the configuration of our tutorial.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-2">
+BASH</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>simulation_files/working
+cp<span class="w"> </span>-r<span class="w"> </span>simulation_files/starting/*<span class="w"> </span>simulation_files/working
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the top level of your cloned repository, run the following command to start the AIMD simulation:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-3">
+BASH</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mdimechanic<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>multiple
+</pre></div>
+</div>
+</div>
+</div>
+<p>This will start an AIMD simulation.
+You may have to wait a minute or two for this to run.
+During this time, you will not see any message to the screen, but you should see files changing in your <code class="docutils literal notranslate"><span class="pre">simulation_files/working</span></code> directory.</p>
+</section>
+<section id="examining-the-output">
+<h2>Examining the Output<a class="headerlink" href="#examining-the-output" title="Link to this heading">#</a></h2>
+<p>Your <code class="docutils literal notranslate"><span class="pre">simulation_files/working</span></code> directory should now contain a number of files, including <code class="docutils literal notranslate"><span class="pre">dump.lammpstrj</span></code>, <code class="docutils literal notranslate"><span class="pre">log.lammps</span></code> and <code class="docutils literal notranslate"><span class="pre">qe.out</span></code>.
+If you are familiar with any of these programs, the output files will look the same as they usually do.</p>
+</section>
+<section id="analyzing-the-results">
+<h2>Analyzing the Results<a class="headerlink" href="#analyzing-the-results" title="Link to this heading">#</a></h2>
+<p>Watch trajectory in VMD.</p>
+<p>Analyzie using MDAnalysis?</p>
+</section>
 </section>
 
 
@@ -497,6 +611,22 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-the-mdi-driver-and-engines">Obtaining the MDI Driver and Engines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-aimd-simulation">Setting Up the AIMD Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-aimd-simulation">Running the AIMD Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-output">Examining the Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-results">Analyzing the Results</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
