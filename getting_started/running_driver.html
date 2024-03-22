@@ -478,18 +478,18 @@ Thus, we will use a QM code (in this case, Quantum ESPRESSO) to calculate the fo
 Quantum ESPRESSO is a code that runs quantum mechanics (QM) calculations, which are much more computationally expensive, but can be applied much more straigtforwardly to chemically reactive systems and other specific use cases.</p>
 <p>MM codes like LAMMPS often offer time integration features that are not widely available in QM codes, so it can be desirable to be able to mix the time integration functionality of an MM code with the force evaluation functionality of a QM code.</p>
 <p>Although we will be using QE and LAMMPS as the MDI engines in this tutorial, you could do similar calculations using other MDI engines. This means you could switch out LAMMPS for another MM code, or QE for another QM code, and the MDI driver would still work as long as you had files to set up the input of the new codes.</p>
-<p>A list of codes that support MDI can be found \ref mdi_ecosystem “here”.</p>
+<p>A list of codes that support MDI can be found in <a class="reference internal" href="../user_guide/mdi_ecosystem/index.html#mdi-ecosystem"><span class="std std-ref">mdi_ecosystem</span></a>.</p>
 <section id="obtaining-the-mdi-driver-and-engines">
 <h2>Obtaining the MDI Driver and Engines<a class="headerlink" href="#obtaining-the-mdi-driver-and-engines" title="Link to this heading">#</a></h2>
-<p>Often in computational chemistry, one of the hardest steps to performing a calculation is setting up the software.
-Fortunately, we have compiled Docker images that contain the MDI-enabled codes we will use in this tutorial and can use for other calculations.
+<p>Often in computational chemistry, one of the hardest steps to performing a calculation is setting up and compiling the software.
+Fortunately, we have compiled Docker images that contain the MDI-enabled codes we will use in this tutorial and that you can use for other calculations.
 This means you do not have to compile the codes, you just have to install Docker and “pull” (download) the images.</p>
 <p>To get started with this tutorial, first download the necessary files using <code class="docutils literal notranslate"><span class="pre">git</span></code> (note: You can also download the files as a zip file from the GitHub repository if you don’t have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed using <a class="reference external" href="https://github.com/janash/MDI_AIMD_user_tutorial/archive/refs/heads/main.zip">this link</a>):</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-0">
 BASH</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:janash/MDI_AIMD_user_tutorial.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/janash/MDI_AIMD_user_tutorial.git
 <span class="nb">cd</span><span class="w"> </span>MDI_AIMD_user_tutorial
 </pre></div>
 </div>
@@ -500,29 +500,22 @@ BASH</label><div class="sd-tab-content docutils">
 <h2>Setting Up the AIMD Simulation<a class="headerlink" href="#setting-up-the-aimd-simulation" title="Link to this heading">#</a></h2>
 <p>When using an already-made MDI driver, you will be using a software package that someone else has prepared that performs some kind of molecular science calculation.
 In this case, the MDI Driver performs ab-initio molecular dynamics (AIMD) calculations.
-As far as the MDI driver is concerned, the only thing you need to know is how to run it and what files it needs to run.
-You will need to specify what program you would like to use for the QM portion, and what program you would like to use for the MM portion along with input files for your choice of program.
-The MDI driver will then take care of the rest.</p>
-<p>To summarize, to use the AIMD Driver, you will need to provide:</p>
+As far as the MDI driver is concerned, the only thing you need to know is how to run it and what files it needs to run.</p>
+<p>For the AIMD Driver we will use today:</p>
 <ul class="simple">
-<li><p>Input files for your MDI-enabled QM program of choice.</p></li>
-<li><p>Input files for your MDI-enabled MM program of choice.</p></li>
+<li><p>You will need to specify what program you would like to use for the QM portion.</p></li>
+<li><p>You will need to provide input files for the QM portion that match your choice of QM program.</p></li>
+<li><p>You will need to specify what program you would like it to use for MM portion.</p></li>
+<li><p>You will need to provide input files for the MM portion that match your choice of MM program.</p></li>
 </ul>
-<p>This means you have freedom over your input parameters for each program, and freedom over the input system that you simulate.</p>
+<p>The MDI driver will then take care of the rest.</p>
+<p>This means you have freedom over your input parameters for each program, and freedom over the input system that you simulate.
+For a calculation that is not pre-prepared, preparing your input files can be a time-consuming part of the calculation.</p>
 <p>For the purposes of this tutorial, we will use prepared input files to simulate a small water system using Quantum ESPRESSO and LAMMPS.
 You can find input files for this simulation in <code class="docutils literal notranslate"><span class="pre">simulation_files/starting</span></code> in the repository you just cloned.</p>
 <p>When viewing the contents of this directory, you will see inputs for lammps (<code class="docutils literal notranslate"><span class="pre">lammps.in</span></code>, <code class="docutils literal notranslate"><span class="pre">lammps.data</span></code>) and input files for Quantum ESPRESSO (<code class="docutils literal notranslate"><span class="pre">qe.in</span></code>, <code class="docutils literal notranslate"><span class="pre">pseudo</span></code> - directory containing pseudopotential parameters).
 If you wanted to simulate a different system using AIMD, you would use the same driver, but change these input files.</p>
 <p>To build our AIMD simulation program, we will execute the following command:</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-1">
-BASH</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mdimechanic<span class="w"> </span>build
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="running-the-aimd-simulation">
 <h2>Running the AIMD Simulation<a class="headerlink" href="#running-the-aimd-simulation" title="Link to this heading">#</a></h2>
@@ -540,8 +533,8 @@ This Driver works in the following way:</p>
 <p>To start our simulation, we’ll first copy our starting files to a new directory to ensure that we don’t overwrite them.
 Note that you must use this exact file name for the configuration of our tutorial.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-2">
+<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-1">
 BASH</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>simulation_files/working
 cp<span class="w"> </span>-r<span class="w"> </span>simulation_files/starting/*<span class="w"> </span>simulation_files/working
@@ -551,10 +544,10 @@ cp<span class="w"> </span>-r<span class="w"> </span>simulation_files/starting/*<
 </div>
 <p>From the top level of your cloned repository, run the following command to start the AIMD simulation:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-3">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-bash" for="sd-tab-item-2">
 BASH</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mdimechanic<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>multiple
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mdimechanic<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>aimd
 </pre></div>
 </div>
 </div>
@@ -562,11 +555,40 @@ BASH</label><div class="sd-tab-content docutils">
 <p>This will start an AIMD simulation.
 You may have to wait a minute or two for this to run.
 During this time, you will not see any message to the screen, but you should see files changing in your <code class="docutils literal notranslate"><span class="pre">simulation_files/working</span></code> directory.</p>
+<p>At the end of the simulation, you should see an output similar to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">a</span> <span class="n">custom</span> <span class="n">calculation</span> <span class="k">with</span> <span class="n">MDI</span> <span class="n">Mechanic</span><span class="o">.</span>
+<span class="o">====================================================</span>
+<span class="o">================</span> <span class="n">Output</span> <span class="kn">from</span> <span class="nn">Docker</span> <span class="o">================</span>
+<span class="o">====================================================</span>
+<span class="n">Attaching</span> <span class="n">to</span> <span class="n">aimd</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">qe</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">Starting</span> <span class="n">AIMD</span> <span class="n">driver</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">Engine</span> <span class="n">name</span><span class="p">:</span> <span class="n">QM</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">Engine</span> <span class="n">name</span><span class="p">:</span> <span class="n">MM</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">0</span> <span class="o">-</span><span class="mf">0.0978346</span> <span class="o">-</span><span class="mf">137.599</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">0.100167</span> <span class="o">-</span><span class="mf">137.602</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">2</span> <span class="o">-</span><span class="mf">0.103482</span> <span class="o">-</span><span class="mf">137.607</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">3</span> <span class="o">-</span><span class="mf">0.109034</span> <span class="o">-</span><span class="mf">137.61</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">4</span> <span class="o">-</span><span class="mf">0.114992</span> <span class="o">-</span><span class="mf">137.611</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">5</span> <span class="o">-</span><span class="mf">0.115626</span> <span class="o">-</span><span class="mf">137.614</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">6</span> <span class="o">-</span><span class="mf">0.107206</span> <span class="o">-</span><span class="mf">137.621</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">7</span> <span class="o">-</span><span class="mf">0.0914601</span> <span class="o">-</span><span class="mf">137.63</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">8</span> <span class="o">-</span><span class="mf">0.0743942</span> <span class="o">-</span><span class="mf">137.637</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span>    <span class="o">|</span> <span class="n">timestep</span><span class="p">:</span> <span class="mi">9</span> <span class="o">-</span><span class="mf">0.0616925</span> <span class="o">-</span><span class="mf">137.641</span>
+<span class="n">aimd</span><span class="o">-</span><span class="mi">1</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">code</span> <span class="mi">0</span>
+<span class="n">lammps</span><span class="o">-</span><span class="mi">1</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">code</span> <span class="mi">0</span>
+<span class="n">qe</span><span class="o">-</span><span class="mi">1</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">code</span> <span class="mi">0</span>
+
+<span class="o">====================================================</span>
+<span class="o">==============</span> <span class="n">End</span> <span class="n">Output</span> <span class="kn">from</span> <span class="nn">Docker</span> <span class="o">==============</span>
+<span class="o">====================================================</span>
+</pre></div>
+</div>
 </section>
 <section id="examining-the-output">
 <h2>Examining the Output<a class="headerlink" href="#examining-the-output" title="Link to this heading">#</a></h2>
 <p>Your <code class="docutils literal notranslate"><span class="pre">simulation_files/working</span></code> directory should now contain a number of files, including <code class="docutils literal notranslate"><span class="pre">dump.lammpstrj</span></code>, <code class="docutils literal notranslate"><span class="pre">log.lammps</span></code> and <code class="docutils literal notranslate"><span class="pre">qe.out</span></code>.
-If you are familiar with any of these programs, the output files will look the same as they usually do.</p>
+If you are familiar with any of these programs, the output files will look the same as they usually do.
+However, this time, the trajectory produced by LAMMPS was generated using forces calculated by Quantum ESPRESSO!</p>
 </section>
 <section id="analyzing-the-results">
 <h2>Analyzing the Results<a class="headerlink" href="#analyzing-the-results" title="Link to this heading">#</a></h2>

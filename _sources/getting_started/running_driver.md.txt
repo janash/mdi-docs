@@ -30,12 +30,12 @@ MM codes like LAMMPS often offer time integration features that are not widely a
 
 Although we will be using QE and LAMMPS as the MDI engines in this tutorial, you could do similar calculations using other MDI engines. This means you could switch out LAMMPS for another MM code, or QE for another QM code, and the MDI driver would still work as long as you had files to set up the input of the new codes.
 
-A list of codes that support MDI can be found \ref mdi_ecosystem "here".
+A list of codes that support MDI can be found in [mdi_ecosystem](#mdi-ecosystem).
 
 ## Obtaining the MDI Driver and Engines
 
-Often in computational chemistry, one of the hardest steps to performing a calculation is setting up the software.
-Fortunately, we have compiled Docker images that contain the MDI-enabled codes we will use in this tutorial and can use for other calculations. 
+Often in computational chemistry, one of the hardest steps to performing a calculation is setting up and compiling the software.
+Fortunately, we have compiled Docker images that contain the MDI-enabled codes we will use in this tutorial and that you can use for other calculations. 
 This means you do not have to compile the codes, you just have to install Docker and "pull" (download) the images.
 
 To get started with this tutorial, first download the necessary files using `git` (note: You can also download the files as a zip file from the GitHub repository if you don't have `git` installed using [this link](https://github.com/janash/MDI_AIMD_user_tutorial/archive/refs/heads/main.zip)):
@@ -43,7 +43,7 @@ To get started with this tutorial, first download the necessary files using `git
 
 :::{tab-set-code}
 ```bash
-git clone git@github.com:janash/MDI_AIMD_user_tutorial.git
+git clone https://github.com/janash/MDI_AIMD_user_tutorial.git
 cd MDI_AIMD_user_tutorial
 ```
 :::
@@ -53,15 +53,18 @@ cd MDI_AIMD_user_tutorial
 When using an already-made MDI driver, you will be using a software package that someone else has prepared that performs some kind of molecular science calculation.
 In this case, the MDI Driver performs ab-initio molecular dynamics (AIMD) calculations.
 As far as the MDI driver is concerned, the only thing you need to know is how to run it and what files it needs to run.
-You will need to specify what program you would like to use for the QM portion, and what program you would like to use for the MM portion along with input files for your choice of program.
+
+For the AIMD Driver we will use today:
+
+- You will need to specify what program you would like to use for the QM portion.
+- You will need to provide input files for the QM portion that match your choice of QM program.
+- You will need to specify what program you would like it to use for MM portion.
+- You will need to provide input files for the MM portion that match your choice of MM program.
+
 The MDI driver will then take care of the rest.
 
-To summarize, to use the AIMD Driver, you will need to provide:
-
-* Input files for your MDI-enabled QM program of choice.
-* Input files for your MDI-enabled MM program of choice.
-
-This means you have freedom over your input parameters for each program, and freedom over the input system that you simulate.
+This means you have freedom over your input parameters for each program, and freedom over the input system that you simulate. 
+For a calculation that is not pre-prepared, preparing your input files can be a time-consuming part of the calculation.
 
 For the purposes of this tutorial, we will use prepared input files to simulate a small water system using Quantum ESPRESSO and LAMMPS. 
 You can find input files for this simulation in `simulation_files/starting` in the repository you just cloned.
@@ -70,12 +73,6 @@ When viewing the contents of this directory, you will see inputs for lammps (`la
 If you wanted to simulate a different system using AIMD, you would use the same driver, but change these input files.
 
 To build our AIMD simulation program, we will execute the following command:
-
-:::{tab-set-code}
-```bash
-mdimechanic build
-```
-:::
 
 ## Running the AIMD Simulation
 After you have the input files, you can run the AIMD simulation using the MDI driver.
@@ -104,7 +101,7 @@ From the top level of your cloned repository, run the following command to start
 
 :::{tab-set-code}
 ```bash 
-mdimechanic run --name multiple
+mdimechanic run --name aimd
 ```
 :::
 
@@ -112,10 +109,41 @@ This will start an AIMD simulation.
 You may have to wait a minute or two for this to run. 
 During this time, you will not see any message to the screen, but you should see files changing in your `simulation_files/working` directory.
 
+At the end of the simulation, you should see an output similar to the following:
+
+```
+Running a custom calculation with MDI Mechanic.
+====================================================
+================ Output from Docker ================
+====================================================
+Attaching to aimd-1, lammps-1, qe-1
+aimd-1    | Starting AIMD driver
+aimd-1    | Engine name: QM
+aimd-1    | Engine name: MM
+aimd-1    | timestep: 0 -0.0978346 -137.599
+aimd-1    | timestep: 1 -0.100167 -137.602
+aimd-1    | timestep: 2 -0.103482 -137.607
+aimd-1    | timestep: 3 -0.109034 -137.61
+aimd-1    | timestep: 4 -0.114992 -137.611
+aimd-1    | timestep: 5 -0.115626 -137.614
+aimd-1    | timestep: 6 -0.107206 -137.621
+aimd-1    | timestep: 7 -0.0914601 -137.63
+aimd-1    | timestep: 8 -0.0743942 -137.637
+aimd-1    | timestep: 9 -0.0616925 -137.641
+aimd-1 exited with code 0
+lammps-1 exited with code 0
+qe-1 exited with code 0
+
+====================================================
+============== End Output from Docker ==============
+====================================================
+```
+
 ## Examining the Output
 
 Your `simulation_files/working` directory should now contain a number of files, including `dump.lammpstrj`, `log.lammps` and `qe.out`. 
 If you are familiar with any of these programs, the output files will look the same as they usually do.
+However, this time, the trajectory produced by LAMMPS was generated using forces calculated by Quantum ESPRESSO!
 
 ## Analyzing the Results
 
