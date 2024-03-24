@@ -19,7 +19,7 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = 'molssi_driver_interface'
+project = 'MolSSI Driver Interface (MDI)'
 copyright = ("")
 author = ""
 
