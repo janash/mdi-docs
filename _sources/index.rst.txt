@@ -21,14 +21,12 @@ The API is sufficiently general to support a wide variety of techniques, includi
 * Path integral molecular dynamics (PIMD)
 * and many more!
 
-If you are interested in learning more, continue to the 
-
 .. grid:: 1 1 2 2
 
     .. grid-item-card:: Getting Started
       :margin: 0 3 0 0 
       
-      Learn how to use MDI for ab initio MD.
+      Learn how to use MDI for ab initio MD and how to write your own driver.
 
       .. button-link:: ./getting_started/index.html
          :color: primary
@@ -39,7 +37,7 @@ If you are interested in learning more, continue to the
     .. grid-item-card::  User Guide
       :margin: 0 3 0 0
       
-      To the User Guide.
+      The User Guide provides detailed information on the design of and how to use MDI.
 
       .. button-link:: ./user_guide/index.html
          :color: primary
@@ -50,7 +48,7 @@ If you are interested in learning more, continue to the
     .. grid-item-card:: API Reference
       :margin: 0 3 0 0
       
-      Most projects will also need an API reference.
+      The API Reference provides detailed information on the MDI Standard, including the C, C++, and Python APIs.
 
       .. button-link:: ./api/index.html
          :color: primary
@@ -61,7 +59,7 @@ If you are interested in learning more, continue to the
     .. grid-item-card::  Developer Guide
       :margin: 0 3 0 0
       
-      How to contribute to molssi_doc_theme
+      How to make your code MDI-compliant.
 
       .. button-link:: ./developer_guide.html
          :color: primary

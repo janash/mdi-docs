@@ -471,17 +471,14 @@ document.write(`
 A driver will typically implement one or more high-level methods, such as advanced sampling or QM/MM, while relying on one or more engines to perform lower-level operations, such as energy and force evaluation.</p>
 <p>In total, MDI consists of the following components:</p>
 <ul class="simple">
-<li><p>Drivers, which are codes that control the high-level program flow of one or more other codes.</p></li>
-<li><p>Engines, which are codes capable of responding to commands from an external driver.</p></li>
-<li><p>The MDI Standard, which is an API-like definition of a set of commands that can be sent from a driver to an engine, and that cause the engine to respond in a clearly defined way.</p></li>
-<li><p>The MDI Library, which is a library that enables inter-code communication in compliance with the MDI Standard.</p></li>
+<li><p><strong>Drivers</strong>, which are codes that control the high-level program flow of one or more other codes.</p></li>
+<li><p><strong>Engines</strong>, which are codes capable of responding to commands from an external driver.</p></li>
+<li><p><strong>The MDI Standard</strong>, which is an API-like definition of a set of commands that can be sent from a driver to an engine, and that cause the engine to respond in a clearly defined way.</p></li>
+<li><p><strong>The MDI Library</strong>, which is a library that enables inter-code communication in compliance with the MDI Standard.</p></li>
 </ul>
+<p>Examples of MDI engines are specially compiled versions of LAMMPS, Quantum ESPRESSO, Psi4, and many others.
+You can see a list of available engines in the <a class="reference internal" href="mdi_ecosystem/index.html"><span class="doc">MDI Ecosystem</span></a>.</p>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mdi_standard.html">MDI Standard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mdi_ecosystem/index.html">MDI Ecosystem</a></li>
-</ul>
 </div>
 </section>
 

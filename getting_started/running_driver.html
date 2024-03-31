@@ -618,7 +618,7 @@ For example, the LAMMPS command has the usual input and output for LAMMPS, but a
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lmp_mpi<span class="w"> </span>-mdi<span class="w"> </span><span class="s2">&quot;-role ENGINE -name MM -method TCP -port 8021 -hostname aimd&quot;</span><span class="w"> </span>-in<span class="w"> </span>lammps.in<span class="w"> </span>&gt;<span class="w"> </span>lammps.out
 </pre></div>
 </div>
-<p>When using the MolSSI Driver Interface, the programs have a couple ways that they can communicate with each other. MDI allows communication between programs over TCP/IP, Unix Sockets, or Message Passing Interface (MPI).
+<p>When using the MolSSI Driver Interface, the programs have a couple ways that they can communicate with each other. MDI allows communication between programs over TCP/IP or Message Passing Interface (MPI).
 TCP/IP operates through network ports, which act like designated channels on a server for specific types of network traffic.
 MDI allows computatoinal chemistry code to communicate on-the-fly (as they run) with other codes through these ports.
 You will see that in our example, the codes have all been set up to communicate over TCP/IP with the port number <code class="docutils literal notranslate"><span class="pre">8021</span></code>.</p>
@@ -664,8 +664,16 @@ However, this time, the trajectory produced by LAMMPS was generated using forces
 </section>
 <section id="analyzing-the-results">
 <h2>Analyzing the Results<a class="headerlink" href="#analyzing-the-results" title="Link to this heading">#</a></h2>
-<p>Watch trajectory in VMD.</p>
-<p>Analyzie using MDAnalysis?</p>
+<p>You can now continue with analysis as you would normally analyze your simulation output files.</p>
+</section>
+<section id="extending-to-other-drivers">
+<h2>Extending to Other Drivers<a class="headerlink" href="#extending-to-other-drivers" title="Link to this heading">#</a></h2>
+<p>After completing this tutorial, you may wonder how you can use MDI, other drivers, and other codes.
+As mentioned earlier, in the tutorial, there are several methods to using MDI.
+In this tutorial, we have covered a containerization approach using MDI Mechanic.
+In order to use this approach, you need to have Docker installed and prepare an <code class="docutils literal notranslate"><span class="pre">mdimechanic.yml</span></code> file.</p>
+<p>You then specify the container images for your programs, and the commands to run them with the MDI interface.
+You can see a list of available MDI-enabled codes in the <a class="reference internal" href="../user_guide/mdi_ecosystem/index.html#mdi-ecosystem"><span class="std std-ref">MDI Ecosystem</span></a> or check out MDI’s DockerHub page for a list of MDI-enabled images.</p>
 </section>
 </section>
 
@@ -721,6 +729,7 @@ However, this time, the trajectory produced by LAMMPS was generated using forces
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-mdimechanic-do">What did <code class="docutils literal notranslate"><span class="pre">mdimechanic</span></code> do?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-output">Examining the Output</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-results">Analyzing the Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-to-other-drivers">Extending to Other Drivers</a></li>
 </ul>
   </nav></div>
 

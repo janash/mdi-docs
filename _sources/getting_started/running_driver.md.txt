@@ -176,7 +176,7 @@ For example, the LAMMPS command has the usual input and output for LAMMPS, but a
 lmp_mpi -mdi "-role ENGINE -name MM -method TCP -port 8021 -hostname aimd" -in lammps.in > lammps.out
 ```
 
-When using the MolSSI Driver Interface, the programs have a couple ways that they can communicate with each other. MDI allows communication between programs over TCP/IP, Unix Sockets, or Message Passing Interface (MPI).
+When using the MolSSI Driver Interface, the programs have a couple ways that they can communicate with each other. MDI allows communication between programs over TCP/IP or Message Passing Interface (MPI).
 TCP/IP operates through network ports, which act like designated channels on a server for specific types of network traffic. 
 MDI allows computatoinal chemistry code to communicate on-the-fly (as they run) with other codes through these ports.
 You will see that in our example, the codes have all been set up to communicate over TCP/IP with the port number `8021`.
@@ -226,6 +226,14 @@ However, this time, the trajectory produced by LAMMPS was generated using forces
 
 ## Analyzing the Results
 
-Watch trajectory in VMD.
+You can now continue with analysis as you would normally analyze your simulation output files.
 
-Analyzie using MDAnalysis?
+## Extending to Other Drivers
+
+After completing this tutorial, you may wonder how you can use MDI, other drivers, and other codes. 
+As mentioned earlier, in the tutorial, there are several methods to using MDI. 
+In this tutorial, we have covered a containerization approach using MDI Mechanic.
+In order to use this approach, you need to have Docker installed and prepare an `mdimechanic.yml` file.
+
+You then specify the container images for your programs, and the commands to run them with the MDI interface. 
+You can see a list of available MDI-enabled codes in the [MDI Ecosystem](#mdi-ecosystem) or check out MDI's DockerHub page for a list of MDI-enabled images.
