@@ -507,7 +507,19 @@ C++</label><div class="sd-tab-content docutils">
 </section>
 <section id="init-mc-go-to-the-init-mc-node">
 <h2><code class="docutils literal notranslate"><span class="pre">&#64;INIT_MC</span></code> : Go to the <code class="docutils literal notranslate"><span class="pre">INIT_MC</span></code> node.<a class="headerlink" href="#init-mc-go-to-the-init-mc-node" title="Link to this heading">#</a></h2>
-<p>The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the &#64;INIT_MD node.</p>
+<p>The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the &#64;INIT_MC node.</p>
+</section>
+<section id="init-md-go-to-the-init-md-node">
+<h2><code class="docutils literal notranslate"><span class="pre">&#64;INIT_MD</span></code> : Go to the <code class="docutils literal notranslate"><span class="pre">INIT_MD</span></code> node.<a class="headerlink" href="#init-md-go-to-the-init-md-node" title="Link to this heading">#</a></h2>
+<p>Engine proceeds to the <code class="docutils literal notranslate"><span class="pre">INIT_MD</span></code> node.</p>
+<div class="caution admonition">
+<p class="admonition-title">Note</p>
+<p>This command may change the engine’s atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.</p>
+</div>
+</section>
+<section id="init-optg-initialize-geometry-optimization">
+<h2><code class="docutils literal notranslate"><span class="pre">&#64;INIT_OPTG</span></code> : Initialize geometry optimization.<a class="headerlink" href="#init-optg-initialize-geometry-optimization" title="Link to this heading">#</a></h2>
+<p>The engine performs any initialization operations that are necessary before a geometry optimization can be performed, proceeding to the &#64;INIT_OPTG node.</p>
 <div class="caution admonition">
 <p class="admonition-title">Note</p>
 <p>This command may change the engine’s atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.</p>
@@ -568,6 +580,8 @@ C++</label><div class="sd-tab-content docutils">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#go-to-next-node"><code class="docutils literal notranslate"><span class="pre">@</span></code> : Go to next node</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receive-current-node-name"><code class="docutils literal notranslate"><span class="pre">&lt;@</span></code> : Receive current node name</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#init-mc-go-to-the-init-mc-node"><code class="docutils literal notranslate"><span class="pre">@INIT_MC</span></code> : Go to the <code class="docutils literal notranslate"><span class="pre">INIT_MC</span></code> node.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#init-md-go-to-the-init-md-node"><code class="docutils literal notranslate"><span class="pre">@INIT_MD</span></code> : Go to the <code class="docutils literal notranslate"><span class="pre">INIT_MD</span></code> node.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#init-optg-initialize-geometry-optimization"><code class="docutils literal notranslate"><span class="pre">@INIT_OPTG</span></code> : Initialize geometry optimization.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-forces-go-to-pre-forces-node"><code class="docutils literal notranslate"><span class="pre">@PRE-FORCES</span></code> : Go to pre-forces node</a></li>
 </ul>
   </nav></div>
