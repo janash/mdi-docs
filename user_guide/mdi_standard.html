@@ -470,29 +470,47 @@ document.write(`
                   
   <section id="mdi-standard">
 <span id="id1"></span><h1>MDI Standard<a class="headerlink" href="#mdi-standard" title="Link to this heading">#</a></h1>
-<section id="overview">
-<span id="standard-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>The MDI Standard provides a straightforward, API-like method for enabling interoperability among computational molecular sciences codes.
 It uses a driver/engine model in which a driver code controls the high-level program flow of one or more engine codes.
-The driver exercises this control through the use of command_list “commands” that are defined by the MDI Standard.
+The driver exercises this control through the use of “commands” that are defined by the MDI Standard.
+The MDI Standard is made up of a set of commands that can be used to control the program flow of an engine code.
 Commands are available that correspond to a variety of tasks, such as “receive a new set of nuclear coordinates from me” (<code class="docutils literal notranslate"><span class="pre">send_coords</span></code>), “start an MD simulation” (<code class="docutils literal notranslate"><span class="pre">init_md</span></code>) and “send me the forces on the nuclei” (<code class="docutils literal notranslate"><span class="pre">recv_forces</span></code>).
 The MDI standard defines the standard_units “units”, data types, and formatting of any data communicated between codes in response to a command.</p>
-<p>Components of the MDI Standard are summarized below.
-See the additional pages in this section for details on each component.</p>
-</section>
-<section id="nodes">
-<h2>Nodes<a class="headerlink" href="#nodes" title="Link to this heading">#</a></h2>
-<p>The MDI Standard allows drivers to leverage existing time integrators and geometry optimizers within MDI engines.
-Engines can autonomously execute simulations, pausing at defined “nodes” to listen for new commands.
-These nodes facilitate structured communication and control flow between drivers and engines, enhancing flexibility in simulation management.
-Nodes are located within MDI Engines.
-If you are writing an MDI Driver, you will interact will nodes by telling your script which nodes to “listen” at.</p>
-</section>
+<p>Components of the MDI Standard are summarized below.</p>
 <section id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h2>
 <p>A comprehensive list of commands forms the core of the MDI Standard, enabling detailed control over the simulation process.
 Commands are designed to cover various aspects of simulations, such as node management, data exchange (e.g., coordinates, forces, cell parameters), and control of simulation parameters.
 This structure ensures that drivers can precisely control engine codes, facilitating complex multi-code simulations.</p>
+<p>You can see a full list of commands in the <a class="reference internal" href="../api/mdi_standard/index.html"><span class="doc std std-doc">API Documentation</span></a>.</p>
+</section>
+<section id="nodes">
+<h2>Nodes<a class="headerlink" href="#nodes" title="Link to this heading">#</a></h2>
+<p>One of the powerful features of the MDI Standard is that it permits drivers to take advantage of existing implementations of time integrators and geometry optimizers in MDI engines.
+In the MDI Standard, you can have your driver intercept the execution of an engine at specific points in the simulation, called “nodes,” and issue new commands to the engine.
+In particular, the <code class="docutils literal notranslate"><span class="pre">init_md</span></code> and <code class="docutils literal notranslate"><span class="pre">init_optg</span></code> commands cause an engine to begin a molecular dynamics trajectory or a geometry optimization, respectively.
+Upon receiving one of these commands, an engine will perform the corresponding simulation without requiring further instruction from the driver, except that it will pause at certain “nodes” and listen for new commands.</p>
+<p>The MDI Standard defines several nodes.
+Their names and when they occur are as follows:</p>
+<ul class="simple">
+<li><p><strong>&#64;DEFAULT</strong> - Upon initially connecting to the driver.</p></li>
+<li><p><strong>&#64;INIT_MC</strong> - Upon initializing a new Monte Carlo simulation.</p></li>
+<li><p><strong>&#64;INIT_MD</strong> - Upon initializing a new molecular dynamics simulation.</p></li>
+<li><p><strong>&#64;INIT_OPTG</strong> - Upon initializing a new geometry optimization.</p></li>
+</ul>
+<p>Not all MDI engines are required to support each of these nodes,
+with the exception of the &#64;DEFAULT node, which every MDI engine must support.
+Additional nodes may be defined by individual codes.
+Examples of possible code-specific nodes include:</p>
+<ul class="simple">
+<li><p><strong>&#64;PRE-FORCES</strong> - After calculating all contributions to the atomic forces, **except those associated with a constraint algorithm like SHAKE or RATTLE.</p></li>
+<li><p><strong>&#64;FORCES</strong> - After calculating all contributions to the atomic forces.</p></li>
+<li><p><strong>&#64;COORDS</strong> - After updating the atomic coordinates.</p></li>
+</ul>
+<p>Several MDI commands enable a driver to control the program flow of an engine through different nodes.
+The <code class="docutils literal notranslate"><span class="pre">send_node</span></code> command instructs the engine to send the name of its node,
+while the <code class="docutils literal notranslate"><span class="pre">next_node</span></code> command instructs the engine to proceed in its simulation until it reaches the next node.
+In addition, there are commands associated with each type of node (pre-forces_node, forces_node, coords_node) which instruct the engine to proceed in its simulation until it reaches the next node of that particular type.</p>
 </section>
 <section id="units">
 <h2>Units<a class="headerlink" href="#units" title="Link to this heading">#</a></h2>
@@ -559,9 +577,8 @@ Users who find themselves in need of a new MDI command are encouraged to create 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes">Nodes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes">Nodes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constants">Constants</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-the-mdi-standard">Extending the MDI Standard</a></li>

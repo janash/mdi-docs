@@ -442,8 +442,9 @@ document.write(`
                   
   <section id="mdi-standard">
 <span id="id1"></span><h1>MDI Standard<a class="headerlink" href="#mdi-standard" title="Link to this heading">#</a></h1>
-<section id="overview">
-<span id="standard-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p><strong>Notes</strong> move everythng thta is on own page to this page. We don’t need multiple sections here.
+Command List should be in API Section under MDI Standard.
+Add modes of running to user guide.</p>
 <p>The MDI Standard provides a straightforward, API-like method for enabling interoperability among computational molecular sciences codes.
 It uses a driver/engine model in which a driver code controls the high-level program flow of one or more engine codes.
 The driver exercises this control through the use of command_list “commands” that are defined by the MDI Standard.
@@ -451,14 +452,14 @@ Commands are available that correspond to a variety of tasks, such as “receive
 The MDI standard defines the standard_units “units”, data types, and formatting of any data communicated between codes in response to a command.</p>
 <p>Components of the MDI Standard are summarized below.
 See the additional pages in this section for details on each component.</p>
-</section>
 <section id="nodes">
 <h2>Nodes<a class="headerlink" href="#nodes" title="Link to this heading">#</a></h2>
 <p>The MDI Standard allows drivers to leverage existing time integrators and geometry optimizers within MDI engines.
 Engines can autonomously execute simulations, pausing at defined “nodes” to listen for new commands.
 These nodes facilitate structured communication and control flow between drivers and engines, enhancing flexibility in simulation management.
 Nodes are located within MDI Engines.
-If you are writing an MDI Driver, you will interact will nodes by telling your script which nodes to “listen” at.</p>
+If you are writing an MDI Driver, you will interact will nodes by telling your script which nodes to “listen” at.
+You can read more about nodes, including seeing a list of all nodes on the <a class="reference internal" href="nodes.html"><span class="doc std std-doc">nodes page</span></a>.</p>
 </section>
 <section id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h2>
@@ -513,7 +514,6 @@ Users who find themselves in need of a new MDI command are encouraged to create 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes">Nodes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>

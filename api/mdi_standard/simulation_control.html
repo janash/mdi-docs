@@ -402,6 +402,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="data_exchange.html">Data Exchange</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">MDI Standard</a></li>
 </ul>
 </div>
 </nav></div>
@@ -465,13 +466,15 @@ document.write(`
   <section id="simulation-control-and-node-management">
 <h1>Simulation Control and Node Management<a class="headerlink" href="#simulation-control-and-node-management" title="Link to this heading">#</a></h1>
 <p>Commands that influence the flow of the simulation, such as starting or stopping processes, initializing different types of simulations. Each of these commands is used with the <code class="docutils literal notranslate"><span class="pre">MDI_Send_Command</span></code> function.</p>
-<section id="simulation-initialization">
-<h2>Simulation Initialization<a class="headerlink" href="#simulation-initialization" title="Link to this heading">#</a></h2>
-<section id="init-mc-initialize-monte-carlo-simulation">
-<h3><code class="docutils literal notranslate"><span class="pre">&#64;INIT_MC</span></code>: Initialize Monte Carlo Simulation<a class="headerlink" href="#init-mc-initialize-monte-carlo-simulation" title="Link to this heading">#</a></h3>
-<p>The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, proceeding to the <code class="docutils literal notranslate"><span class="pre">&#64;INIT_MC</span></code> node.</p>
-<section id="example">
-<h4>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
+<section id="go-to-next-node">
+<h2><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> : Go to next node<a class="headerlink" href="#go-to-next-node" title="Link to this heading">#</a></h2>
+<p>The engine proceeds to the next node. Typically not supported at the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node.</p>
+</section>
+<section id="receive-current-node-name">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;&#64;</span></code> : Receive current node name<a class="headerlink" href="#receive-current-node-name" title="Link to this heading">#</a></h2>
+<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_CHAR</span></code><br />
+<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">MDI_NAME_LENGTH</span></code></p>
+<p>Engine sends the name of its current node.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -483,6 +486,7 @@ Python</label><div class="sd-tab-content docutils">
 
 <span class="c1"># initialize a Monte Carlo simulation</span>
 <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;@INIT_MC&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span> 
+
 </pre></div>
 </div>
 </div>
@@ -501,90 +505,17 @@ C++</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-</section>
-<section id="init-md-initialize-molecular-dynamics-simulation">
-<h3><code class="docutils literal notranslate"><span class="pre">&#64;INIT_MD</span></code>: Initialize Molecular Dynamics Simulation<a class="headerlink" href="#init-md-initialize-molecular-dynamics-simulation" title="Link to this heading">#</a></h3>
-<p>The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the <code class="docutils literal notranslate"><span class="pre">&#64;INIT_MD</span></code> node.</p>
+<section id="init-mc-go-to-the-init-mc-node">
+<h2><code class="docutils literal notranslate"><span class="pre">&#64;INIT_MC</span></code> : Go to the <code class="docutils literal notranslate"><span class="pre">INIT_MC</span></code> node.<a class="headerlink" href="#init-mc-go-to-the-init-mc-node" title="Link to this heading">#</a></h2>
+<p>The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the &#64;INIT_MD node.</p>
 <div class="caution admonition">
-<p class="admonition-title">Warning</p>
-<p>This command may change the engine’s atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.</p>
-</div>
-<section id="id1">
-<h4>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-
-<span class="c1"># connect to the engine</span>
-<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
-
-<span class="c1"># initialize a Monte Dynamics simulation</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;@INIT_MD&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
-
-<span class="c1">// connect to the engine</span>
-<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
-
-<span class="c1">// initialize a Molecular Dynamics simulation</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;@INIT_MD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="init-optg-initialize-geometry-optimization">
-<h3><code class="docutils literal notranslate"><span class="pre">&#64;INIT_OPTG</span></code>: Initialize Geometry Optimization<a class="headerlink" href="#init-optg-initialize-geometry-optimization" title="Link to this heading">#</a></h3>
-<p>The engine performs any initialization operations that are necessary before a geometry optimization can be performed, proceeding to the <code class="docutils literal notranslate"><span class="pre">&#64;INIT_OPTG</span> </code> node.</p>
-<div class="caution admonition">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Note</p>
 <p>This command may change the engine’s atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.</p>
 </div>
 </section>
-</section>
-<section id="simulation-flow-control-node-management">
-<h2>Simulation Flow Control - Node Management<a class="headerlink" href="#simulation-flow-control-node-management" title="Link to this heading">#</a></h2>
-<p>MDI enabled engines have a number of nodes defined where they can pause and listen for new commands.</p>
-<section id="go-to-next-node">
-<span id="next-node"></span><h3><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> : Go to Next Node<a class="headerlink" href="#go-to-next-node" title="Link to this heading">#</a></h3>
-<p>The engine proceeds to the next node (see <a class="reference internal" href="../../user_guide/mdi_standard/nodes.html#standard-nodes-sec"><span class="std std-ref">Nodes</span></a>).
-This command is typically not supported at the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node.</p>
-</section>
-<section id="send-node-name">
-<span id="send-node"></span><h3><code class="docutils literal notranslate"><span class="pre">&lt;&#64;</span></code>: Send Node Name<a class="headerlink" href="#send-node-name" title="Link to this heading">#</a></h3>
-<p>The engine sends the driver a string that corresponds to the name of its current node (see <a class="reference internal" href="../../user_guide/mdi_standard/nodes.html#standard-nodes-sec"><span class="std std-ref">Nodes</span></a>).</p>
-<ul class="simple">
-<li><p><strong>Data Type:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_CHAR</span></code></p></li>
-<li><p><strong>Quantity:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_NAME_LENGTH</span></code></p></li>
-</ul>
-</section>
-<section id="coords-go-to-next-coords-node">
-<span id="coords-node"></span><h3><code class="docutils literal notranslate"><span class="pre">&#64;COORDS</span></code>: Go to next Coords Node<a class="headerlink" href="#coords-go-to-next-coords-node" title="Link to this heading">#</a></h3>
-<p>The engine proceeds to the next <code class="docutils literal notranslate"><span class="pre">&#64;COORDS</span></code> node (see <a class="reference internal" href="../../user_guide/mdi_standard/nodes.html#standard-nodes-sec"><span class="std std-ref">Nodes</span></a>).
-This command is not valid at the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node.</p>
-</section>
-<section id="default-go-to-default-node">
-<span id="default-node"></span><h3><code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code>: Go to Default Node<a class="headerlink" href="#default-go-to-default-node" title="Link to this heading">#</a></h3>
-<p>If not already at the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node, the engine exists whatever simulation (i.e. MD, OPTG, etc.) it is performing (possibly after completing an unfinished time step or geometry optimization step) and returns to the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node.</p>
-</section>
-<section id="forces-go-to-next-forces-node">
-<span id="forces-node"></span><h3><code class="docutils literal notranslate"><span class="pre">&#64;FORCES</span></code>: Go to next Forces Node<a class="headerlink" href="#forces-go-to-next-forces-node" title="Link to this heading">#</a></h3>
-<p>The engine proceeds to the next <code class="docutils literal notranslate"><span class="pre">&#64;FORCES</span></code> node (see <a class="reference internal" href="../../user_guide/mdi_standard/nodes.html#standard-nodes-sec"><span class="std std-ref">Nodes</span></a>).
-This command is not valid at the `&#64;DEFAULT node.</p>
-</section>
-<section id="pre-forces-go-to-next-pre-forces-node">
-<span id="pre-forces-node"></span><h3><code class="docutils literal notranslate"><span class="pre">&#64;PRE-FORCES</span></code>: Go to next Pre-Forces Node<a class="headerlink" href="#pre-forces-go-to-next-pre-forces-node" title="Link to this heading">#</a></h3>
-<p>The engine proceeds to the next <code class="docutils literal notranslate"><span class="pre">&#64;PRE-FORCES</span></code> node (see <a class="reference internal" href="../../user_guide/mdi_standard/nodes.html#standard-nodes-sec"><span class="std std-ref">Nodes</span></a>).
-This command is not valid at the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node.</p>
-</section>
+<section id="pre-forces-go-to-pre-forces-node">
+<h2><code class="docutils literal notranslate"><span class="pre">&#64;PRE-FORCES</span></code> : Go to pre-forces node<a class="headerlink" href="#pre-forces-go-to-pre-forces-node" title="Link to this heading">#</a></h2>
+<p>Engine proceeds to the next <code class="docutils literal notranslate"><span class="pre">&#64;PRE-FORCES</span></code> node. Not valid at the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node.</p>
 </section>
 </section>
 
@@ -634,27 +565,10 @@ This command is not valid at the <code class="docutils literal notranslate"><spa
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-initialization">Simulation Initialization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-mc-initialize-monte-carlo-simulation"><code class="docutils literal notranslate"><span class="pre">@INIT_MC</span></code>: Initialize Monte Carlo Simulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-md-initialize-molecular-dynamics-simulation"><code class="docutils literal notranslate"><span class="pre">@INIT_MD</span></code>: Initialize Molecular Dynamics Simulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-optg-initialize-geometry-optimization"><code class="docutils literal notranslate"><span class="pre">@INIT_OPTG</span></code>: Initialize Geometry Optimization</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-flow-control-node-management">Simulation Flow Control - Node Management</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#go-to-next-node"><code class="docutils literal notranslate"><span class="pre">@</span></code> : Go to Next Node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#send-node-name"><code class="docutils literal notranslate"><span class="pre">&lt;@</span></code>: Send Node Name</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coords-go-to-next-coords-node"><code class="docutils literal notranslate"><span class="pre">@COORDS</span></code>: Go to next Coords Node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-go-to-default-node"><code class="docutils literal notranslate"><span class="pre">@DEFAULT</span></code>: Go to Default Node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forces-go-to-next-forces-node"><code class="docutils literal notranslate"><span class="pre">@FORCES</span></code>: Go to next Forces Node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-forces-go-to-next-pre-forces-node"><code class="docutils literal notranslate"><span class="pre">@PRE-FORCES</span></code>: Go to next Pre-Forces Node</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#go-to-next-node"><code class="docutils literal notranslate"><span class="pre">@</span></code> : Go to next node</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receive-current-node-name"><code class="docutils literal notranslate"><span class="pre">&lt;@</span></code> : Receive current node name</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#init-mc-go-to-the-init-mc-node"><code class="docutils literal notranslate"><span class="pre">@INIT_MC</span></code> : Go to the <code class="docutils literal notranslate"><span class="pre">INIT_MC</span></code> node.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-forces-go-to-pre-forces-node"><code class="docutils literal notranslate"><span class="pre">@PRE-FORCES</span></code> : Go to pre-forces node</a></li>
 </ul>
   </nav></div>
 

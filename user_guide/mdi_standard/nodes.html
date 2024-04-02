@@ -450,6 +450,7 @@ document.write(`
   <section id="nodes">
 <span id="standard-nodes-sec"></span><h1>Nodes<a class="headerlink" href="#nodes" title="Link to this heading">#</a></h1>
 <p>One of the powerful features of the MDI Standard is that it permits drivers to take advantage of existing implementations of time integrators and geometry optimizers in MDI engines.
+In the MDI Standard, you can have your driver intercept the execution of an engine at specific points in the simulation, called “nodes,” and issue new commands to the engine.
 In particular, the <code class="docutils literal notranslate"><span class="pre">init_md</span></code> and <code class="docutils literal notranslate"><span class="pre">init_optg</span></code> commands cause an engine to begin a molecular dynamics trajectory or a geometry optimization, respectively.
 Upon receiving one of these commands, an engine will perform the corresponding simulation without requiring further instruction from the driver, except that it will pause at certain “nodes” and listen for new commands.</p>
 <p>The MDI Standard defines several nodes.
@@ -470,10 +471,10 @@ Examples of possible code-specific nodes include:</p>
 <li><p><strong>&#64;COORDS</strong> - After updating the atomic coordinates.</p></li>
 </ul>
 <p>Several MDI commands enable a driver to control the program flow of an engine through different nodes.
-he send_node command instructs the engine to send the name of its node,
-while the next_node command instructs the engine to proceed in its simulation until it reaches the next node.
+The <code class="docutils literal notranslate"><span class="pre">send_node</span></code> command instructs the engine to send the name of its node,
+while the <code class="docutils literal notranslate"><span class="pre">next_node</span></code> command instructs the engine to proceed in its simulation until it reaches the next node.
 In addition, there are commands associated with each type of node (pre-forces_node, forces_node, coords_node) which instruct the engine to proceed in its simulation until it reaches the next node of that particular type.</p>
-<p>A specific MD implementation might progress from a <code class="docutils literal notranslate"><span class="pre">&#64;PRE-FORCES</span></code> node, to the <code class="docutils literal notranslate"><span class="pre">&#64;FORCES</span></code> node, to the <code class="docutils literal notranslate"><span class="pre">&#64;COORDS</span></code> node, and then repeat the cycle; however, this behavior is **not guaranteed.
+<p>A specific MD implementation might progress from a <code class="docutils literal notranslate"><span class="pre">&#64;PRE-FORCES</span></code> node, to the <code class="docutils literal notranslate"><span class="pre">&#64;FORCES</span></code> node, to the <code class="docutils literal notranslate"><span class="pre">&#64;COORDS</span></code> node, and then repeat the cycle; however, this behavior is <strong>not guaranteed</strong>.
 Engines are permitted to pass through nodes in whatever order the implementation dictates.
 When writing drivers, it is a best practice to avoid assumptions about the ordering or frequency of nodes.</p>
 <p>The MDI Library provides several functions that allow codes to define and communicate information about which nodes are supported:</p>
