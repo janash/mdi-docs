@@ -86,6 +86,33 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'default'
 
+#================== YAML to Jinja ==================
+# Adapted from Eric Holscher's method for JSON
+# See https://www.ericholscher.com/blog/2016/jul/25/integrating-jinja-rst-sphinx/
+# --------------------------------------------------
+# Requires installation of PyYAML
+import yaml
+
+html_context = {}
+with open("api/mdi_standard/mdi_standard.yaml", "r", encoding='utf-8') as f:
+    # Load YAML file content into the html_context dictionary
+    html_context["mdi_standard"] = yaml.safe_load(f)
+
+def rst2jinja(app, docname, source):
+    """
+    Render our pages as a jinja template for fancy templating goodness.
+    """
+    # Make sure we're outputting HTML
+    if app.builder.format != 'html':
+        return
+    src = source[0]
+    rendered = app.builder.templates.render_string(
+        src, app.config.html_context
+    )
+    source[0] = rendered
+
+def setup(app):
+    app.connect("source-read", rst2jinja)
 
 # -- Options for HTML output -------------------------------------------------
 

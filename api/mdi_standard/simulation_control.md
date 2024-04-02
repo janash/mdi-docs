@@ -2,25 +2,36 @@
 
 Commands that influence the flow of the simulation, such as starting or stopping processes, initializing different types of simulations. Each of these commands is used with the `MDI_Send_Command` function.
 
-## Simulation Initialization
+{% for command_key, command_value in mdi_standard.commands.items() %}
 
-### `@INIT_MC`: Initialize Monte Carlo Simulation
+{% if command_value.category == "Simulation Control and Node Management" %}
+## `{{ command_key }}` : {{ command_value.description }}
 
-The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, proceeding to the `@INIT_MC` node.
+{% if command_value.datatype %}
+**Data Type**: `{{ command_value.datatype }}`  
+**Quantity**:  `{{ command_value.count }}`
+{% endif %}
+{% if command_value.format %}
+**Format**:  `{{ command_value.format }}`
+{% endif %}
 
-#### Example
+{{ command_value.doc }}
+
+{% if command_value.admonition %}
+:::{admonition} {{ command_value.admonition.title }}
+:class: {{ command_value.admonition.type }}
+{{ command_value.admonition.content }}
+:::
+{% endif %}
+
+{% if command_value.examples %}
+
 ::::{tab-set}
 
 :::{tab-item} Python
 
 ```python
-import mdi
-
-# connect to the engine
-mdi_engine = mdi.MDI_Accept_Communicator()
-
-# initialize a Monte Carlo simulation
-mdi.MDI_Send_Command("@INIT_MC", mdi_engine) 
+{{ command_value.examples.python }}
 ```
 
 :::
@@ -28,108 +39,16 @@ mdi.MDI_Send_Command("@INIT_MC", mdi_engine)
 :::{tab-item} C++
 
 ```cpp
-#include "mdi.h"
-
-// connect to the engine
-MDI_Comm mdi_engine = MDI_Accept_Communicator();
-
-// initialize a Monte Carlo simulation
-MDI_Send_Command("@INIT_MC", mdi_engine);
+{{ command_value.examples.cpp }}
 ```
 
 :::
 
 ::::
 
-### `@INIT_MD`: Initialize Molecular Dynamics Simulation
+{% endif %}
 
-The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the `@INIT_MD` node.
-
-```{admonition} Warning
-:class: caution
-
-This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.
-```
-
-#### Example
-::::{tab-set}
-
-:::{tab-item} Python
-
-```python
-import mdi
-
-# connect to the engine
-mdi_engine = mdi.MDI_Accept_Communicator()
-
-# initialize a Monte Dynamics simulation
-mdi.MDI_Send_Command("@INIT_MD", mdi_engine) 
-```
-
-:::
-
-:::{tab-item} C++
-
-```cpp
-#include "mdi.h"
-
-// connect to the engine
-MDI_Comm mdi_engine = MDI_Accept_Communicator();
-
-// initialize a Molecular Dynamics simulation
-MDI_Send_Command("@INIT_MD", mdi_engine);
-```
-
-:::
-
-::::
+{% endif %}
+{% endfor %}
 
 
-### `@INIT_OPTG`: Initialize Geometry Optimization
-
-The engine performs any initialization operations that are necessary before a geometry optimization can be performed, proceeding to the `@INIT_OPTG ` node.
-
-```{admonition} Warning
-:class: caution
-
-This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.
-```
-
-## Simulation Flow Control - Node Management
-
-MDI enabled engines have a number of nodes defined where they can pause and listen for new commands.
-
-(next_node)=
-### `@` : Go to Next Node
-The engine proceeds to the next node (see {ref}`standard_nodes_sec`).
-This command is typically not supported at the `@DEFAULT` node.
-
-(send_node)=
-###  `<@`: Send Node Name
-The engine sends the driver a string that corresponds to the name of its current node (see {ref}`standard_nodes_sec`).
-
-- **Data Type:** `MDI_CHAR` 
-- **Quantity:** `MDI_NAME_LENGTH`
-
-(coords_node)=
-### `@COORDS`: Go to next Coords Node
-
-The engine proceeds to the next `@COORDS` node (see {ref}`standard_nodes_sec`).
-This command is not valid at the `@DEFAULT` node.
-
-(default_node)=
-###  `@DEFAULT`: Go to Default Node  
-
-If not already at the `@DEFAULT` node, the engine exists whatever simulation (i.e. MD, OPTG, etc.) it is performing (possibly after completing an unfinished time step or geometry optimization step) and returns to the `@DEFAULT` node.
-
-
-(forces_node)=
-### `@FORCES`: Go to next Forces Node    
-The engine proceeds to the next `@FORCES` node (see {ref}`standard_nodes_sec`).
-This command is not valid at the `@DEFAULT node.
-
-(pre-forces_node)=
-### `@PRE-FORCES`: Go to next Pre-Forces Node
-
-The engine proceeds to the next `@PRE-FORCES` node (see {ref}`standard_nodes_sec`).
-This command is not valid at the `@DEFAULT` node.

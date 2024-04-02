@@ -1,0 +1,218 @@
+commands:
+  "@":
+    description: "Go to next node"
+    doc: "The engine proceeds to the next node. Typically not supported at the `@DEFAULT` node."
+    category: "Simulation Control and Node Management"
+  "<@":
+    description: "Receive current node name"
+    category: "Simulation Control and Node Management"
+    datatype: "MDI_CHAR"
+    count: "MDI_NAME_LENGTH"
+    doc: "Engine sends the name of its current node."
+    examples:
+      python: |
+        import mdi
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # initialize a Monte Carlo simulation
+        mdi.MDI_Send_Command("@INIT_MC", mdi_engine) 
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // initialize a Monte Carlo simulation
+        MDI_Send_Command("@INIT_MC", mdi_engine);
+  "@INIT_MC":
+    description: "Go to the `INIT_MC` node."
+    doc: "The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the @INIT_MD node."
+    category: "Simulation Control and Node Management"
+    admonition:
+      type: caution
+      title: "Note"
+      content: "This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used."
+  "@INIT_MD":
+    description: "Go to the `INIT_MD` node."
+    doc: "Engine proceeds to the `INIT_MD` node."
+  "@INIT_OPTG":
+    description: "Initialize geometry optimization."
+  "<CDENSITY":
+    description: "Receive Cartesian coordinates for electronic density"
+    datatype: "MDI_DOUBLE"
+    count: "3 * NDENSITY"
+    doc: >
+      The engine sends the Cartesian coordinates of a set of grid points. 
+      This command is intended to be used in conjuction with the <NDENSITY and <DENSITY commands; 
+      these three commands enable a driver to acquire the electronic density distribution of an engine in a grid representation. 
+      See the <DENSITY command for more details.
+  ">CELL":
+    description: "Send cell vectors to resize simulation cell"
+    datatype: "MDI_DOUBLE"
+    count: 9
+    doc: "Driver sends cell vectors to engine for resizing its simulation cell."
+  "<CELL":
+    description: "Receive cell vectors"
+    datatype: "MDI_DOUBLE"
+    count: 9
+    doc: "Engine sends cell vectors to driver."
+  ">CELL_DISPL":
+    description: "Send displacement vector for cell origin adjustment"
+    datatype: "MDI_DOUBLE"
+    count: 3
+    doc: "Driver sends displacement vector to engine to adjust simulation cell origin."
+  "<KE_NUC":
+    description: "Receive nuclear kinetic energy"
+    datatype: "MDI_DOUBLE"
+    count: 1
+    doc: "Engine sends total kinetic energy of all nuclei."
+  "<LABELS":
+    description: "Receive atom labels"
+    datatype: "MDI_CHAR"
+    count: "MDI_LABEL_LENGTH * NATOMS"
+    doc: "Engine sends a label for each atom, intended for human-readable identification."
+  ">LATTICE":
+    description: "Send lattice point charges"
+    datatype: "MDI_DOUBLE"
+    count: "NLATTICE"
+    doc: "Driver assigns a lattice of point charges to the engine."
+  "<LATTICE_FORCES":
+    description: "Receive lattice forces"
+    datatype: "MDI_DOUBLE"
+    count: "3 * NLATTICE"
+    doc: "Engine sends forces on lattice charges to the driver."
+  "<MASSES":
+    description: "Receive atom masses"
+    datatype: "MDI_DOUBLE"
+    count: "NATOMS"
+    doc: "Engine sends the mass of each atom to the driver."
+  ">MONKHORST-PACK_NPOINTS":
+    description: "Send Monkhorst-Pack grid points"
+    datatype: "MDI_INT"
+    count: 3
+    doc: >
+        This command is typically expected for use with plane wave DFT engines. 
+        The driver sends the engine the number of k-points to generate on a Monkhorst-Pack grid. 
+        The engine then uses the k-points generated on this Monkhorst-Pack grid for all further simulations.
+
+        The number of k-points to generate along each vector of the Brillouin zone, in ascending order of vector.
+  ">MONKHORST-PACK_SHIFT":
+    description: "Send Monkhorst-Pack grid shift"
+    send:
+      datatype: "MDI_DOUBLE"
+      count: 3
+      doc: "Driver sends shift for k-points on Monkhorst-Pack grid to engine."
+  "<NAME":
+    description: "Receive engine name"
+    recv:
+      datatype: "MDI_CHAR"
+      count: "MDI_NAME_LENGTH"
+      doc: "Engine sends its name as per `-name` option in MDI initialization."
+  "<NATOMS":
+    description: "Receive number of atoms"
+    recv:
+      datatype: "MDI_INT"
+      count: 1
+      doc: "Engine sends the number of atoms in its system to the driver."
+  "<NDENSITY":
+    description: "Receive number of density grid points"
+    recv:
+      datatype: "MDI_INT"
+      count: 1
+      doc: "Engine sends number of grid points used for electronic density representation."
+  ">NLATTICE":
+    description: "Send number of lattice points"
+    send:
+      datatype: "MDI_INT"
+      count: 1
+      doc: "Driver sends number of point charges in the lattice to engine."
+  ">NPOTENTIAL":
+    description: "Send number of potential grid points"
+    send:
+      datatype: "MDI_INT"
+      count: 1
+      doc: "Driver sends number of grid points for potential representation to engine."
+  ">POTENTIAL":
+    description: "Send potential grid values"
+    send:
+      datatype: "MDI_DOUBLE"
+      count: "NPOTENTIAL"
+      doc: "Driver sends set of values corresponding to a potential on a grid to engine."
+  "<PE":
+    description: "Receive total potential energy"
+    recv:
+      datatype: "MDI_DOUBLE"
+      count: 1
+      doc: "Engine sends its total potential energy to the driver."
+  "<PE_ELEC":
+    description: "Receive electronic potential energy"
+    recv:
+      datatype: "MDI_DOUBLE"
+      count: 1
+      doc: "Engine sends its electronic potential energy to the driver."
+  "<PE_NUC":
+    description: "Receive nuclear potential energy"
+    recv:
+      datatype: "MDI_DOUBLE"
+      count: 1
+      doc: "Engine sends its nuclear potential energy to the driver."
+  "@PRE-FORCES":
+    description: "Go to pre-forces node"
+    doc: "Engine proceeds to the next `@PRE-FORCES` node. Not valid at the `@DEFAULT` node."
+    category: "Simulation Control and Node Management"
+  "<SPIN_POLARIZATION":
+    description: "Receive spin polarization setting"
+    recv:
+      datatype: "MDI_INT"
+      count: 1
+      doc: "Engine sends its current spin polarization simulation mode to the driver."
+  ">SPIN_POLARIZATION":
+    description: "Send spin polarization setting"
+    send:
+      datatype: "MDI_INT"
+      count: 1
+      doc: "Driver sends desired spin polarization simulation mode to engine."
+  "<STRESS":
+    description: "Receive virial stress tensor"
+    recv:
+      datatype: "MDI_DOUBLE"
+      count: 9
+      doc: "Engine sends its virial stress tensor to the driver."
+  ">STRESS":
+    description: "Send virial stress tensor"
+    send:
+      datatype: "MDI_DOUBLE"
+      count: 9
+      doc: "Driver sends virial stress tensor to engine, replacing its internal tensor."
+  ">TOTCHARGE":
+    description: "Send total system charge"
+    send:
+      datatype: "MDI_DOUBLE"
+      count: 1
+      doc: "Driver sends total charge of the system to engine, adjusting number of electrons."
+  "<TOTCHARGE":
+    description: "Receive total system charge"
+    recv:
+      datatype: "MDI_DOUBLE"
+      count: 1
+      doc: "Engine sends the total charge of its system to the driver."
+  ">VELOCITES":
+    description: "Send atomic velocities"
+    send:
+      datatype: "MDI_DOUBLE"
+      count: "3 * NATOMS"
+      doc: "Driver sends set of atomic velocities to engine."
+  "<VELOCITES":
+    description: "Receive atomic velocities"
+    recv:
+      datatype: "MDI_DOUBLE"
+      count: "3 * NATOMS"
+      doc: "Engine sends the velocities of atoms in its system to the driver."
+  "<VERSION":
+    description: "Receive MDI Library version"
+    recv:
+      datatype: "MDI_DOUBLE"
+      count: 1
+      doc: "Engine sends the version number of the MDI Library it is linked to."

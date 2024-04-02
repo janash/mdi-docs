@@ -1,8 +1,9 @@
 (mdi_standard)=
 # MDI Standard
 
-(standard_overview)=
-##  Overview
+**Notes** move everythng thta is on own page to this page. We don't need multiple sections here.
+Command List should be in API Section under MDI Standard.
+Add modes of running to user guide.
 
 The MDI Standard provides a straightforward, API-like method for enabling interoperability among computational molecular sciences codes.
 It uses a driver/engine model in which a driver code controls the high-level program flow of one or more engine codes.
@@ -19,6 +20,7 @@ Engines can autonomously execute simulations, pausing at defined "nodes" to list
 These nodes facilitate structured communication and control flow between drivers and engines, enhancing flexibility in simulation management.
 Nodes are located within MDI Engines. 
 If you are writing an MDI Driver, you will interact will nodes by telling your script which nodes to "listen" at.
+You can read more about nodes, including seeing a list of all nodes on the [nodes page](nodes).
 
 ## Commands
 A comprehensive list of commands forms the core of the MDI Standard, enabling detailed control over the simulation process. 
