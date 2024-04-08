@@ -11,7 +11,7 @@ Receive cell vectors.
 
  The engine sends a set of cell vectors to the driver.
 
-## Examples
+### Examples
 
 
 ::::{tab-set}
@@ -62,7 +62,7 @@ Send cell vectors to resize simulation cell.
 
  The driver sends a set of cell vectors to the engine, which resizes its simulation cell to the dimensions specified by the cell vectors.
 
-## Examples
+### Examples
 
 
 ::::{tab-set}

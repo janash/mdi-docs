@@ -11,7 +11,7 @@ Receive atomic charges.
 
  The engine sends a set of atomic charges to the driver.
 
-## Examples
+### Examples
 
 
 ::::{tab-set}
@@ -73,7 +73,7 @@ Send atomic charges.
 
  The driver sends a set of atomic charges to the engine, which replaces its atomic charges with those sent by the driver.
 
-## Examples
+### Examples
 
 
 ::::{tab-set}
