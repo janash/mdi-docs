@@ -1,10 +1,10 @@
 commands:
   "@":
-    description: "Go to next node"
+    description: "Go to the next node."
     doc: "The engine proceeds to the next node. Typically not supported at the `@DEFAULT` node."
     category: "Simulation Control and Node Management"
   "<@":
-    description: "Receive current node name"
+    description: "Receive current node name."
     category: "Simulation Control and Node Management"
     datatype: "MDI_CHAR"
     count: "MDI_NAME_LENGTH"
@@ -16,24 +16,67 @@ commands:
         # connect to the engine
         mdi_engine = mdi.MDI_Accept_Communicator()
 
-        # initialize a Monte Carlo simulation
-        mdi.MDI_Send_Command("@INIT_MC", mdi_engine) 
+        # send the "<@" command to the engine to get the current node
+        mdi.MDI_Send_Command("<@", mdi_engine) 
+
+        # receive the name of the current node
+        node_name = mdi.MDI_Recv(mdi.MDI_NAME_LENGTH, mdi.MDI_CHAR, mdi_engine)
       cpp: |
         #include "mdi.h"
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
-        // initialize a Monte Carlo simulation
-        MDI_Send_Command("@INIT_MC", mdi_engine);
+        // create a buffer to hold the name of the current node
+        char* node_name = new char[MDI_NAME_LENGTH];
+
+        // send the "<@" command to the engine to get the current node
+        MDI_Send_Command("<@", mdi_engine);
+
+        // receive the name of the current node
+        MDI_Recv(node_name, MDI_NAME_LENGTH, MDI_CHAR, mdi_engine);
   "@INIT_MC":
-    description: "Go to the `INIT_MC` node."
-    doc: "The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the @INIT_MC node."
+    description: "Go to the `INIT_MC` node. Initialize Monte Carlo simulation."
+    doc: "The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, proceeding to the `@INIT_MC` node."
     category: "Simulation Control and Node Management"
+    examples:
+      python: |
+        import mdi
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # send the "@INIT_MC" command to the engine
+        mdi.MDI_Send_Command("@INIT_MC", mdi_engine)
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // send the "@INIT_MC" command to the engine
+        MDI_Send_Command("@INIT_MC", mdi_engine);
   "@INIT_MD":
     description: "Go to the `INIT_MD` node."
     doc: "Engine proceeds to the `INIT_MD` node."
     category: "Simulation Control and Node Management"
+    examples:
+      python: |
+        import mdi
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # send the "@INIT_MD" command to the engine
+        mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // send the "@INIT_MD" command to the engine
+        MDI_Send_Command("@INIT_MD", mdi_engine);
     admonition:
       type: caution
       title: "Note"
