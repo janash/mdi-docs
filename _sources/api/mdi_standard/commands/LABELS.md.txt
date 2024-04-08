@@ -6,6 +6,6 @@
 Receive atom labels
 
 **Datatype:** `MDI_CHAR`  
-**Quantity**: `MDI_LABEL_LENGTH * NATOMS`
+**Quantity**: `MDI_LABEL_LENGTH * NATOMS`  
 
  Engine sends a label for each atom, intended for human-readable identification.

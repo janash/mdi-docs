@@ -1,0 +1,129 @@
+# CHARGES
+
+
+
+## <CHARGES
+Receive atomic charges.
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `NATOMS`  
+**Format:** Sequentially ascending order of atomic index
+
+ The engine sends a set of atomic charges to the driver.
+
+## Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+
+```python
+import mdi
+import numpy as np
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# retrieve the number of atoms
+mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+# create a buffer to hold the atomic charges
+charges = np.zeros(natoms, dtype=float)
+
+# receive the atomic charges from the engine
+mdi.MDI_Send_Command("<CHARGES", mdi_engine)
+mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine, buf=charges) 
+
+```
+:::
+
+:::{tab-item} C++
+
+```cpp
+#include "mdi.h"
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// retrieve the number of atoms
+int natoms;
+MDI_Send_Command("<NATOMS", mdi_engine);
+MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
+
+// create a buffer to hold the atomic charges
+double* charges = new double[natoms];
+
+// receive the atomic charges from the engine
+MDI_Send_Command("<CHARGES", mdi_engine);
+MDI_Recv(charges, natoms, MDI_DOUBLE, mdi_engine);
+
+```
+:::
+
+::::
+
+## >CHARGES
+Send atomic charges.
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `NATOMS`  
+**Format:** Sequentially ascending order of atomic index
+
+ The driver sends a set of atomic charges to the engine, which replaces its atomic charges with those sent by the driver.
+
+## Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+
+```python
+import mdi
+import numpy as np
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# retrieve the number of atoms
+mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+# create an array of atomic charges - use random charges for example
+charges = np.random.random(natoms)
+
+# send the atomic charges to the engine
+mdi.MDI_Send_Command(">CHARGES", mdi_engine)
+mdi.MDI_Send(charges, 3, mdi.MDI_DOUBLE, mdi_engine)
+
+```
+:::
+
+:::{tab-item} C++
+
+```cpp
+#include "mdi.h"
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// retrieve the number of atoms
+int natoms;
+MDI_Send_Command("<NATOMS", mdi_engine);
+MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
+
+// create an array of atomic charges 
+double* charges = new double[natoms];
+
+// fill the array with charges.
+
+// send the atomic charges to the engine
+MDI_Send_Command(">CHARGES", mdi_engine);
+MDI_Send(charges, 3, MDI_DOUBLE, mdi_engine);
+
+```
+:::
+
+::::

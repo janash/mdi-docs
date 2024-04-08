@@ -6,6 +6,6 @@
 Send lattice point charges
 
 **Datatype:** `MDI_DOUBLE`  
-**Quantity**: `NLATTICE`
+**Quantity**: `NLATTICE`  
 
  Driver assigns a lattice of point charges to the engine.

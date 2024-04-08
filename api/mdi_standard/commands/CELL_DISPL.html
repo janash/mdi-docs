@@ -48,8 +48,8 @@
     <link rel="icon" href="../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="LATTICE" href="LATTICE.html" />
-    <link rel="prev" title="VERSION" href="VERSION.html" />
+    <link rel="next" title="CHARGES" href="CHARGES.html" />
+    <link rel="prev" title="CELL" href="CELL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -409,28 +409,29 @@ document.write(`
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../data_exchange.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CELL.html">CELL</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">CELL_DISPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHARGES.html">CHARGES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LATTICE.html">LATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LATTICE_FORCES.html">LATTICE_FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MASSES.html">MASSES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NATOMS.html">NATOMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NDENSITY.html">NDENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE.html">PE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_ELEC.html">PE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_NUC.html">PE_NUC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="POTENTIAL.html">POTENTIAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SPIN_POLARIZATION.html">SPIN_POLARIZATION</a></li>
 <li class="toctree-l3"><a class="reference internal" href="STRESS.html">STRESS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TOTCHARGE.html">TOTCHARGE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="VELOCITES.html">VELOCITES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="VERSION.html">VERSION</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">CELL_DISPL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="LATTICE.html">LATTICE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="POTENTIAL.html">POTENTIAL</a></li>
 </ul>
 </li>
 </ul>
@@ -503,11 +504,100 @@ document.write(`
   <section id="cell-displ">
 <h1>CELL_DISPL<a class="headerlink" href="#cell-displ" title="Link to this heading">#</a></h1>
 <section id="id1">
-<h2>&gt;CELL_DISPL<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Send displacement vector for cell origin adjustment</p>
+<h2>&lt;CELL_DISPL<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Retrieve the cell displacement vector.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
-<p>Driver sends displacement vector to engine to adjust simulation cell origin.</p>
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span></code><br />
+<strong>Format:</strong> The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector.</p>
+<p>The engine sends the displacement vector of the origin of its simulation cell to the driver.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># create a buffer to hold the cell displacement values</span>
+<span class="n">cell_displ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># receive the cell displacement values from the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;CELL_DISPL&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">,</span> <span class="n">buf</span><span class="o">=</span><span class="n">cell_displ</span><span class="p">)</span> 
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+
+<span class="c1">// connect to the engine</span>
+<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
+
+<span class="c1">// receive the cell displacement values from the engine</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">cell_displ</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;CELL_DISPL&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="n">cell_displ</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>&gt;CELL_DISPL<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Send cell displacement vector to adjust simulation cell origin.</p>
+<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span></code><br />
+<strong>Format:</strong> The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector.</p>
+<p>The driver sends a displacement vector to the engine, which adjusts the origin of its simulation cell to the value of the displacement vector.</p>
+</section>
+<section id="id3">
+<h2>Examples<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># create an array of cell displacement values</span>
+<span class="n">cell_displ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># send the cell displacement values to the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;CELL_DISPL&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">cell_displ</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+
+<span class="c1">// connect to the engine</span>
+<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
+
+<span class="c1">// create an array of cell displacement values</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">cell_displ</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">};</span>
+
+<span class="c1">// send the cell displacement values to the engine</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;CELL_DISPL&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Send</span><span class="p">(</span><span class="n">cell_displ</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -522,20 +612,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="VERSION.html"
+       href="CELL.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">VERSION</p>
+        <p class="prev-next-title">CELL</p>
       </div>
     </a>
     <a class="right-next"
-       href="LATTICE.html"
+       href="CHARGES.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LATTICE</p>
+        <p class="prev-next-title">CHARGES</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -557,7 +647,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;CELL_DISPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&lt;CELL_DISPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">&gt;CELL_DISPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Examples</a></li>
 </ul>
   </nav></div>
 

@@ -6,7 +6,7 @@
 Receive current node name.
 
 **Datatype:** `MDI_CHAR`  
-**Quantity**: `MDI_NAME_LENGTH`
+**Quantity**: `MDI_NAME_LENGTH`  
 
  The engine sends the driver a string that corresponds to the name of its current node.
 

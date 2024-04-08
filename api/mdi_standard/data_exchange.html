@@ -409,28 +409,29 @@ document.write(`
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="commands/CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/CELL.html">CELL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/CELL_DISPL.html">CELL_DISPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/CHARGES.html">CHARGES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/LABELS.html">LABELS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/LATTICE.html">LATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/LATTICE_FORCES.html">LATTICE_FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/MASSES.html">MASSES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/NATOMS.html">NATOMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/NDENSITY.html">NDENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/NLATTICE.html">NLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/NPOTENTIAL.html">NPOTENTIAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/PE.html">PE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/PE_ELEC.html">PE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/PE_NUC.html">PE_NUC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/POTENTIAL.html">POTENTIAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/SPIN_POLARIZATION.html">SPIN_POLARIZATION</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/STRESS.html">STRESS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/TOTCHARGE.html">TOTCHARGE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/VELOCITES.html">VELOCITES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="commands/VERSION.html">VERSION</a></li>
-<li class="toctree-l3"><a class="reference internal" href="commands/CELL_DISPL.html">CELL_DISPL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="commands/LATTICE.html">LATTICE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="commands/MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="commands/MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="commands/NLATTICE.html">NLATTICE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="commands/NPOTENTIAL.html">NPOTENTIAL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="commands/POTENTIAL.html">POTENTIAL</a></li>
 </ul>
 </li>
 </ul>
@@ -509,10 +510,22 @@ document.write(`
 <td><p>Receive Cartesian coordinates for grid points.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="commands/CELL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;CELL</span></code></span></a></p></td>
-<td><p>Receive cell vectors</p></td>
+<td><p>Receive cell vectors.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="commands/CELL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;CELL</span></code></span></a></p></td>
-<td><p>Send cell vectors to resize simulation cell</p></td>
+<td><p>Send cell vectors to resize simulation cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/CELL_DISPL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;CELL_DISPL</span></code></span></a></p></td>
+<td><p>Retrieve the cell displacement vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/CELL_DISPL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;CELL_DISPL</span></code></span></a></p></td>
+<td><p>Send cell displacement vector to adjust simulation cell origin.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/CHARGES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;CHARGES</span></code></span></a></p></td>
+<td><p>Receive atomic charges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/CHARGES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;CHARGES</span></code></span></a></p></td>
+<td><p>Send atomic charges.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="commands/KE_NUC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;KE_NUC</span></code></span></a></p></td>
 <td><p>Receive nuclear kinetic energy</p></td>
@@ -520,29 +533,47 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="commands/LABELS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;LABELS</span></code></span></a></p></td>
 <td><p>Receive atom labels</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="commands/LATTICE_FORCES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;LATTICE_FORCES</span></code></span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/LATTICE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;LATTICE</span></code></span></a></p></td>
+<td><p>Send lattice point charges</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/LATTICE_FORCES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;LATTICE_FORCES</span></code></span></a></p></td>
 <td><p>Receive lattice forces</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/MASSES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;MASSES</span></code></span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/MASSES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;MASSES</span></code></span></a></p></td>
 <td><p>Receive atom masses</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="commands/NAME.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NAME</span></code></span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/MONKHORST-PACK_NPOINTS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_NPOINTS</span></code></span></a></p></td>
+<td><p>Send Monkhorst-Pack grid points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/MONKHORST-PACK_SHIFT.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_SHIFT</span></code></span></a></p></td>
+<td><p>Send Monkhorst-Pack grid shift</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/NAME.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NAME</span></code></span></a></p></td>
 <td><p>Receive engine name</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/NATOMS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NATOMS</span></code></span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/NATOMS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NATOMS</span></code></span></a></p></td>
 <td><p>Receive number of atoms</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="commands/NDENSITY.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NDENSITY</span></code></span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/NDENSITY.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NDENSITY</span></code></span></a></p></td>
 <td><p>Receive number of density grid points</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/PE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE</span></code></span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/NLATTICE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;NLATTICE</span></code></span></a></p></td>
+<td><p>Send number of lattice points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/NPOTENTIAL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;NPOTENTIAL</span></code></span></a></p></td>
+<td><p>Send number of potential grid points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/PE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE</span></code></span></a></p></td>
 <td><p>Receive total potential energy</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="commands/PE_ELEC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE_ELEC</span></code></span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/PE_ELEC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE_ELEC</span></code></span></a></p></td>
 <td><p>Receive electronic potential energy</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/PE_NUC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE_NUC</span></code></span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/PE_NUC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE_NUC</span></code></span></a></p></td>
 <td><p>Receive nuclear potential energy</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/POTENTIAL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;POTENTIAL</span></code></span></a></p></td>
+<td><p>Send potential grid values</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="commands/SPIN_POLARIZATION.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;SPIN_POLARIZATION</span></code></span></a></p></td>
 <td><p>Receive spin polarization setting</p></td>
@@ -569,28 +600,7 @@ document.write(`
 <td><p>Send atomic velocities</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="commands/VERSION.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;VERSION</span></code></span></a></p></td>
-<td><p>Receive MDI Library version</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/CELL_DISPL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;CELL_DISPL</span></code></span></a></p></td>
-<td><p>Send displacement vector for cell origin adjustment</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="commands/LATTICE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;LATTICE</span></code></span></a></p></td>
-<td><p>Send lattice point charges</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/MONKHORST-PACK_NPOINTS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_NPOINTS</span></code></span></a></p></td>
-<td><p>Send Monkhorst-Pack grid points</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="commands/MONKHORST-PACK_SHIFT.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_SHIFT</span></code></span></a></p></td>
-<td><p>Send Monkhorst-Pack grid shift</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/NLATTICE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;NLATTICE</span></code></span></a></p></td>
-<td><p>Send number of lattice points</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="commands/NPOTENTIAL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;NPOTENTIAL</span></code></span></a></p></td>
-<td><p>Send number of potential grid points</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="commands/POTENTIAL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;POTENTIAL</span></code></span></a></p></td>
-<td><p>Send potential grid values<!--Make a TOC for the sidebar and so Sphinx doesn't complain --></p></td>
+<td><p>Receive MDI Library version<!--Make a TOC for the sidebar and so Sphinx doesn't complain --></p></td>
 </tr>
 </tbody>
 </table>
