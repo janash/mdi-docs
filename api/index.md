@@ -7,6 +7,5 @@ API Docs
 :maxdepth: 1
 
 mdi_standard/index
-mdi_standard/test
 
 ```

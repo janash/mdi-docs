@@ -15,6 +15,7 @@
 # Incase the project was not installed
 import os
 import sys
+sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -93,11 +94,13 @@ pygments_style = 'default'
 # Requires installation of PyYAML
 import yaml
 
-html_context = {}
-with open("api/mdi_standard/mdi_standard.yaml", "r", encoding='utf-8') as f:
-    # Load YAML file content into the html_context dictionary
-    html_context["mdi_standard"] = yaml.safe_load(f)
+from create_page import generate_api_pages, load_standard
 
+mdi_standard = load_standard()
+
+html_context = {}
+html_context["mdi_standard"] = mdi_standard
+        
 def rst2jinja(app, docname, source):
     """
     Render our pages as a jinja template for fancy templating goodness.
@@ -112,6 +115,7 @@ def rst2jinja(app, docname, source):
     source[0] = rendered
 
 def setup(app):
+    app.connect("builder-inited", generate_api_pages)
     app.connect("source-read", rst2jinja)
 
 # -- Options for HTML output -------------------------------------------------

@@ -8,7 +8,7 @@ commands:
     category: "Simulation Control and Node Management"
     datatype: "MDI_CHAR"
     count: "MDI_NAME_LENGTH"
-    doc: "Engine sends the name of its current node."
+    doc: "The engine sends the driver a string that corresponds to the name of its current node."
     examples:
       python: |
         import mdi
