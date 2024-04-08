@@ -68,7 +68,7 @@ def create_page(command_name, command_list):
             page_text += "\n:::"
 
         if command_dict.get("examples"):
-            page_text += "\n\n## Examples\n"
+            page_text += "\n\n### Examples\n"
 
             page_text += "\n\n::::{tab-set}"
             page_text += "\n\n:::{tab-item} Python"
