@@ -131,20 +131,213 @@ commands:
         MDI_Send_Command("<CDENSITY", mdi_engine);
         MDI_Recv(cdensity, 3*ndensity, MDI_DOUBLE, mdi_engine);
   ">CELL":
-    description: "Send cell vectors to resize simulation cell"
+    description: "Send cell vectors to resize simulation cell."
     datatype: "MDI_DOUBLE"
     count: 9
-    doc: "Driver sends cell vectors to engine for resizing its simulation cell."
+    doc: "The driver sends a set of cell vectors to the engine, which resizes its simulation cell to the dimensions specified by the cell vectors."
+    format: "The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector."
+    examples:
+      python: |
+        import mdi
+        import numpy as np
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # create an array of cell vectors
+        cell = np.array([1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0], dtype=float)
+
+        # send the cell vectors to the engine
+        mdi.MDI_Send_Command(">CELL", mdi_engine)
+        mdi.MDI_Send(cell, 9, mdi.MDI_DOUBLE, mdi_engine)
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // create an array of cell vectors
+        double cell[9] = {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
+
+        // send the cell vectors to the engine
+        MDI_Send_Command(">CELL", mdi_engine);
+        MDI_Send(cell, 9, MDI_DOUBLE, mdi_engine);
   "<CELL":
-    description: "Receive cell vectors"
+    description: "Receive cell vectors."
     datatype: "MDI_DOUBLE"
     count: 9
-    doc: "Engine sends cell vectors to driver."
+    format: "The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector."
+    doc: "The engine sends a set of cell vectors to the driver."
+    examples:
+      python: |
+        import mdi
+        import numpy as np
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # create a buffer to hold the cell vectors
+        cell = np.zeros(9, dtype=float)
+
+        # receive the cell vectors from the engine
+        mdi.MDI_Send_Command("<CELL", mdi_engine)
+        mdi.MDI_Recv(9, mdi.MDI_DOUBLE, mdi_engine, buf=cell) 
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // receive the cell vectors from the engine
+        double cell[9];
+        MDI_Send_Command("<CELL", mdi_engine);
+        MDI_Recv(cell, 9, MDI_DOUBLE, mdi_engine);
   ">CELL_DISPL":
-    description: "Send displacement vector for cell origin adjustment"
+    description: "Send cell displacement vector to adjust simulation cell origin."
     datatype: "MDI_DOUBLE"
     count: 3
-    doc: "Driver sends displacement vector to engine to adjust simulation cell origin."
+    doc: "The driver sends a displacement vector to the engine, which adjusts the origin of its simulation cell to the value of the displacement vector."
+    format: "The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector."
+    examples:
+      python: |
+        import mdi
+        import numpy as np
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # create an array of cell displacement values
+        cell_displ = np.array([0.0, 1.0, 1.0], dtype=float)
+
+        # send the cell displacement values to the engine
+        mdi.MDI_Send_Command(">CELL_DISPL", mdi_engine)
+        mdi.MDI_Send(cell_displ, 3, mdi.MDI_DOUBLE, mdi_engine)
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // create an array of cell displacement values
+        double cell_displ[3] = {0.0, 0.0, 0.0};
+
+        // send the cell displacement values to the engine
+        MDI_Send_Command(">CELL_DISPL", mdi_engine);
+        MDI_Send(cell_displ, 3, MDI_DOUBLE, mdi_engine);
+  "<CELL_DISPL":
+    description: "Retrieve the cell displacement vector."
+    datatype: "MDI_DOUBLE"
+    count: 3
+    doc: "The engine sends the displacement vector of the origin of its simulation cell to the driver."
+    format: "The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector."
+    examples:
+      python: |
+        import mdi
+        import numpy as np
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # create a buffer to hold the cell displacement values
+        cell_displ = np.zeros(3, dtype=float)
+
+        # receive the cell displacement values from the engine
+        mdi.MDI_Send_Command("<CELL_DISPL", mdi_engine)
+        mdi.MDI_Recv(3, mdi.MDI_DOUBLE, mdi_engine, buf=cell_displ) 
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // receive the cell displacement values from the engine
+        double cell_displ[3];
+        MDI_Send_Command("<CELL_DISPL", mdi_engine);
+        MDI_Recv(cell_displ, 3, MDI_DOUBLE, mdi_engine);
+  ">CHARGES":
+    description: "Send atomic charges."
+    datatype: "MDI_DOUBLE"
+    count: "NATOMS"
+    doc: "The driver sends a set of atomic charges to the engine, which replaces its atomic charges with those sent by the driver."
+    format: "Sequentially ascending order of atomic index"
+    examples:
+      python: |
+        import mdi
+        import numpy as np
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # retrieve the number of atoms
+        mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+        natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+        # create an array of atomic charges - use random charges for example
+        charges = np.random.random(natoms)
+
+        # send the atomic charges to the engine
+        mdi.MDI_Send_Command(">CHARGES", mdi_engine)
+        mdi.MDI_Send(charges, 3, mdi.MDI_DOUBLE, mdi_engine)
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // retrieve the number of atoms
+        int natoms;
+        MDI_Send_Command("<NATOMS", mdi_engine);
+        MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
+
+        // create an array of atomic charges 
+        double* charges = new double[natoms];
+
+        // fill the array with charges.
+
+        // send the atomic charges to the engine
+        MDI_Send_Command(">CHARGES", mdi_engine);
+        MDI_Send(charges, 3, MDI_DOUBLE, mdi_engine);
+  "<CHARGES":
+    description: "Receive atomic charges."
+    datatype: "MDI_DOUBLE"
+    count: "NATOMS"
+    doc: "The engine sends a set of atomic charges to the driver."
+    format: "Sequentially ascending order of atomic index"
+    examples:
+      python: |
+        import mdi
+        import numpy as np
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # retrieve the number of atoms
+        mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+        natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+        # create a buffer to hold the atomic charges
+        charges = np.zeros(natoms, dtype=float)
+
+        # receive the atomic charges from the engine
+        mdi.MDI_Send_Command("<CHARGES", mdi_engine)
+        mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine, buf=charges) 
+      cpp: |
+        #include "mdi.h"
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // retrieve the number of atoms
+        int natoms;
+        MDI_Send_Command("<NATOMS", mdi_engine);
+        MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
+
+        // create a buffer to hold the atomic charges
+        double* charges = new double[natoms];
+
+        // receive the atomic charges from the engine
+        MDI_Send_Command("<CHARGES", mdi_engine);
+        MDI_Recv(charges, natoms, MDI_DOUBLE, mdi_engine);
   "<KE_NUC":
     description: "Receive nuclear kinetic energy"
     datatype: "MDI_DOUBLE"
