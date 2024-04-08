@@ -19,46 +19,70 @@ def load_standard():
 
     return ordered_standard
 
+def group_commands(standard):
+    """Groups sending and receiving commands together"""
 
-def create_page(command_name, command_dict):
+    grouped_standard = {}
+
+    for command, command_info in standard.items():
+        if command.startswith("<") or command.startswith(">"):
+            command_group = command[1:]
+        else:   
+            command_group = command
+
+        command_info["name"] = command
+        
+        if command_group not in grouped_standard:
+            grouped_standard[command_group] = []
+            grouped_standard[command_group].append(command_info)    
+        else:
+            grouped_standard[command_group].append(command_info)
+
+    return grouped_standard
+
+
+def create_page(command_name, command_list):
 
     # Create a new page for the command
     page_text = f"# {command_name}\n\n"
 
-    page_text += f"{command_dict['description']}\n"
+    for command_dict in command_list:
 
-    if command_dict.get("datatype"):
-        page_text += f"\n**Datatype:** `{command_dict['datatype']}`  "
-        page_text += f"\n**Quantity**: `{command_dict['count']}`"
+        page_text += f"\n\n## {command_dict['name']}\n"
+        page_text += f"{command_dict['description']}\n"
 
-    if command_dict.get("format"):
-        page_text += f"\n**Format:** `{command_dict['format']}`"
+        if command_dict.get("datatype"):
+            page_text += f"\n**Datatype:** `{command_dict['datatype']}`  "
+            page_text += f"\n**Quantity**: `{command_dict['count']}`"
 
-    page_text += f"\n\n {command_dict.get('doc')}"
+        if command_dict.get("format"):
+            page_text += f"\n**Format:** `{command_dict['format']}`"
 
-    if command_dict.get("admonition"):
-        admonition_info = command_dict["admonition"]
+        page_text += f"\n\n {command_dict.get('doc')}"
 
-        page_text += f"\n\n:::{{admonition}} {admonition_info['title']}"
-        page_text += f"\n:class: {admonition_info['type']}"
-        page_text += f"\n\n{admonition_info['content']}"
-        page_text += "\n:::"
+        if command_dict.get("admonition"):
+            admonition_info = command_dict["admonition"]
 
-    if command_dict.get("examples"):
-        page_text += "\n\n## Examples\n"
+            page_text += f"\n\n:::{{admonition}} {admonition_info['title']}"
+            page_text += f"\n:class: {admonition_info['type']}"
+            page_text += f"\n\n{admonition_info['content']}"
+            page_text += "\n:::"
 
-        page_text += "\n\n::::{tab-set}"
-        page_text += "\n\n:::{tab-item} Python"
-        page_text += "\n\n```python"
-        page_text += f"\n{command_dict['examples']['python']}"
-        page_text += "\n```\n:::"
+        if command_dict.get("examples"):
+            page_text += "\n\n## Examples\n"
 
-        page_text += "\n\n:::{tab-item} C++"
-        page_text += "\n\n```cpp"
-        page_text += f"\n{command_dict['examples']['cpp']}"
-        page_text += "\n```\n:::"
+            page_text += "\n\n::::{tab-set}"
+            page_text += "\n\n:::{tab-item} Python"
+            page_text += "\n\n```python"
+            page_text += f"\n{command_dict['examples']['python']}"
+            page_text += "\n```\n:::"
 
-        page_text += "\n\n::::"
+            page_text += "\n\n:::{tab-item} C++"
+            page_text += "\n\n```cpp"
+            page_text += f"\n{command_dict['examples']['cpp']}"
+            page_text += "\n```\n:::"
+
+            page_text += "\n\n::::"
 
 
     return page_text
@@ -66,11 +90,12 @@ def create_page(command_name, command_dict):
 def generate_api_pages(app):
 
     commands_list = load_standard()
+    grouped_commands = group_commands(commands_list)
     Path("api/mdi_standard/commands").mkdir(parents=True, exist_ok=True)
 
-    for command, command_info in commands_list.items():
+    for command, command_list in grouped_commands.items(): 
 
-        page_text = create_page(command, command_info)
+        page_text = create_page(command, command_list)
 
         with open(f"api/mdi_standard/commands/{command}.md", "w") as f:
             f.write(page_text)
