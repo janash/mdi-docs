@@ -1,0 +1,6 @@
+# <STRESS
+
+Receive virial stress tensor
+
+
+ None

@@ -1,0 +1,8 @@
+# >CELL_DISPL
+
+Send displacement vector for cell origin adjustment
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `3`
+
+ Driver sends displacement vector to engine to adjust simulation cell origin.

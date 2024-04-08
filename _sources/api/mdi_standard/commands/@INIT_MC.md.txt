@@ -1,0 +1,6 @@
+# @INIT_MC
+
+Go to the `INIT_MC` node.
+
+
+ The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the @INIT_MC node.

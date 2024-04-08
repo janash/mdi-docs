@@ -1,0 +1,8 @@
+# <KE_NUC
+
+Receive nuclear kinetic energy
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `1`
+
+ Engine sends total kinetic energy of all nuclei.

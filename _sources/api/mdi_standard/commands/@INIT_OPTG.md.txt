@@ -1,0 +1,12 @@
+# @INIT_OPTG
+
+Initialize geometry optimization.
+
+
+ The engine performs any initialization operations that are necessary before a geometry optimization can be performed, proceeding to the @INIT_OPTG node.
+
+:::{admonition} Note
+:class: caution
+
+This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.
+:::

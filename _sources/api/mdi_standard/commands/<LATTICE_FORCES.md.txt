@@ -1,0 +1,8 @@
+# <LATTICE_FORCES
+
+Receive lattice forces
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `3 * NLATTICE`
+
+ Engine sends forces on lattice charges to the driver.

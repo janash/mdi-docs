@@ -1,0 +1,6 @@
+# <SPIN_POLARIZATION
+
+Receive spin polarization setting
+
+
+ None

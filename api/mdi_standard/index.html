@@ -398,11 +398,49 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">MDI Standard</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="simulation_control.html">Simulation Control and Node Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_exchange.html">Data Exchange</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="simulation_control.html">Simulation Control and Node Management</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3C%40.html">&lt;@</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40.html">@</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40INIT_MC.html">@INIT_MC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40INIT_MD.html">@INIT_MD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40INIT_OPTG.html">@INIT_OPTG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40PRE-FORCES.html">@PRE-FORCES</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="test.html">MDI Standard</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="data_exchange.html">Data Exchange</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CCDENSITY.html">&lt;CDENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CCELL.html">&lt;CELL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CKE_NUC.html">&lt;KE_NUC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CLABELS.html">&lt;LABELS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CLATTICE_FORCES.html">&lt;LATTICE_FORCES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CMASSES.html">&lt;MASSES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CNAME.html">&lt;NAME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CNATOMS.html">&lt;NATOMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CNDENSITY.html">&lt;NDENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CPE.html">&lt;PE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CPE_ELEC.html">&lt;PE_ELEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CPE_NUC.html">&lt;PE_NUC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CSPIN_POLARIZATION.html">&lt;SPIN_POLARIZATION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CSTRESS.html">&lt;STRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CTOTCHARGE.html">&lt;TOTCHARGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CVELOCITES.html">&lt;VELOCITES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CVERSION.html">&lt;VERSION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ECELL.html">&gt;CELL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ECELL_DISPL.html">&gt;CELL_DISPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ELATTICE.html">&gt;LATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EMONKHORST-PACK_NPOINTS.html">&gt;MONKHORST-PACK_NPOINTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EMONKHORST-PACK_SHIFT.html">&gt;MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ENLATTICE.html">&gt;NLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ENPOTENTIAL.html">&gt;NPOTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EPOTENTIAL.html">&gt;POTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ESPIN_POLARIZATION.html">&gt;SPIN_POLARIZATION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ESTRESS.html">&gt;STRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ETOTCHARGE.html">&gt;TOTCHARGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EVELOCITES.html">&gt;VELOCITES</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </nav></div>

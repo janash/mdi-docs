@@ -48,8 +48,8 @@
     <link rel="icon" href="../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="MDI Standard" href="test.html" />
-    <link rel="prev" title="Simulation Control and Node Management" href="simulation_control.html" />
+    <link rel="next" title="&lt;CDENSITY" href="commands/%3CCDENSITY.html" />
+    <link rel="prev" title="@PRE-FORCES" href="commands/%40PRE-FORCES.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -398,11 +398,49 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">MDI Standard</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="simulation_control.html">Simulation Control and Node Management</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data Exchange</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="simulation_control.html">Simulation Control and Node Management</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3C%40.html">&lt;@</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40.html">@</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40INIT_MC.html">@INIT_MC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40INIT_MD.html">@INIT_MD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40INIT_OPTG.html">@INIT_OPTG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%40PRE-FORCES.html">@PRE-FORCES</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="test.html">MDI Standard</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CCDENSITY.html">&lt;CDENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CCELL.html">&lt;CELL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CKE_NUC.html">&lt;KE_NUC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CLABELS.html">&lt;LABELS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CLATTICE_FORCES.html">&lt;LATTICE_FORCES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CMASSES.html">&lt;MASSES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CNAME.html">&lt;NAME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CNATOMS.html">&lt;NATOMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CNDENSITY.html">&lt;NDENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CPE.html">&lt;PE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CPE_ELEC.html">&lt;PE_ELEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CPE_NUC.html">&lt;PE_NUC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CSPIN_POLARIZATION.html">&lt;SPIN_POLARIZATION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CSTRESS.html">&lt;STRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CTOTCHARGE.html">&lt;TOTCHARGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CVELOCITES.html">&lt;VELOCITES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3CVERSION.html">&lt;VERSION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ECELL.html">&gt;CELL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ECELL_DISPL.html">&gt;CELL_DISPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ELATTICE.html">&gt;LATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EMONKHORST-PACK_NPOINTS.html">&gt;MONKHORST-PACK_NPOINTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EMONKHORST-PACK_SHIFT.html">&gt;MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ENLATTICE.html">&gt;NLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ENPOTENTIAL.html">&gt;NPOTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EPOTENTIAL.html">&gt;POTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ESPIN_POLARIZATION.html">&gt;SPIN_POLARIZATION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ESTRESS.html">&gt;STRESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3ETOTCHARGE.html">&gt;TOTCHARGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands/%3EVELOCITES.html">&gt;VELOCITES</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </nav></div>
@@ -465,125 +503,106 @@ document.write(`
                   
   <section id="data-exchange">
 <h1>Data Exchange<a class="headerlink" href="#data-exchange" title="Link to this heading">#</a></h1>
-<p>Commands that influence the flow of the simulation, such as starting or stopping processes, initializing different types of simulations. Each of these commands is used with the <code class="docutils literal notranslate"><span class="pre">MDI_Send_Command</span></code> function.</p>
-<section id="cdensity-receive-cartesian-coordinates-for-electronic-density">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;CDENSITY</span></code> : Receive Cartesian coordinates for electronic density<a class="headerlink" href="#cdensity-receive-cartesian-coordinates-for-electronic-density" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NDENSITY</span></code></p>
-<p>The engine sends the Cartesian coordinates of a set of grid points.  This command is intended to be used in conjuction with the &lt;NDENSITY and &lt;DENSITY commands;  these three commands enable a driver to acquire the electronic density distribution of an engine in a grid representation.  See the &lt;DENSITY command for more details.</p>
-</section>
-<section id="cell-send-cell-vectors-to-resize-simulation-cell">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;CELL</span></code> : Send cell vectors to resize simulation cell<a class="headerlink" href="#cell-send-cell-vectors-to-resize-simulation-cell" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
-<p>Driver sends cell vectors to engine for resizing its simulation cell.</p>
-</section>
-<section id="cell-receive-cell-vectors">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;CELL</span></code> : Receive cell vectors<a class="headerlink" href="#cell-receive-cell-vectors" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">9</span></code></p>
-<p>Engine sends cell vectors to driver.</p>
-</section>
-<section id="cell-displ-send-displacement-vector-for-cell-origin-adjustment">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;CELL_DISPL</span></code> : Send displacement vector for cell origin adjustment<a class="headerlink" href="#cell-displ-send-displacement-vector-for-cell-origin-adjustment" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
-<p>Driver sends displacement vector to engine to adjust simulation cell origin.</p>
-</section>
-<section id="ke-nuc-receive-nuclear-kinetic-energy">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;KE_NUC</span></code> : Receive nuclear kinetic energy<a class="headerlink" href="#ke-nuc-receive-nuclear-kinetic-energy" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
-<p>Engine sends total kinetic energy of all nuclei.</p>
-</section>
-<section id="labels-receive-atom-labels">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;LABELS</span></code> : Receive atom labels<a class="headerlink" href="#labels-receive-atom-labels" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_CHAR</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">MDI_LABEL_LENGTH</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code></p>
-<p>Engine sends a label for each atom, intended for human-readable identification.</p>
-</section>
-<section id="lattice-send-lattice-point-charges">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;LATTICE</span></code> : Send lattice point charges<a class="headerlink" href="#lattice-send-lattice-point-charges" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">NLATTICE</span></code></p>
-<p>Driver assigns a lattice of point charges to the engine.</p>
-</section>
-<section id="lattice-forces-receive-lattice-forces">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;LATTICE_FORCES</span></code> : Receive lattice forces<a class="headerlink" href="#lattice-forces-receive-lattice-forces" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NLATTICE</span></code></p>
-<p>Engine sends forces on lattice charges to the driver.</p>
-</section>
-<section id="masses-receive-atom-masses">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;MASSES</span></code> : Receive atom masses<a class="headerlink" href="#masses-receive-atom-masses" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">NATOMS</span></code></p>
-<p>Engine sends the mass of each atom to the driver.</p>
-</section>
-<section id="monkhorst-pack-npoints-send-monkhorst-pack-grid-points">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_NPOINTS</span></code> : Send Monkhorst-Pack grid points<a class="headerlink" href="#monkhorst-pack-npoints-send-monkhorst-pack-grid-points" title="Link to this heading">#</a></h2>
-<p><strong>Data Type</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_INT</span></code><br />
-<strong>Quantity</strong>:  <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
-<p>This command is typically expected for use with plane wave DFT engines.  The driver sends the engine the number of k-points to generate on a Monkhorst-Pack grid.  The engine then uses the k-points generated on this Monkhorst-Pack grid for all further simulations.
-The number of k-points to generate along each vector of the Brillouin zone, in ascending order of vector.</p>
-</section>
-<section id="monkhorst-pack-shift-send-monkhorst-pack-grid-shift">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_SHIFT</span></code> : Send Monkhorst-Pack grid shift<a class="headerlink" href="#monkhorst-pack-shift-send-monkhorst-pack-grid-shift" title="Link to this heading">#</a></h2>
-</section>
-<section id="name-receive-engine-name">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;NAME</span></code> : Receive engine name<a class="headerlink" href="#name-receive-engine-name" title="Link to this heading">#</a></h2>
-</section>
-<section id="natoms-receive-number-of-atoms">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;NATOMS</span></code> : Receive number of atoms<a class="headerlink" href="#natoms-receive-number-of-atoms" title="Link to this heading">#</a></h2>
-</section>
-<section id="ndensity-receive-number-of-density-grid-points">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;NDENSITY</span></code> : Receive number of density grid points<a class="headerlink" href="#ndensity-receive-number-of-density-grid-points" title="Link to this heading">#</a></h2>
-</section>
-<section id="nlattice-send-number-of-lattice-points">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;NLATTICE</span></code> : Send number of lattice points<a class="headerlink" href="#nlattice-send-number-of-lattice-points" title="Link to this heading">#</a></h2>
-</section>
-<section id="npotential-send-number-of-potential-grid-points">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;NPOTENTIAL</span></code> : Send number of potential grid points<a class="headerlink" href="#npotential-send-number-of-potential-grid-points" title="Link to this heading">#</a></h2>
-</section>
-<section id="potential-send-potential-grid-values">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;POTENTIAL</span></code> : Send potential grid values<a class="headerlink" href="#potential-send-potential-grid-values" title="Link to this heading">#</a></h2>
-</section>
-<section id="pe-receive-total-potential-energy">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;PE</span></code> : Receive total potential energy<a class="headerlink" href="#pe-receive-total-potential-energy" title="Link to this heading">#</a></h2>
-</section>
-<section id="pe-elec-receive-electronic-potential-energy">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;PE_ELEC</span></code> : Receive electronic potential energy<a class="headerlink" href="#pe-elec-receive-electronic-potential-energy" title="Link to this heading">#</a></h2>
-</section>
-<section id="pe-nuc-receive-nuclear-potential-energy">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;PE_NUC</span></code> : Receive nuclear potential energy<a class="headerlink" href="#pe-nuc-receive-nuclear-potential-energy" title="Link to this heading">#</a></h2>
-</section>
-<section id="spin-polarization-receive-spin-polarization-setting">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;SPIN_POLARIZATION</span></code> : Receive spin polarization setting<a class="headerlink" href="#spin-polarization-receive-spin-polarization-setting" title="Link to this heading">#</a></h2>
-</section>
-<section id="spin-polarization-send-spin-polarization-setting">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;SPIN_POLARIZATION</span></code> : Send spin polarization setting<a class="headerlink" href="#spin-polarization-send-spin-polarization-setting" title="Link to this heading">#</a></h2>
-</section>
-<section id="stress-receive-virial-stress-tensor">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;STRESS</span></code> : Receive virial stress tensor<a class="headerlink" href="#stress-receive-virial-stress-tensor" title="Link to this heading">#</a></h2>
-</section>
-<section id="stress-send-virial-stress-tensor">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;STRESS</span></code> : Send virial stress tensor<a class="headerlink" href="#stress-send-virial-stress-tensor" title="Link to this heading">#</a></h2>
-</section>
-<section id="totcharge-send-total-system-charge">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;TOTCHARGE</span></code> : Send total system charge<a class="headerlink" href="#totcharge-send-total-system-charge" title="Link to this heading">#</a></h2>
-</section>
-<section id="totcharge-receive-total-system-charge">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;TOTCHARGE</span></code> : Receive total system charge<a class="headerlink" href="#totcharge-receive-total-system-charge" title="Link to this heading">#</a></h2>
-</section>
-<section id="velocites-send-atomic-velocities">
-<h2><code class="docutils literal notranslate"><span class="pre">&gt;VELOCITES</span></code> : Send atomic velocities<a class="headerlink" href="#velocites-send-atomic-velocities" title="Link to this heading">#</a></h2>
-</section>
-<section id="velocites-receive-atomic-velocities">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;VELOCITES</span></code> : Receive atomic velocities<a class="headerlink" href="#velocites-receive-atomic-velocities" title="Link to this heading">#</a></h2>
-</section>
-<section id="version-receive-mdi-library-version">
-<h2><code class="docutils literal notranslate"><span class="pre">&lt;VERSION</span></code> : Receive MDI Library version<a class="headerlink" href="#version-receive-mdi-library-version" title="Link to this heading">#</a></h2>
-</section>
+<p>Commands that allow retrieval of data from the engine or the sending of data to the engine. Each of these commands is used with the <code class="docutils literal notranslate"><span class="pre">MDI_Send_Command</span></code> function.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CCDENSITY.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;CDENSITY</span></code></span></a></p></td>
+<td><p>Receive Cartesian coordinates for electronic density</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CCELL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;CELL</span></code></span></a></p></td>
+<td><p>Receive cell vectors</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CKE_NUC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;KE_NUC</span></code></span></a></p></td>
+<td><p>Receive nuclear kinetic energy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CLABELS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;LABELS</span></code></span></a></p></td>
+<td><p>Receive atom labels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CLATTICE_FORCES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;LATTICE_FORCES</span></code></span></a></p></td>
+<td><p>Receive lattice forces</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CMASSES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;MASSES</span></code></span></a></p></td>
+<td><p>Receive atom masses</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CNAME.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NAME</span></code></span></a></p></td>
+<td><p>Receive engine name</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CNATOMS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NATOMS</span></code></span></a></p></td>
+<td><p>Receive number of atoms</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CNDENSITY.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;NDENSITY</span></code></span></a></p></td>
+<td><p>Receive number of density grid points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CPE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE</span></code></span></a></p></td>
+<td><p>Receive total potential energy</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CPE_ELEC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE_ELEC</span></code></span></a></p></td>
+<td><p>Receive electronic potential energy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CPE_NUC.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;PE_NUC</span></code></span></a></p></td>
+<td><p>Receive nuclear potential energy</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CSPIN_POLARIZATION.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;SPIN_POLARIZATION</span></code></span></a></p></td>
+<td><p>Receive spin polarization setting</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CSTRESS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;STRESS</span></code></span></a></p></td>
+<td><p>Receive virial stress tensor</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CTOTCHARGE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;TOTCHARGE</span></code></span></a></p></td>
+<td><p>Receive total system charge</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3CVELOCITES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;VELOCITES</span></code></span></a></p></td>
+<td><p>Receive atomic velocities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3CVERSION.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&lt;VERSION</span></code></span></a></p></td>
+<td><p>Receive MDI Library version</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3ECELL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;CELL</span></code></span></a></p></td>
+<td><p>Send cell vectors to resize simulation cell</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3ECELL_DISPL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;CELL_DISPL</span></code></span></a></p></td>
+<td><p>Send displacement vector for cell origin adjustment</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3ELATTICE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;LATTICE</span></code></span></a></p></td>
+<td><p>Send lattice point charges</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3EMONKHORST-PACK_NPOINTS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_NPOINTS</span></code></span></a></p></td>
+<td><p>Send Monkhorst-Pack grid points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3EMONKHORST-PACK_SHIFT.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_SHIFT</span></code></span></a></p></td>
+<td><p>Send Monkhorst-Pack grid shift</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3ENLATTICE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;NLATTICE</span></code></span></a></p></td>
+<td><p>Send number of lattice points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3ENPOTENTIAL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;NPOTENTIAL</span></code></span></a></p></td>
+<td><p>Send number of potential grid points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3EPOTENTIAL.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;POTENTIAL</span></code></span></a></p></td>
+<td><p>Send potential grid values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3ESPIN_POLARIZATION.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;SPIN_POLARIZATION</span></code></span></a></p></td>
+<td><p>Send spin polarization setting</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3ESTRESS.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;STRESS</span></code></span></a></p></td>
+<td><p>Send virial stress tensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="commands/%3ETOTCHARGE.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;TOTCHARGE</span></code></span></a></p></td>
+<td><p>Send total system charge</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="commands/%3EVELOCITES.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&gt;VELOCITES</span></code></span></a></p></td>
+<td><p>Send atomic velocities<!--Make a TOC for the sidebar and so Sphixnx doesn't complain --></p></td>
+</tr>
+</tbody>
+</table>
+<!-- These comments are necessary to break up the table and the TOC -->
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
 
@@ -597,20 +616,20 @@ The number of k-points to generate along each vector of the Brillouin zone, in a
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="simulation_control.html"
+       href="commands/%40PRE-FORCES.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Simulation Control and Node Management</p>
+        <p class="prev-next-title">&#64;PRE-FORCES</p>
       </div>
     </a>
     <a class="right-next"
-       href="test.html"
+       href="commands/%3CCDENSITY.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MDI Standard</p>
+        <p class="prev-next-title">&lt;CDENSITY</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -623,46 +642,6 @@ The number of k-points to generate along each vector of the Brillouin zone, in a
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdensity-receive-cartesian-coordinates-for-electronic-density"><code class="docutils literal notranslate"><span class="pre">&lt;CDENSITY</span></code> : Receive Cartesian coordinates for electronic density</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-send-cell-vectors-to-resize-simulation-cell"><code class="docutils literal notranslate"><span class="pre">&gt;CELL</span></code> : Send cell vectors to resize simulation cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-receive-cell-vectors"><code class="docutils literal notranslate"><span class="pre">&lt;CELL</span></code> : Receive cell vectors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-displ-send-displacement-vector-for-cell-origin-adjustment"><code class="docutils literal notranslate"><span class="pre">&gt;CELL_DISPL</span></code> : Send displacement vector for cell origin adjustment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ke-nuc-receive-nuclear-kinetic-energy"><code class="docutils literal notranslate"><span class="pre">&lt;KE_NUC</span></code> : Receive nuclear kinetic energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labels-receive-atom-labels"><code class="docutils literal notranslate"><span class="pre">&lt;LABELS</span></code> : Receive atom labels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lattice-send-lattice-point-charges"><code class="docutils literal notranslate"><span class="pre">&gt;LATTICE</span></code> : Send lattice point charges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lattice-forces-receive-lattice-forces"><code class="docutils literal notranslate"><span class="pre">&lt;LATTICE_FORCES</span></code> : Receive lattice forces</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masses-receive-atom-masses"><code class="docutils literal notranslate"><span class="pre">&lt;MASSES</span></code> : Receive atom masses</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monkhorst-pack-npoints-send-monkhorst-pack-grid-points"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_NPOINTS</span></code> : Send Monkhorst-Pack grid points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monkhorst-pack-shift-send-monkhorst-pack-grid-shift"><code class="docutils literal notranslate"><span class="pre">&gt;MONKHORST-PACK_SHIFT</span></code> : Send Monkhorst-Pack grid shift</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#name-receive-engine-name"><code class="docutils literal notranslate"><span class="pre">&lt;NAME</span></code> : Receive engine name</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natoms-receive-number-of-atoms"><code class="docutils literal notranslate"><span class="pre">&lt;NATOMS</span></code> : Receive number of atoms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndensity-receive-number-of-density-grid-points"><code class="docutils literal notranslate"><span class="pre">&lt;NDENSITY</span></code> : Receive number of density grid points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlattice-send-number-of-lattice-points"><code class="docutils literal notranslate"><span class="pre">&gt;NLATTICE</span></code> : Send number of lattice points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npotential-send-number-of-potential-grid-points"><code class="docutils literal notranslate"><span class="pre">&gt;NPOTENTIAL</span></code> : Send number of potential grid points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-send-potential-grid-values"><code class="docutils literal notranslate"><span class="pre">&gt;POTENTIAL</span></code> : Send potential grid values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pe-receive-total-potential-energy"><code class="docutils literal notranslate"><span class="pre">&lt;PE</span></code> : Receive total potential energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pe-elec-receive-electronic-potential-energy"><code class="docutils literal notranslate"><span class="pre">&lt;PE_ELEC</span></code> : Receive electronic potential energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pe-nuc-receive-nuclear-potential-energy"><code class="docutils literal notranslate"><span class="pre">&lt;PE_NUC</span></code> : Receive nuclear potential energy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-polarization-receive-spin-polarization-setting"><code class="docutils literal notranslate"><span class="pre">&lt;SPIN_POLARIZATION</span></code> : Receive spin polarization setting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-polarization-send-spin-polarization-setting"><code class="docutils literal notranslate"><span class="pre">&gt;SPIN_POLARIZATION</span></code> : Send spin polarization setting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stress-receive-virial-stress-tensor"><code class="docutils literal notranslate"><span class="pre">&lt;STRESS</span></code> : Receive virial stress tensor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stress-send-virial-stress-tensor"><code class="docutils literal notranslate"><span class="pre">&gt;STRESS</span></code> : Send virial stress tensor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#totcharge-send-total-system-charge"><code class="docutils literal notranslate"><span class="pre">&gt;TOTCHARGE</span></code> : Send total system charge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#totcharge-receive-total-system-charge"><code class="docutils literal notranslate"><span class="pre">&lt;TOTCHARGE</span></code> : Receive total system charge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocites-send-atomic-velocities"><code class="docutils literal notranslate"><span class="pre">&gt;VELOCITES</span></code> : Send atomic velocities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocites-receive-atomic-velocities"><code class="docutils literal notranslate"><span class="pre">&lt;VELOCITES</span></code> : Receive atomic velocities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-receive-mdi-library-version"><code class="docutils literal notranslate"><span class="pre">&lt;VERSION</span></code> : Receive MDI Library version</a></li>
-</ul>
-  </nav></div>
 
   <div class="sidebar-secondary-item">
 

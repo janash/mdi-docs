@@ -1,0 +1,8 @@
+# <MASSES
+
+Receive atom masses
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `NATOMS`
+
+ Engine sends the mass of each atom to the driver.

@@ -1,0 +1,12 @@
+# @INIT_MD
+
+Go to the `INIT_MD` node.
+
+
+ Engine proceeds to the `INIT_MD` node.
+
+:::{admonition} Note
+:class: caution
+
+This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.
+:::

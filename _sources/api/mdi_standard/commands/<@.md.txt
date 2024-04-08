@@ -1,0 +1,43 @@
+# <@
+
+Receive current node name
+
+**Datatype:** `MDI_CHAR`  
+**Quantity**: `MDI_NAME_LENGTH`
+
+ The engine sends the driver a string that corresponds to the name of its current node.
+
+## Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+
+```python
+import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# initialize a Monte Carlo simulation
+mdi.MDI_Send_Command("@INIT_MC", mdi_engine) 
+
+```
+:::
+
+:::{tab-item} C++
+
+```cpp
+#include "mdi.h"
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// initialize a Monte Carlo simulation
+MDI_Send_Command("@INIT_MC", mdi_engine);
+
+```
+:::
+
+::::

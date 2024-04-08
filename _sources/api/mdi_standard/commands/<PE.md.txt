@@ -1,0 +1,6 @@
+# <PE
+
+Receive total potential energy
+
+
+ None
