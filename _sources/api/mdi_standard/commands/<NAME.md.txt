@@ -1,6 +1,0 @@
-# <NAME
-
-Receive engine name
-
-
- None

@@ -1,6 +1,0 @@
-# <VELOCITES
-
-Receive atomic velocities
-
-
- None

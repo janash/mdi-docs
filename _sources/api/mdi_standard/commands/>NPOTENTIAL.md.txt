@@ -1,6 +1,0 @@
-# >NPOTENTIAL
-
-Send number of potential grid points
-
-
- None

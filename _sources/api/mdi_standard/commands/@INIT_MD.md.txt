@@ -1,9 +1,12 @@
 # @INIT_MD
 
+
+
+## @INIT_MD
 Go to the `INIT_MD` node.
 
 
- Engine proceeds to the `INIT_MD` node.
+ The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the @INIT_MD node.
 
 :::{admonition} Note
 :class: caution

@@ -1,8 +1,0 @@
-# <CDENSITY
-
-Receive Cartesian coordinates for electronic density
-
-**Datatype:** `MDI_DOUBLE`  
-**Quantity**: `3 * NDENSITY`
-
- The engine sends the Cartesian coordinates of a set of grid points.  This command is intended to be used in conjuction with the <NDENSITY and <DENSITY commands;  these three commands enable a driver to acquire the electronic density distribution of an engine in a grid representation.  See the <DENSITY command for more details.

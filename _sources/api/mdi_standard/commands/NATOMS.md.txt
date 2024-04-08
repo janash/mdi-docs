@@ -1,0 +1,9 @@
+# NATOMS
+
+
+
+## <NATOMS
+Receive number of atoms
+
+
+ None

@@ -1,0 +1,62 @@
+# CDENSITY
+
+
+
+## <CDENSITY
+Receive Cartesian coordinates for grid points.
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `3 * NDENSITY`
+
+ The engine sends the Cartesian coordinates of a set of grid points.  This command is intended to be used in conjuction with the [<NDENSITY](NDENSITY) and [<DENSITY](DENSITY) commands;  these three commands enable a driver to acquire the electronic density distribution of an engine in a grid representation.  See the [<DENSITY](DENSITY) command for more details.
+
+
+## Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+
+```python
+import mdi
+import numpy as np
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# retrieve the number of grid points
+mdi.MDI_Send_Command("<NDENSITY", mdi_engine)
+ndensity = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+# create a buffer to hold the Cartesian coordinates of the grid points
+cdensity = np.zeros(3*ndensity, dtype=float)
+
+# receive the Cartesian coordinates of the grid points
+mdi.MDI_Send_Command("<CDENSITY", mdi_engine)
+mdi.MDI_Recv(3*ndensity, mdi.MDI_DOUBLE, mdi_engine, buf=cdensity)
+
+```
+:::
+
+:::{tab-item} C++
+
+```cpp
+#include "mdi.h"
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// receive the Cartesian coordinates of the grid points
+int ndensity;
+MDI_Send_Command("<NDENSITY", mdi_engine);
+MDI_Recv(&ndensity, 1, MDI_INT, mdi_engine);
+
+double* cdensity = new double[3*ndensity];
+MDI_Send_Command("<CDENSITY", mdi_engine);
+MDI_Recv(cdensity, 3*ndensity, MDI_DOUBLE, mdi_engine);
+
+```
+:::
+
+::::

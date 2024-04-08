@@ -1,0 +1,9 @@
+# VERSION
+
+
+
+## <VERSION
+Receive MDI Library version
+
+
+ None

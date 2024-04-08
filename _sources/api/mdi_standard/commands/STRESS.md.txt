@@ -1,0 +1,15 @@
+# STRESS
+
+
+
+## <STRESS
+Receive virial stress tensor
+
+
+ None
+
+## >STRESS
+Send virial stress tensor
+
+
+ None

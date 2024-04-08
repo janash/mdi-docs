@@ -1,6 +1,0 @@
-# >SPIN_POLARIZATION
-
-Send spin polarization setting
-
-
- None

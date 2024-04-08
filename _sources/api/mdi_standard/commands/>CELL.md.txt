@@ -1,8 +1,0 @@
-# >CELL
-
-Send cell vectors to resize simulation cell
-
-**Datatype:** `MDI_DOUBLE`  
-**Quantity**: `9`
-
- Driver sends cell vectors to engine for resizing its simulation cell.

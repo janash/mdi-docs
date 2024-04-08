@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>@PRE-FORCES &#8212; MolSSI Driver Interface (MDI)  documentation</title>
+    <title>CDENSITY &#8212; MolSSI Driver Interface (MDI)  documentation</title>
   
   
   
@@ -44,12 +44,12 @@
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/@PRE-FORCES';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/CDENSITY';</script>
     <link rel="icon" href="../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Data Exchange" href="../data_exchange.html" />
-    <link rel="prev" title="@INIT_OPTG" href="%40INIT_OPTG.html" />
+    <link rel="next" title="CELL" href="CELL.html" />
+    <link rel="prev" title="Data Exchange" href="../data_exchange.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -398,16 +398,16 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">MDI Standard</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../simulation_control.html">Simulation Control and Node Management</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../simulation_control.html">Simulation Control and Node Management</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="%40.html">@</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%40INIT_OPTG.html">@INIT_OPTG</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">@PRE-FORCES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%40PRE-FORCES.html">@PRE-FORCES</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../data_exchange.html">Data Exchange</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../data_exchange.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CELL.html">CELL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
@@ -481,9 +481,9 @@ document.write(`
     <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
     
     
-    <li class="breadcrumb-item"><a href="../simulation_control.html" class="nav-link">Simulation Control and Node Management</a></li>
+    <li class="breadcrumb-item"><a href="../data_exchange.html" class="nav-link">Data Exchange</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">&#64;PRE-FORCES</li>
+    <li class="breadcrumb-item active" aria-current="page">CDENSITY</li>
   </ul>
 </nav>
 </div>
@@ -500,12 +500,61 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="pre-forces">
-<h1>&#64;PRE-FORCES<a class="headerlink" href="#pre-forces" title="Link to this heading">#</a></h1>
+  <section id="cdensity">
+<h1>CDENSITY<a class="headerlink" href="#cdensity" title="Link to this heading">#</a></h1>
 <section id="id1">
-<h2>&#64;PRE-FORCES<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Go to pre-forces node</p>
-<p>Engine proceeds to the next <code class="docutils literal notranslate"><span class="pre">&#64;PRE-FORCES</span></code> node. Not valid at the <code class="docutils literal notranslate"><span class="pre">&#64;DEFAULT</span></code> node.</p>
+<h2>&lt;CDENSITY<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Receive Cartesian coordinates for grid points.</p>
+<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NDENSITY</span></code></p>
+<p>The engine sends the Cartesian coordinates of a set of grid points.  This command is intended to be used in conjuction with the <a class="reference internal" href="NDENSITY.html"><span class="doc std std-doc">&lt;NDENSITY</span></a> and <a class="reference internal" href="#DENSITY"><span class="xref myst">&lt;DENSITY</span></a> commands;  these three commands enable a driver to acquire the electronic density distribution of an engine in a grid representation.  See the <a class="reference internal" href="#DENSITY"><span class="xref myst">&lt;DENSITY</span></a> command for more details.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># retrieve the number of grid points</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;NDENSITY&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">ndensity</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+<span class="c1"># create a buffer to hold the Cartesian coordinates of the grid points</span>
+<span class="n">cdensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">ndensity</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># receive the Cartesian coordinates of the grid points</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;CDENSITY&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">ndensity</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">,</span> <span class="n">buf</span><span class="o">=</span><span class="n">cdensity</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+
+<span class="c1">// connect to the engine</span>
+<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
+
+<span class="c1">// receive the Cartesian coordinates of the grid points</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">ndensity</span><span class="p">;</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;NDENSITY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ndensity</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+
+<span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">cdensity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">ndensity</span><span class="p">];</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;CDENSITY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="n">cdensity</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">ndensity</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -520,20 +569,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="%40INIT_OPTG.html"
+       href="../data_exchange.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&#64;INIT_OPTG</p>
+        <p class="prev-next-title">Data Exchange</p>
       </div>
     </a>
     <a class="right-next"
-       href="../data_exchange.html"
+       href="CELL.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Exchange</p>
+        <p class="prev-next-title">CELL</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -555,14 +604,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">@PRE-FORCES</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&lt;CDENSITY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../../_sources/api/mdi_standard/commands/@PRE-FORCES.md.txt">
+    <a href="../../../_sources/api/mdi_standard/commands/CDENSITY.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

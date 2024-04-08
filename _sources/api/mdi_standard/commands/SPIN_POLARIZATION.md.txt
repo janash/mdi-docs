@@ -1,0 +1,15 @@
+# SPIN_POLARIZATION
+
+
+
+## <SPIN_POLARIZATION
+Receive spin polarization setting
+
+
+ None
+
+## >SPIN_POLARIZATION
+Send spin polarization setting
+
+
+ None

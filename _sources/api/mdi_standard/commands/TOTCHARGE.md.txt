@@ -1,0 +1,15 @@
+# TOTCHARGE
+
+
+
+## <TOTCHARGE
+Receive total system charge
+
+
+ None
+
+## >TOTCHARGE
+Send total system charge
+
+
+ None

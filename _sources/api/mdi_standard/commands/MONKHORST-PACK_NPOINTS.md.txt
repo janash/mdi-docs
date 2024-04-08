@@ -1,0 +1,12 @@
+# MONKHORST-PACK_NPOINTS
+
+
+
+## >MONKHORST-PACK_NPOINTS
+Send Monkhorst-Pack grid points
+
+**Datatype:** `MDI_INT`  
+**Quantity**: `3`
+
+ This command is typically expected for use with plane wave DFT engines.  The driver sends the engine the number of k-points to generate on a Monkhorst-Pack grid.  The engine then uses the k-points generated on this Monkhorst-Pack grid for all further simulations.
+The number of k-points to generate along each vector of the Brillouin zone, in ascending order of vector.
