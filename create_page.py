@@ -4,7 +4,8 @@ Functions to generate pages for MDI Standard
 """
 
 import yaml
-from collections import OrderedDict 
+from collections import OrderedDict
+from pathlib import Path 
 
 def load_standard():
     # Load the MDI standard
@@ -65,6 +66,7 @@ def create_page(command_name, command_dict):
 def generate_api_pages(app):
 
     commands_list = load_standard()
+    Path("api/mdi_standard/commands").mkdir(parents=True, exist_ok=True)
 
     for command, command_info in commands_list.items():
 

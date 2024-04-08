@@ -92,8 +92,6 @@ pygments_style = 'default'
 # See https://www.ericholscher.com/blog/2016/jul/25/integrating-jinja-rst-sphinx/
 # --------------------------------------------------
 # Requires installation of PyYAML
-import yaml
-
 from create_page import generate_api_pages, load_standard
 
 mdi_standard = load_standard()
