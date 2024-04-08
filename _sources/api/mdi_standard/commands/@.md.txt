@@ -1,6 +1,6 @@
 # @
 
-Go to next node
+Go to the next node.
 
 
  The engine proceeds to the next node. Typically not supported at the `@DEFAULT` node.

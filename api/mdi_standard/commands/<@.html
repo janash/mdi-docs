@@ -508,7 +508,7 @@ document.write(`
                   
   <section id="id1">
 <h1>&lt;&#64;<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>Receive current node name</p>
+<p>Receive current node name.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_CHAR</span></code><br />
 <strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_NAME_LENGTH</span></code></p>
 <p>The engine sends the driver a string that corresponds to the name of its current node.</p>
@@ -523,8 +523,11 @@ Python</label><div class="sd-tab-content docutils">
 <span class="c1"># connect to the engine</span>
 <span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
 
-<span class="c1"># initialize a Monte Carlo simulation</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;@INIT_MC&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span> 
+<span class="c1"># send the &quot;&lt;@&quot; command to the engine to get the current node</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;@&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span> 
+
+<span class="c1"># receive the name of the current node</span>
+<span class="n">node_name</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="n">mdi</span><span class="o">.</span><span class="n">MDI_NAME_LENGTH</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_CHAR</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -537,8 +540,14 @@ C++</label><div class="sd-tab-content docutils">
 <span class="c1">// connect to the engine</span>
 <span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
 
-<span class="c1">// initialize a Monte Carlo simulation</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;@INIT_MC&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="c1">// create a buffer to hold the name of the current node</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">node_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">char</span><span class="p">[</span><span class="n">MDI_NAME_LENGTH</span><span class="p">];</span>
+
+<span class="c1">// send the &quot;&lt;@&quot; command to the engine to get the current node</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;@&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+
+<span class="c1">// receive the name of the current node</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="n">node_name</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_NAME_LENGTH</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_CHAR</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

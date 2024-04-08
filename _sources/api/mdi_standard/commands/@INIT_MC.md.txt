@@ -1,6 +1,41 @@
 # @INIT_MC
 
-Go to the `INIT_MC` node.
+Go to the `INIT_MC` node. Initialize Monte Carlo simulation.
 
 
- The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the @INIT_MC node.
+ The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, proceeding to the `@INIT_MC` node.
+
+## Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+
+```python
+import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# send the "@INIT_MC" command to the engine
+mdi.MDI_Send_Command("@INIT_MC", mdi_engine)
+
+```
+:::
+
+:::{tab-item} C++
+
+```cpp
+#include "mdi.h"
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// send the "@INIT_MC" command to the engine
+MDI_Send_Command("@INIT_MC", mdi_engine);
+
+```
+:::
+
+::::

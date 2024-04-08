@@ -10,3 +10,38 @@ Go to the `INIT_MD` node.
 
 This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used.
 :::
+
+## Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+
+```python
+import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# send the "@INIT_MD" command to the engine
+mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
+
+```
+:::
+
+:::{tab-item} C++
+
+```cpp
+#include "mdi.h"
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// send the "@INIT_MD" command to the engine
+MDI_Send_Command("@INIT_MD", mdi_engine);
+
+```
+:::
+
+::::

@@ -1,6 +1,6 @@
 # <@
 
-Receive current node name
+Receive current node name.
 
 **Datatype:** `MDI_CHAR`  
 **Quantity**: `MDI_NAME_LENGTH`
@@ -20,8 +20,11 @@ import mdi
 # connect to the engine
 mdi_engine = mdi.MDI_Accept_Communicator()
 
-# initialize a Monte Carlo simulation
-mdi.MDI_Send_Command("@INIT_MC", mdi_engine) 
+# send the "<@" command to the engine to get the current node
+mdi.MDI_Send_Command("<@", mdi_engine) 
+
+# receive the name of the current node
+node_name = mdi.MDI_Recv(mdi.MDI_NAME_LENGTH, mdi.MDI_CHAR, mdi_engine)
 
 ```
 :::
@@ -34,8 +37,14 @@ mdi.MDI_Send_Command("@INIT_MC", mdi_engine)
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
-// initialize a Monte Carlo simulation
-MDI_Send_Command("@INIT_MC", mdi_engine);
+// create a buffer to hold the name of the current node
+char* node_name = new char[MDI_NAME_LENGTH];
+
+// send the "<@" command to the engine to get the current node
+MDI_Send_Command("<@", mdi_engine);
+
+// receive the name of the current node
+MDI_Recv(node_name, MDI_NAME_LENGTH, MDI_CHAR, mdi_engine);
 
 ```
 :::
