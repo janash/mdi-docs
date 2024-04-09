@@ -1,5 +1,9 @@
 @import "../basic.css";
 
+.bd-main .bd-content .bd-article-container {
+	max-width: 100%;  /* default is 60em */
+  }
+
 html[data-theme="light"] {
     --pst-color-primary: #ed1c24;
 	--pst-color-warning: #ed1c24;
