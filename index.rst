@@ -68,15 +68,6 @@ With MDI, researchers can now seamlessly link multiple computational tools using
 
          To the Developer Guide
 
-The API is sufficiently general to support a wide variety of techniques, including 
-
-* Quantum Mechanics/Molecular Mechanics (QM/MM)
-* ab initio molecular dynamics (AIMD)
-* Machine learning
-* Advanced sampling
-* Path integral molecular dynamics (PIMD)
-* and many more!
-
 .. toctree::
    :maxdepth: 2
    :hidden:
