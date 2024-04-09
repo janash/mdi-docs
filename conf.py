@@ -126,7 +126,7 @@ html_theme = "pydata_sphinx_theme"
 
 
 # Project logo option
-html_logo = "_static/molssi_main_logo.png"
+html_logo = "_static/mdi_light.png"
 html_favicon = "_static/molssi_square.png"
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -138,8 +138,8 @@ html_theme_options = {
 	"twitter_url": "https://twitter.com/MolSSI_NSF",
 
 	"logo": {
-      "image_light": "molssi_main_logo.png",
-      "image_dark": "molssi_main_logo_inverted_white.png",
+      "image_light": "mdi-light.png",
+      "image_dark": "mdi-dark.png",
       "text": "MolSSI Driver Interface",
       "molssi_light": "molssi_main_logo.png",
       "molssi_dark": "molssi_main_logo_inverted_white.png",
