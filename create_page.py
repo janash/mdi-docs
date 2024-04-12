@@ -133,7 +133,7 @@ def create_main_index(categories):
 
 
 
-def generate_api_pages(app):
+def generate_api_pages(arg1=None, arg2=None):
     # remove commands directory
     shutil.rmtree("api/mdi_standard/commands", ignore_errors=True)
 

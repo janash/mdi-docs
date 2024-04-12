@@ -97,7 +97,7 @@ pygments_style = 'default'
 from create_page import generate_api_pages
 
 def setup(app):
-    app.connect("builder-inited", generate_api_pages)
+    app.connect("config-inited", generate_api_pages)
 
 # -- Options for HTML output -------------------------------------------------
 
