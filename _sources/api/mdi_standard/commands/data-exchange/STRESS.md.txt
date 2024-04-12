@@ -1,0 +1,19 @@
+# STRESS
+
+
+
+## <STRESS
+Receive virial stress tensor
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `9`  
+
+ Engine sends its virial stress tensor to the driver.
+
+## >STRESS
+Send virial stress tensor
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `9`  
+
+ Driver sends virial stress tensor to engine, replacing its internal tensor.

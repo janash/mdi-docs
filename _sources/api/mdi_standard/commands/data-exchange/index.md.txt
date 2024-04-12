@@ -1,0 +1,65 @@
+# Data Exchange
+
+Commands that exchange data between the driver and the engine.
+
+Command Name | Description
+------------ | -----------
+[CDENSITY](CDENSITY.md) | Receive Cartesian coordinates for grid points.
+[CELL](CELL.md) | Receive cell vectors.
+[CELL_DISPL](CELL_DISPL.md) | Retrieve the cell displacement vector.
+[CHARGES](CHARGES.md) | Receive atomic charges.
+[KE_NUC](KE_NUC.md) | Receive nuclear kinetic energy
+[LABELS](LABELS.md) | Receive atom labels
+[LATTICE](LATTICE.md) | Send lattice point charges
+[LATTICE_FORCES](LATTICE_FORCES.md) | Receive lattice forces
+[MASSES](MASSES.md) | Receive atom masses
+[MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS.md) | Send Monkhorst-Pack grid points
+[MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT.md) | Send Monkhorst-Pack grid shift
+[NAME](NAME.md) | Receive engine name
+[NATOMS](NATOMS.md) | Receive number of atoms
+[NDENSITY](NDENSITY.md) | Receive number of density grid points
+[NLATTICE](NLATTICE.md) | Send number of lattice points
+[NPOTENTIAL](NPOTENTIAL.md) | Send number of potential grid points
+[PE](PE.md) | Receive total potential energy
+[PE_ELEC](PE_ELEC.md) | Receive electronic potential energy
+[PE_NUC](PE_NUC.md) | Receive nuclear potential energy
+[POTENTIAL](POTENTIAL.md) | Send potential grid values
+[SPIN_POLARIZATION](SPIN_POLARIZATION.md) | Receive spin polarization setting
+[STRESS](STRESS.md) | Receive virial stress tensor
+[TOTCHARGE](TOTCHARGE.md) | Receive total system charge
+[VELOCITES](VELOCITES.md) | Receive atomic velocities
+[VERSION](VERSION.md) | Receive MDI Library version
+
+
+<!--Make a TOC for the sidebar and so Sphinx doesn't complain -->
+<!-- These comments are necessary to break up the table and the TOC -->
+
+```{toctree}
+:hidden:
+
+CDENSITY
+CELL
+CELL_DISPL
+CHARGES
+KE_NUC
+LABELS
+LATTICE
+LATTICE_FORCES
+MASSES
+MONKHORST-PACK_NPOINTS
+MONKHORST-PACK_SHIFT
+NAME
+NATOMS
+NDENSITY
+NLATTICE
+NPOTENTIAL
+PE
+PE_ELEC
+PE_NUC
+POTENTIAL
+SPIN_POLARIZATION
+STRESS
+TOTCHARGE
+VELOCITES
+VERSION
+```

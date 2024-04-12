@@ -1,0 +1,11 @@
+# PE_ELEC
+
+
+
+## <PE_ELEC
+Receive electronic potential energy
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `1`  
+
+ Engine sends its electronic potential energy to the driver.

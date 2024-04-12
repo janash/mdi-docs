@@ -1,0 +1,11 @@
+# POTENTIAL
+
+
+
+## >POTENTIAL
+Send potential grid values
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `NPOTENTIAL`  
+
+ Driver sends set of values corresponding to a potential on a grid to engine.

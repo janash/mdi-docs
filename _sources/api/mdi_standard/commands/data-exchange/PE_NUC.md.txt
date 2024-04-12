@@ -1,0 +1,11 @@
+# PE_NUC
+
+
+
+## <PE_NUC
+Receive nuclear potential energy
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `1`  
+
+ Engine sends its nuclear potential energy to the driver.

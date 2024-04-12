@@ -1,0 +1,25 @@
+# Simulation Control and Node Management
+
+Commands that control the flow of the simulation and manage the engine's nodes.
+
+Command Name | Description
+------------ | -----------
+[@](@.md) | Receive current node name.
+[@INIT_MC](@INIT_MC.md) | Go to the `INIT_MC` node. Initialize Monte Carlo simulation.
+[@INIT_MD](@INIT_MD.md) | Go to the `INIT_MD` node.
+[@INIT_OPTG](@INIT_OPTG.md) | Initialize geometry optimization.
+[@PRE-FORCES](@PRE-FORCES.md) | Go to pre-forces node
+
+
+<!--Make a TOC for the sidebar and so Sphinx doesn't complain -->
+<!-- These comments are necessary to break up the table and the TOC -->
+
+```{toctree}
+:hidden:
+
+@
+@INIT_MC
+@INIT_MD
+@INIT_OPTG
+@PRE-FORCES
+```

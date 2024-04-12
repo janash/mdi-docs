@@ -1,0 +1,11 @@
+# VERSION
+
+
+
+## <VERSION
+Receive MDI Library version
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `1`  
+
+ Engine sends the version number of the MDI Library it is linked to.

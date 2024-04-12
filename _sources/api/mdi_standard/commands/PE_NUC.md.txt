@@ -1,9 +1,0 @@
-# PE_NUC
-
-
-
-## <PE_NUC
-Receive nuclear potential energy
-
-
- None

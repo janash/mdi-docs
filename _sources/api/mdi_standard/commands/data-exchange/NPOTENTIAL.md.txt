@@ -1,0 +1,11 @@
+# NPOTENTIAL
+
+
+
+## >NPOTENTIAL
+Send number of potential grid points
+
+**Datatype:** `MDI_INT`  
+**Quantity**: `1`  
+
+ Driver sends number of grid points for potential representation to engine.

@@ -1,0 +1,11 @@
+# NATOMS
+
+
+
+## <NATOMS
+Receive number of atoms
+
+**Datatype:** `MDI_INT`  
+**Quantity**: `1`  
+
+ Engine sends the number of atoms in its system to the driver.

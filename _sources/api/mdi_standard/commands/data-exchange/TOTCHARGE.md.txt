@@ -1,0 +1,19 @@
+# TOTCHARGE
+
+
+
+## <TOTCHARGE
+Receive total system charge
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `1`  
+
+ Engine sends the total charge of its system to the driver.
+
+## >TOTCHARGE
+Send total system charge
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `1`  
+
+ Driver sends total charge of the system to engine, adjusting number of electrons.

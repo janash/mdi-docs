@@ -1,0 +1,11 @@
+# NLATTICE
+
+
+
+## >NLATTICE
+Send number of lattice points
+
+**Datatype:** `MDI_INT`  
+**Quantity**: `1`  
+
+ Driver sends number of point charges in the lattice to engine.

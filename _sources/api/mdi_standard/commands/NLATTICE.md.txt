@@ -1,9 +1,0 @@
-# NLATTICE
-
-
-
-## >NLATTICE
-Send number of lattice points
-
-
- None

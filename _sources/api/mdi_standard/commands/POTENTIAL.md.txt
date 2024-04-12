@@ -1,9 +1,0 @@
-# POTENTIAL
-
-
-
-## >POTENTIAL
-Send potential grid values
-
-
- None

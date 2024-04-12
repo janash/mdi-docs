@@ -1,0 +1,11 @@
+# NDENSITY
+
+
+
+## <NDENSITY
+Receive number of density grid points
+
+**Datatype:** `MDI_INT`  
+**Quantity**: `1`  
+
+ Engine sends number of grid points used for electronic density representation.
