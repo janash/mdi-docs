@@ -3,6 +3,7 @@
 
 
 ## @INIT_MC
+
 Go to the `INIT_MC` node. Initialize Monte Carlo simulation.
 
 

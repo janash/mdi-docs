@@ -3,6 +3,7 @@
 
 
 ## <@
+
 Receive current node name.
 
 **Datatype:** `MDI_CHAR`  
@@ -55,6 +56,7 @@ MDI_Recv(node_name, MDI_NAME_LENGTH, MDI_CHAR, mdi_engine);
 ::::
 
 ## @
+
 Go to the next node.
 
 

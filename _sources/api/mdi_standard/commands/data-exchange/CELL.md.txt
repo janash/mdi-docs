@@ -3,6 +3,7 @@
 
 
 ## <CELL
+
 Receive cell vectors.
 
 **Datatype:** `MDI_DOUBLE`  
@@ -54,6 +55,7 @@ MDI_Recv(cell, 9, MDI_DOUBLE, mdi_engine);
 ::::
 
 ## >CELL
+
 Send cell vectors to resize simulation cell.
 
 **Datatype:** `MDI_DOUBLE`  

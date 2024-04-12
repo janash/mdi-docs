@@ -3,6 +3,7 @@
 
 
 ## <CDENSITY
+
 Receive Cartesian coordinates for grid points.
 
 **Datatype:** `MDI_DOUBLE`  

@@ -3,6 +3,7 @@
 
 
 ## <NDENSITY
+
 Receive number of density grid points
 
 **Datatype:** `MDI_INT`  

@@ -3,6 +3,7 @@
 
 
 ## >POTENTIAL
+
 Send potential grid values
 
 **Datatype:** `MDI_DOUBLE`  

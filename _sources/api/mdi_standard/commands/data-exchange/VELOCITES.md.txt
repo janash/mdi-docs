@@ -3,6 +3,7 @@
 
 
 ## <VELOCITES
+
 Receive atomic velocities
 
 **Datatype:** `MDI_DOUBLE`  
@@ -11,6 +12,7 @@ Receive atomic velocities
  Engine sends the velocities of atoms in its system to the driver.
 
 ## >VELOCITES
+
 Send atomic velocities
 
 **Datatype:** `MDI_DOUBLE`  

@@ -3,6 +3,7 @@
 
 
 ## >LATTICE
+
 Send lattice point charges
 
 **Datatype:** `MDI_DOUBLE`  

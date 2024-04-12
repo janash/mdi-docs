@@ -3,6 +3,7 @@
 
 
 ## <SPIN_POLARIZATION
+
 Receive spin polarization setting
 
 **Datatype:** `MDI_INT`  
@@ -11,6 +12,7 @@ Receive spin polarization setting
  Engine sends its current spin polarization simulation mode to the driver.
 
 ## >SPIN_POLARIZATION
+
 Send spin polarization setting
 
 **Datatype:** `MDI_INT`  

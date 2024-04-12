@@ -3,6 +3,7 @@
 
 
 ## <CELL_DISPL
+
 Retrieve the cell displacement vector.
 
 **Datatype:** `MDI_DOUBLE`  
@@ -54,6 +55,7 @@ MDI_Recv(cell_displ, 3, MDI_DOUBLE, mdi_engine);
 ::::
 
 ## >CELL_DISPL
+
 Send cell displacement vector to adjust simulation cell origin.
 
 **Datatype:** `MDI_DOUBLE`  

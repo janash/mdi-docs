@@ -3,6 +3,10 @@
 
 
 ## >MONKHORST-PACK_SHIFT
+
+```{tags} DFT, plane wave
+```
+
 Send Monkhorst-Pack grid shift
 
 **Datatype:** `MDI_DOUBLE`  

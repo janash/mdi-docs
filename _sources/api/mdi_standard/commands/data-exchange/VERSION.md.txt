@@ -3,6 +3,7 @@
 
 
 ## <VERSION
+
 Receive MDI Library version
 
 **Datatype:** `MDI_DOUBLE`  

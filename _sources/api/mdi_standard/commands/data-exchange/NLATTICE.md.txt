@@ -3,6 +3,7 @@
 
 
 ## >NLATTICE
+
 Send number of lattice points
 
 **Datatype:** `MDI_INT`  

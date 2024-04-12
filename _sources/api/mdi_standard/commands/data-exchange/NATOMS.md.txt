@@ -3,6 +3,7 @@
 
 
 ## <NATOMS
+
 Receive number of atoms
 
 **Datatype:** `MDI_INT`  

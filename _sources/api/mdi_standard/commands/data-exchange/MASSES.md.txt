@@ -3,6 +3,7 @@
 
 
 ## <MASSES
+
 Receive atom masses
 
 **Datatype:** `MDI_DOUBLE`  

@@ -1,4 +1,4 @@
-# MDI Standard
+# MDI Standard by Category
 
 This section provides details on the commands defined by the MDI Standard.The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines.
 
@@ -11,8 +11,6 @@ This section provides details on the commands defined by the MDI Standard.The MD
 ```{toctree}
 :hidden:
 :maxdepth:3
-
-:caption: MDI Standard Commands
 
 commands/node-management/index
 commands/data-exchange/index

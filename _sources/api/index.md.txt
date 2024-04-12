@@ -7,5 +7,6 @@ API Docs
 :maxdepth: 1
 
 mdi_standard/index
+../../_tags/tagsindex
 
 ```

@@ -3,6 +3,7 @@
 
 
 ## >NPOTENTIAL
+
 Send number of potential grid points
 
 **Datatype:** `MDI_INT`  

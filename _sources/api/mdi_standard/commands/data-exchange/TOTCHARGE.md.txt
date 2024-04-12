@@ -3,6 +3,7 @@
 
 
 ## <TOTCHARGE
+
 Receive total system charge
 
 **Datatype:** `MDI_DOUBLE`  
@@ -11,6 +12,7 @@ Receive total system charge
  Engine sends the total charge of its system to the driver.
 
 ## >TOTCHARGE
+
 Send total system charge
 
 **Datatype:** `MDI_DOUBLE`  

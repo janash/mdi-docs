@@ -3,6 +3,7 @@
 
 
 ## <PE
+
 Receive total potential energy
 
 **Datatype:** `MDI_DOUBLE`  
