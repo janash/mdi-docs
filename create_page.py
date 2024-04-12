@@ -10,7 +10,7 @@ import shutil
 
 def load_standard():
     # Load the MDI standard
-    with open("api/mdi_standard/mdi_standard.yaml", "r", encoding='utf-8') as f:
+    with open("mdi_standard.yaml", "r", encoding='utf-8') as f:
         mdi_standard = yaml.safe_load(f)
 
     return mdi_standard["categories"], mdi_standard["commands"]
@@ -60,7 +60,18 @@ def create_page(command_name, command_list):
 
     for command_dict in command_list:
 
-        page_text += f"\n\n## {command_dict['name']}\n"
+        page_text += f"\n\n## {command_dict['name']}\n\n"
+
+        tags = command_dict.get("tags")
+
+        if tags:
+            page_text += "```{tags}"
+            for tag in tags:
+                page_text += f" {tag},"
+            
+            page_text = page_text[:-1]
+            page_text += "\n```\n\n"
+
         page_text += f"{command_dict['description']}\n"
 
         if command_dict.get("datatype"):
@@ -100,7 +111,7 @@ def create_page(command_name, command_list):
     return page_text
 
 def create_main_index(categories):
-    index_text = "# MDI Standard\n\n"
+    index_text = "# MDI Standard by Category\n\n"
     index_text += "This section provides details on the commands defined by the MDI Standard."
     index_text += "The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines."
 
@@ -116,7 +127,7 @@ def create_main_index(categories):
 
     index_text += list_section + "\n\n"
 
-    index_text += "```{toctree}\n:hidden:\n:maxdepth:3\n\n:caption: MDI Standard Commands\n\n" + toc_section + "```\n"
+    index_text += "```{toctree}\n:hidden:\n:maxdepth:3\n\n" + toc_section + "```\n"
 
     return index_text
 

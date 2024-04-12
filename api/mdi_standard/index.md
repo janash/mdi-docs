@@ -1,21 +1,17 @@
-# MDI Standard
+# MDI Standard by Category
 
-This section provides comprehensive details on the commands defined by the MDI Standard. 
+This section provides details on the commands defined by the MDI Standard.The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines.
 
-## Documentation Structure
+## Command Categories
 
-- **Simulation Control and Node Management**: Commands for managing nodes, which are points in the simulation at which the engine is ready to receive new commands.
-- **Data Exchange**: Commands for sending and receiving data, including forces, energies, and densities.
+**- Simulation Control and Node Management**: Commands that control the flow of the simulation and manage the engine's nodes.  
+**- Data Exchange**: Commands that exchange data between the driver and the engine.  
 
-For detailed information on each command, refer to the corresponding section below.
 
 ```{toctree}
 :hidden:
-:maxdepth: 3
+:maxdepth:3
 
-:caption: MDI Standard Commands
-
-simulation_control
-data_exchange
-
+commands/node-management/index
+commands/data-exchange/index
 ```

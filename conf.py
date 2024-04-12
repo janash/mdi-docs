@@ -49,9 +49,9 @@ extensions = [
     'sphinx.ext.extlinks',
     'sphinx_design',
     'sphinx_copybutton',
-    'myst_parser'
+    'myst_parser',
+    'sphinx_tags',
 ]
-
 
 myst_enable_extensions = ["colon_fence"]    
 
@@ -59,6 +59,12 @@ autosummary_generate = True
 napoleon_google_docstring = False
 napoleon_use_param = False
 napoleon_use_ivar = True
+tags_create_tags = True
+tags_extension = [ "md" ]
+tags_page_title = "MDI Standard Tags"
+tags_overview_title = "MDI Standard by Tag"
+tags_page_header = ""
+tags_create_badges = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -87,36 +93,11 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'default'
 
-#================== YAML to Jinja ==================
-# Adapted from Eric Holscher's method for JSON
-# See https://www.ericholscher.com/blog/2016/jul/25/integrating-jinja-rst-sphinx/
-# --------------------------------------------------
-# Requires installation of PyYAML
-from create_page import generate_api_pages, load_standard, group_commands
-
-categories, mdi_standard = load_standard()
-mdi_standard = group_commands(categories, mdi_standard)
-
-html_context = {}
-html_context["mdi_standard"] = mdi_standard
-        
-def rst2jinja(app, docname, source):
-    """
-    Render our pages as a jinja template for fancy templating goodness.
-    """
-    # Make sure we're outputting HTML
-    if app.builder.format != 'html':
-        return
-    src = source[0]
-    rendered = app.builder.templates.render_string(
-        src, app.config.html_context
-    )
-    source[0] = rendered
+#================== Create API Pages ==================
+from create_page import generate_api_pages
 
 def setup(app):
     app.connect("builder-inited", generate_api_pages)
-    #app.connect("source-read", rst2jinja)
-    pass
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -127,7 +108,7 @@ html_theme = "pydata_sphinx_theme"
 
 
 # Project logo option
-html_logo = "_static/mdi_light.png"
+html_logo = "_static/mdi-light.png"
 html_favicon = "_static/molssi_square.png"
 
 # Theme options are theme-specific and customize the look and feel of a theme

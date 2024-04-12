@@ -17,8 +17,6 @@ your own MDI Driver.
 ```{toctree}
 :hidden:
 
-:caption: Getting Started Tutorials
-
 running_driver
 writing_driver
 

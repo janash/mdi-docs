@@ -389,6 +389,10 @@ commands:
     datatype: "MDI_INT"
     count: 3
     category: 2
+    tags:
+      - "Quantum Mechanics"
+      - "DFT"
+      - "Plane Wave DFT"
     doc: >
         This command is typically expected for use with plane wave DFT engines. 
         The driver sends the engine the number of k-points to generate on a Monkhorst-Pack grid. 
@@ -398,6 +402,9 @@ commands:
   ">MONKHORST-PACK_SHIFT":
     description: "Send Monkhorst-Pack grid shift"
     category: 2
+    tags:
+      - "DFT"
+      - "plane wave"
     datatype: "MDI_DOUBLE"
     count: 3
     doc: "Driver sends shift for k-points on Monkhorst-Pack grid to engine."
