@@ -116,6 +116,7 @@ def rst2jinja(app, docname, source):
 def setup(app):
     app.connect("builder-inited", generate_api_pages)
     #app.connect("source-read", rst2jinja)
+    pass
 
 # -- Options for HTML output -------------------------------------------------
 

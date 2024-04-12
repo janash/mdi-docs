@@ -99,12 +99,40 @@ def create_page(command_name, command_list):
 
     return page_text
 
+def create_main_index(categories):
+    index_text = "# MDI Standard\n\n"
+    index_text += "This section provides details on the commands defined by the MDI Standard."
+    index_text += "The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines."
+
+    index_text += "\n\n## Command Categories\n\n"
+    
+    list_section = ""
+    toc_section = ""
+    for _, category_info in categories.items():
+        category_slug = category_info["slug"]
+        category_name = category_info["name"]
+        list_section += f"**- {category_name}**: {category_info['description']}  \n"
+        toc_section += f"commands/{category_slug}/index\n"
+
+    index_text += list_section + "\n\n"
+
+    index_text += "```{toctree}\n:hidden:\n:maxdepth:3\n\n:caption: MDI Standard Commands\n\n" + toc_section + "```\n"
+
+    return index_text
+
+
+
 def generate_api_pages(app):
     # remove commands directory
     shutil.rmtree("api/mdi_standard/commands", ignore_errors=True)
 
     command_categories, commands_list = load_standard()
     grouped_commands = group_commands(command_categories, commands_list)
+
+    # Create index page
+    index_text = create_main_index(command_categories)
+    with open("api/mdi_standard/index.md", "w") as f:
+        f.write(index_text)
 
     for category_id, category_info in command_categories.items():
         category_slug = category_info["slug"]
@@ -117,12 +145,20 @@ def generate_api_pages(app):
             f.write("Command Name | Description\n")
             f.write("------------ | -----------\n")
 
+        table_text = ""
+        toc_text = "```{toctree}\n:hidden:\n\n"
         for command_name, command_list in grouped_commands[category_id]["commands"].items():
             page_text = create_page(command_name, command_list)
-            with open(f"api/mdi_standard/commands/{category_slug}/{command_name}.md", "w") as f:
+            table_text += f"[{command_name}]({command_name}.md) | {command_list[0]['description']}\n"
+            toc_text += f"{command_name}\n"
+
+            with open(f"api/mdi_standard/commands/{category_slug}/{command_name}.md", "w+") as f:
                 f.write(page_text)
 
-            # Add to the category index page
-            with open(f"api/mdi_standard/commands/{category_slug}/index.md", "a") as f:
-                f.write(f"[{command_name}]({command_name}.md) | {command_list[0]['description']}\n")
+        # Add to the category index page
+        with open(f"api/mdi_standard/commands/{category_slug}/index.md", "a") as f:
+            f.write(table_text)
+            f.write("\n\n<!--Make a TOC for the sidebar and so Sphinx doesn't complain -->\n<!-- These comments are necessary to break up the table and the TOC -->\n\n")
+            f.write(toc_text)
+            f.write("```\n")
 
