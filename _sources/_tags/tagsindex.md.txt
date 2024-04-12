@@ -8,7 +8,6 @@ caption: Tags
 maxdepth: 1
 ---
 DFT (2) <dft>
-Plane Wave DFT (1) <plane-wave-dft>
-Quantum Mechanics (1) <quantum-mechanics>
-plane wave (1) <plane-wave>
+Plane Wave DFT (2) <plane-wave-dft>
+Quantum Mechanics (2) <quantum-mechanics>
 ```

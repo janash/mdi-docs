@@ -4,7 +4,7 @@
 
 ## >MONKHORST-PACK_SHIFT
 
-```{tags} DFT, plane wave
+```{tags} Quantum Mechanics, DFT, Plane Wave DFT
 ```
 
 Send Monkhorst-Pack grid shift

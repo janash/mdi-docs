@@ -1,9 +1,0 @@
-# MDI Standard Tags: plane wave
-
-```{toctree}
----
-maxdepth: 1
-caption: 
----
-../api/mdi_standard/commands/data-exchange/MONKHORST-PACK_SHIFT.md
-```
