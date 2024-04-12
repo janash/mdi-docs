@@ -407,8 +407,9 @@ commands:
     description: "Send Monkhorst-Pack grid shift"
     category: 2
     tags:
+      - "Quantum Mechanics"
       - "DFT"
-      - "plane wave"
+      - "Plane Wave DFT"
     datatype: "MDI_DOUBLE"
     count: 3
     doc: "Driver sends shift for k-points on Monkhorst-Pack grid to engine."
