@@ -1,11 +1,20 @@
+categories:
+  1:
+    name: "Simulation Control and Node Management"
+    slug: "node-management"
+    description: "Commands that control the flow of the simulation and manage the engine's nodes."
+  2:
+    name: "Data Exchange"
+    slug: "data-exchange"
+    description: "Commands that exchange data between the driver and the engine."
 commands:
   "@":
     description: "Go to the next node."
     doc: "The engine proceeds to the next node. Typically not supported at the `@DEFAULT` node."
-    category: "Simulation Control and Node Management"
+    category: 1
   "<@":
     description: "Receive current node name."
-    category: "Simulation Control and Node Management"
+    category: 1
     datatype: "MDI_CHAR"
     count: "MDI_NAME_LENGTH"
     doc: "The engine sends the driver a string that corresponds to the name of its current node."
@@ -38,7 +47,7 @@ commands:
   "@INIT_MC":
     description: "Go to the `INIT_MC` node. Initialize Monte Carlo simulation."
     doc: "The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, proceeding to the `@INIT_MC` node."
-    category: "Simulation Control and Node Management"
+    category: 1
     examples:
       python: |
         import mdi
@@ -59,7 +68,7 @@ commands:
   "@INIT_MD":
     description: "Go to the `INIT_MD` node."
     doc: "The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the @INIT_MD node."
-    category: "Simulation Control and Node Management"
+    category: 1
     examples:
       python: |
         import mdi
@@ -84,7 +93,7 @@ commands:
   "@INIT_OPTG":
     description: "Initialize geometry optimization."
     doc: "The engine performs any initialization operations that are necessary before a geometry optimization can be performed, proceeding to the @INIT_OPTG node."
-    category: "Simulation Control and Node Management"
+    category: 1
     admonition:
       type: caution
       title: "Note"
@@ -93,6 +102,7 @@ commands:
     description: "Receive Cartesian coordinates for grid points."
     datatype: "MDI_DOUBLE"
     count: "3 * NDENSITY"
+    category: 2
     doc: >
       The engine sends the Cartesian coordinates of a set of grid points. 
       This command is intended to be used in conjuction with the [<NDENSITY](NDENSITY) and [<DENSITY](DENSITY) commands; 
@@ -134,6 +144,7 @@ commands:
     description: "Send cell vectors to resize simulation cell."
     datatype: "MDI_DOUBLE"
     count: 9
+    category: 2
     doc: "The driver sends a set of cell vectors to the engine, which resizes its simulation cell to the dimensions specified by the cell vectors."
     format: "The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector."
     examples:
@@ -166,6 +177,7 @@ commands:
     description: "Receive cell vectors."
     datatype: "MDI_DOUBLE"
     count: 9
+    category: 2
     format: "The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector."
     doc: "The engine sends a set of cell vectors to the driver."
     examples:
@@ -196,6 +208,7 @@ commands:
     description: "Send cell displacement vector to adjust simulation cell origin."
     datatype: "MDI_DOUBLE"
     count: 3
+    category: 2
     doc: "The driver sends a displacement vector to the engine, which adjusts the origin of its simulation cell to the value of the displacement vector."
     format: "The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector."
     examples:
@@ -228,6 +241,7 @@ commands:
     description: "Retrieve the cell displacement vector."
     datatype: "MDI_DOUBLE"
     count: 3
+    category: 2
     doc: "The engine sends the displacement vector of the origin of its simulation cell to the driver."
     format: "The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector."
     examples:
@@ -258,6 +272,7 @@ commands:
     description: "Send atomic charges."
     datatype: "MDI_DOUBLE"
     count: "NATOMS"
+    category: 2
     doc: "The driver sends a set of atomic charges to the engine, which replaces its atomic charges with those sent by the driver."
     format: "Sequentially ascending order of atomic index"
     examples:
@@ -301,6 +316,7 @@ commands:
     description: "Receive atomic charges."
     datatype: "MDI_DOUBLE"
     count: "NATOMS"
+    category: 2
     doc: "The engine sends a set of atomic charges to the driver."
     format: "Sequentially ascending order of atomic index"
     examples:
@@ -342,9 +358,11 @@ commands:
     description: "Receive nuclear kinetic energy"
     datatype: "MDI_DOUBLE"
     count: 1
+    category: 2
     doc: "Engine sends total kinetic energy of all nuclei."
   "<LABELS":
     description: "Receive atom labels"
+    category: 2
     datatype: "MDI_CHAR"
     count: "MDI_LABEL_LENGTH * NATOMS"
     doc: "Engine sends a label for each atom, intended for human-readable identification."
@@ -352,21 +370,25 @@ commands:
     description: "Send lattice point charges"
     datatype: "MDI_DOUBLE"
     count: "NLATTICE"
+    category: 2
     doc: "Driver assigns a lattice of point charges to the engine."
   "<LATTICE_FORCES":
     description: "Receive lattice forces"
     datatype: "MDI_DOUBLE"
     count: "3 * NLATTICE"
+    category: 2
     doc: "Engine sends forces on lattice charges to the driver."
   "<MASSES":
     description: "Receive atom masses"
     datatype: "MDI_DOUBLE"
     count: "NATOMS"
+    category: 2
     doc: "Engine sends the mass of each atom to the driver."
   ">MONKHORST-PACK_NPOINTS":
     description: "Send Monkhorst-Pack grid points"
     datatype: "MDI_INT"
     count: 3
+    category: 2
     doc: >
         This command is typically expected for use with plane wave DFT engines. 
         The driver sends the engine the number of k-points to generate on a Monkhorst-Pack grid. 
@@ -375,119 +397,119 @@ commands:
         The number of k-points to generate along each vector of the Brillouin zone, in ascending order of vector.
   ">MONKHORST-PACK_SHIFT":
     description: "Send Monkhorst-Pack grid shift"
-    send:
-      datatype: "MDI_DOUBLE"
-      count: 3
-      doc: "Driver sends shift for k-points on Monkhorst-Pack grid to engine."
+    category: 2
+    datatype: "MDI_DOUBLE"
+    count: 3
+    doc: "Driver sends shift for k-points on Monkhorst-Pack grid to engine."
   "<NAME":
     description: "Receive engine name"
-    recv:
-      datatype: "MDI_CHAR"
-      count: "MDI_NAME_LENGTH"
-      doc: "Engine sends its name as per `-name` option in MDI initialization."
+    category: 2
+    datatype: "MDI_CHAR"
+    count: "MDI_NAME_LENGTH"
+    doc: "Engine sends its name as per `-name` option in MDI initialization."
   "<NATOMS":
     description: "Receive number of atoms"
-    recv:
-      datatype: "MDI_INT"
-      count: 1
-      doc: "Engine sends the number of atoms in its system to the driver."
+    datatype: "MDI_INT"
+    category: 2
+    count: 1
+    doc: "Engine sends the number of atoms in its system to the driver."
   "<NDENSITY":
     description: "Receive number of density grid points"
-    recv:
-      datatype: "MDI_INT"
-      count: 1
-      doc: "Engine sends number of grid points used for electronic density representation."
+    datatype: "MDI_INT"
+    count: 1
+    category: 2
+    doc: "Engine sends number of grid points used for electronic density representation."
   ">NLATTICE":
     description: "Send number of lattice points"
-    send:
-      datatype: "MDI_INT"
-      count: 1
-      doc: "Driver sends number of point charges in the lattice to engine."
+    datatype: "MDI_INT"
+    category: 2
+    count: 1
+    doc: "Driver sends number of point charges in the lattice to engine."
   ">NPOTENTIAL":
     description: "Send number of potential grid points"
-    send:
-      datatype: "MDI_INT"
-      count: 1
-      doc: "Driver sends number of grid points for potential representation to engine."
+    datatype: "MDI_INT"
+    count: 1
+    category: 2
+    doc: "Driver sends number of grid points for potential representation to engine."
   ">POTENTIAL":
     description: "Send potential grid values"
-    send:
-      datatype: "MDI_DOUBLE"
-      count: "NPOTENTIAL"
-      doc: "Driver sends set of values corresponding to a potential on a grid to engine."
+    datatype: "MDI_DOUBLE"
+    category: 2
+    count: "NPOTENTIAL"
+    doc: "Driver sends set of values corresponding to a potential on a grid to engine."
   "<PE":
     description: "Receive total potential energy"
-    recv:
-      datatype: "MDI_DOUBLE"
-      count: 1
-      doc: "Engine sends its total potential energy to the driver."
+    datatype: "MDI_DOUBLE"
+    category: 2
+    count: 1
+    doc: "Engine sends its total potential energy to the driver."
   "<PE_ELEC":
     description: "Receive electronic potential energy"
-    recv:
-      datatype: "MDI_DOUBLE"
-      count: 1
-      doc: "Engine sends its electronic potential energy to the driver."
+    datatype: "MDI_DOUBLE"
+    category: 2
+    count: 1
+    doc: "Engine sends its electronic potential energy to the driver."
   "<PE_NUC":
     description: "Receive nuclear potential energy"
-    recv:
-      datatype: "MDI_DOUBLE"
-      count: 1
-      doc: "Engine sends its nuclear potential energy to the driver."
+    datatype: "MDI_DOUBLE"
+    category: 2
+    count: 1
+    doc: "Engine sends its nuclear potential energy to the driver."
   "@PRE-FORCES":
     description: "Go to pre-forces node"
     doc: "Engine proceeds to the next `@PRE-FORCES` node. Not valid at the `@DEFAULT` node."
-    category: "Simulation Control and Node Management"
+    category: 1
   "<SPIN_POLARIZATION":
     description: "Receive spin polarization setting"
-    recv:
-      datatype: "MDI_INT"
-      count: 1
-      doc: "Engine sends its current spin polarization simulation mode to the driver."
+    datatype: "MDI_INT"
+    category: 2
+    count: 1
+    doc: "Engine sends its current spin polarization simulation mode to the driver."
   ">SPIN_POLARIZATION":
     description: "Send spin polarization setting"
-    send:
-      datatype: "MDI_INT"
-      count: 1
-      doc: "Driver sends desired spin polarization simulation mode to engine."
+    datatype: "MDI_INT"
+    count: 1
+    category: 2
+    doc: "Driver sends desired spin polarization simulation mode to engine."
   "<STRESS":
     description: "Receive virial stress tensor"
-    recv:
-      datatype: "MDI_DOUBLE"
-      count: 9
-      doc: "Engine sends its virial stress tensor to the driver."
+    datatype: "MDI_DOUBLE"
+    category: 2
+    count: 9
+    doc: "Engine sends its virial stress tensor to the driver."
   ">STRESS":
     description: "Send virial stress tensor"
-    send:
-      datatype: "MDI_DOUBLE"
-      count: 9
-      doc: "Driver sends virial stress tensor to engine, replacing its internal tensor."
+    category: 2
+    datatype: "MDI_DOUBLE"
+    count: 9
+    doc: "Driver sends virial stress tensor to engine, replacing its internal tensor."
   ">TOTCHARGE":
     description: "Send total system charge"
-    send:
-      datatype: "MDI_DOUBLE"
-      count: 1
-      doc: "Driver sends total charge of the system to engine, adjusting number of electrons."
+    datatype: "MDI_DOUBLE"
+    category: 2
+    count: 1
+    doc: "Driver sends total charge of the system to engine, adjusting number of electrons."
   "<TOTCHARGE":
     description: "Receive total system charge"
-    recv:
-      datatype: "MDI_DOUBLE"
-      count: 1
-      doc: "Engine sends the total charge of its system to the driver."
+    datatype: "MDI_DOUBLE"
+    count: 1
+    category: 2
+    doc: "Engine sends the total charge of its system to the driver."
   ">VELOCITES":
     description: "Send atomic velocities"
-    send:
-      datatype: "MDI_DOUBLE"
-      count: "3 * NATOMS"
-      doc: "Driver sends set of atomic velocities to engine."
+    datatype: "MDI_DOUBLE"
+    category: 2
+    count: "3 * NATOMS"
+    doc: "Driver sends set of atomic velocities to engine."
   "<VELOCITES":
     description: "Receive atomic velocities"
-    recv:
-      datatype: "MDI_DOUBLE"
-      count: "3 * NATOMS"
-      doc: "Engine sends the velocities of atoms in its system to the driver."
+    datatype: "MDI_DOUBLE"
+    count: "3 * NATOMS"
+    category: 2
+    doc: "Engine sends the velocities of atoms in its system to the driver."
   "<VERSION":
     description: "Receive MDI Library version"
-    recv:
-      datatype: "MDI_DOUBLE"
-      count: 1
-      doc: "Engine sends the version number of the MDI Library it is linked to."
+    datatype: "MDI_DOUBLE"
+    count: 1
+    category: 2
+    doc: "Engine sends the version number of the MDI Library it is linked to."

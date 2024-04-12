@@ -6,23 +6,25 @@ Functions to generate pages for MDI Standard
 import yaml
 from collections import OrderedDict
 from pathlib import Path 
+import shutil
 
 def load_standard():
     # Load the MDI standard
     with open("api/mdi_standard/mdi_standard.yaml", "r", encoding='utf-8') as f:
         mdi_standard = yaml.safe_load(f)
-    return mdi_standard["commands"]
 
-def group_commands(standard):
+    return mdi_standard["categories"], mdi_standard["commands"]
+
+def group_commands(categories,standard):
     """Groups sending and receiving commands together and then sorts them alphabetically"""
-    grouped_standard = {}
 
+    grouped_standard = {}
     for command, command_info in standard.items():
         if command.startswith("<") or command.startswith(">"):
             command_group = command[1:]
         else:   
             command_group = command
-
+            
         command_info["name"] = command
         
         if command_group not in grouped_standard:
@@ -36,8 +38,19 @@ def group_commands(standard):
     
     # Sorting the groups alphabetically and returning an OrderedDict
     ordered_grouped_standard = OrderedDict(sorted(grouped_standard.items()))
-    
-    return ordered_grouped_standard
+
+    category_groups = {}
+    for category_id, category_info in categories.items():
+        category_groups[category_id] = {"name": category_info["name"], "commands": OrderedDict()}
+
+    for group_name, group_commands in ordered_grouped_standard.items():
+        # Assume grouped commands have the same category
+        # hopefully this is always the case
+        category_id = group_commands[0]["category"]
+
+        category_groups[category_id]["commands"][group_name] = group_commands
+
+    return category_groups
 
 
 def create_page(command_name, command_list):
@@ -87,14 +100,29 @@ def create_page(command_name, command_list):
     return page_text
 
 def generate_api_pages(app):
+    # remove commands directory
+    shutil.rmtree("api/mdi_standard/commands", ignore_errors=True)
 
-    commands_list = load_standard()
-    grouped_commands = group_commands(commands_list)
-    Path("api/mdi_standard/commands").mkdir(parents=True, exist_ok=True)
+    command_categories, commands_list = load_standard()
+    grouped_commands = group_commands(command_categories, commands_list)
 
-    for command, command_list in grouped_commands.items(): 
+    for category_id, category_info in command_categories.items():
+        category_slug = category_info["slug"]
+        category_name = category_info["name"]
+        Path(f"api/mdi_standard/commands/{category_slug}").mkdir(parents=True, exist_ok=True)
 
-        page_text = create_page(command, command_list)
+        # Create the category index page
+        with open(f"api/mdi_standard/commands/{category_slug}/index.md", "w") as f:
+            f.write(f"# {category_name}\n\n{category_info['description']}\n\n")
+            f.write("Command Name | Description\n")
+            f.write("------------ | -----------\n")
 
-        with open(f"api/mdi_standard/commands/{command}.md", "w") as f:
-            f.write(page_text)
+        for command_name, command_list in grouped_commands[category_id]["commands"].items():
+            page_text = create_page(command_name, command_list)
+            with open(f"api/mdi_standard/commands/{category_slug}/{command_name}.md", "w") as f:
+                f.write(page_text)
+
+            # Add to the category index page
+            with open(f"api/mdi_standard/commands/{category_slug}/index.md", "a") as f:
+                f.write(f"[{command_name}]({command_name}.md) | {command_list[0]['description']}\n")
+

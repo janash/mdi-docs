@@ -94,8 +94,8 @@ pygments_style = 'default'
 # Requires installation of PyYAML
 from create_page import generate_api_pages, load_standard, group_commands
 
-mdi_standard = load_standard()
-mdi_standard = group_commands(mdi_standard)
+categories, mdi_standard = load_standard()
+mdi_standard = group_commands(categories, mdi_standard)
 
 html_context = {}
 html_context["mdi_standard"] = mdi_standard
@@ -115,7 +115,7 @@ def rst2jinja(app, docname, source):
 
 def setup(app):
     app.connect("builder-inited", generate_api_pages)
-    app.connect("source-read", rst2jinja)
+    #app.connect("source-read", rst2jinja)
 
 # -- Options for HTML output -------------------------------------------------
 
