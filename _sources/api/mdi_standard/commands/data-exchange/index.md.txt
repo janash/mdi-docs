@@ -15,7 +15,6 @@ Command Name | Description
 [MASSES](MASSES.md) | Receive atom masses
 [MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS.md) | Send Monkhorst-Pack grid points
 [MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT.md) | Send Monkhorst-Pack grid shift
-[NAME](NAME.md) | Receive engine name
 [NATOMS](NATOMS.md) | Receive number of atoms
 [NDENSITY](NDENSITY.md) | Receive number of density grid points
 [NLATTICE](NLATTICE.md) | Send number of lattice points
@@ -28,7 +27,6 @@ Command Name | Description
 [STRESS](STRESS.md) | Receive virial stress tensor
 [TOTCHARGE](TOTCHARGE.md) | Receive total system charge
 [VELOCITES](VELOCITES.md) | Receive atomic velocities
-[VERSION](VERSION.md) | Receive MDI Library version
 
 
 <!--Make a TOC for the sidebar and so Sphinx doesn't complain -->
@@ -48,7 +46,6 @@ LATTICE_FORCES
 MASSES
 MONKHORST-PACK_NPOINTS
 MONKHORST-PACK_SHIFT
-NAME
 NATOMS
 NDENSITY
 NLATTICE
@@ -61,5 +58,4 @@ SPIN_POLARIZATION
 STRESS
 TOTCHARGE
 VELOCITES
-VERSION
 ```
