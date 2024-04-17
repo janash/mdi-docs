@@ -106,6 +106,8 @@ commands:
     description: "Receive Cartesian coordinates for grid points."
     datatype: "MDI_DOUBLE"
     count: "3 * NDENSITY"
+    tags:
+      - "Quantum Mechanics"
     category: 2
     doc: >
       The engine sends the Cartesian coordinates of a set of grid points. 
@@ -132,6 +134,7 @@ commands:
         mdi.MDI_Recv(3*ndensity, mdi.MDI_DOUBLE, mdi_engine, buf=cdensity)
       cpp: |
         #include "mdi.h"
+        #include <vector>
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
@@ -140,10 +143,13 @@ commands:
         int ndensity;
         MDI_Send_Command("<NDENSITY", mdi_engine);
         MDI_Recv(&ndensity, 1, MDI_INT, mdi_engine);
+        
+        // create a vector to hold the Cartesian coordinates of the grid points
+        std::vector<double> cdensity(3*ndensity);
 
-        double* cdensity = new double[3*ndensity];
+        // receive the Cartesian coordinates of the grid points
         MDI_Send_Command("<CDENSITY", mdi_engine);
-        MDI_Recv(cdensity, 3*ndensity, MDI_DOUBLE, mdi_engine);
+        MDI_Recv(cdensity.data(), 3*ndensity, MDI_DOUBLE, mdi_engine);
   ">CELL":
     description: "Send cell vectors to resize simulation cell."
     datatype: "MDI_DOUBLE"
@@ -167,16 +173,17 @@ commands:
         mdi.MDI_Send(cell, 9, mdi.MDI_DOUBLE, mdi_engine)
       cpp: |
         #include "mdi.h"
+        #include <vector>
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
-        // create an array of cell vectors
-        double cell[9] = {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
-
+        // create a vector of cell vectors
+        std::vector<double> cell = {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
+        
         // send the cell vectors to the engine
         MDI_Send_Command(">CELL", mdi_engine);
-        MDI_Send(cell, 9, MDI_DOUBLE, mdi_engine);
+        MDI_Send(cell.data(), 9, MDI_DOUBLE, mdi_engine);
   "<CELL":
     description: "Receive cell vectors."
     datatype: "MDI_DOUBLE"
@@ -200,14 +207,17 @@ commands:
         mdi.MDI_Recv(9, mdi.MDI_DOUBLE, mdi_engine, buf=cell) 
       cpp: |
         #include "mdi.h"
+        #include <vector>
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
+        // make a buffer to hold the cell vectors 
+        std::vector<double> cell(9);
+
         // receive the cell vectors from the engine
-        double cell[9];
         MDI_Send_Command("<CELL", mdi_engine);
-        MDI_Recv(cell, 9, MDI_DOUBLE, mdi_engine);
+        MDI_Recv(cell.data(), 9, MDI_DOUBLE, mdi_engine);
   ">CELL_DISPL":
     description: "Send cell displacement vector to adjust simulation cell origin."
     datatype: "MDI_DOUBLE"
@@ -231,16 +241,17 @@ commands:
         mdi.MDI_Send(cell_displ, 3, mdi.MDI_DOUBLE, mdi_engine)
       cpp: |
         #include "mdi.h"
+        #include <vector>
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
         // create an array of cell displacement values
-        double cell_displ[3] = {0.0, 0.0, 0.0};
+        std::vector<double> cell_displ = {0.0, 1.0, 1.0};
 
         // send the cell displacement values to the engine
         MDI_Send_Command(">CELL_DISPL", mdi_engine);
-        MDI_Send(cell_displ, 3, MDI_DOUBLE, mdi_engine);
+        MDI_Send(cell_displ.data(), 3, MDI_DOUBLE, mdi_engine);
   "<CELL_DISPL":
     description: "Retrieve the cell displacement vector."
     datatype: "MDI_DOUBLE"
@@ -264,14 +275,17 @@ commands:
         mdi.MDI_Recv(3, mdi.MDI_DOUBLE, mdi_engine, buf=cell_displ) 
       cpp: |
         #include "mdi.h"
+        #include <vector>
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
+        // create a buffer to hold the cell displacement values
+        std::vector<double> cell_displ(3);
+
         // receive the cell displacement values from the engine
-        double cell_displ[3];
         MDI_Send_Command("<CELL_DISPL", mdi_engine);
-        MDI_Recv(cell_displ, 3, MDI_DOUBLE, mdi_engine);
+        MDI_Recv(cell_displ.data(), 3, MDI_DOUBLE, mdi_engine);
   ">CHARGES":
     description: "Send atomic charges."
     datatype: "MDI_DOUBLE"
@@ -291,14 +305,17 @@ commands:
         mdi.MDI_Send_Command("<NATOMS", mdi_engine)
         natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
 
-        # create an array of atomic charges - use random charges for example
-        charges = np.random.random(natoms)
+        # create an array of atomic charges using
+        # method appropriate for your use case.
+        # Zeros shown here for example.
+        charges = np.zeros(natoms, dtype=float)
 
         # send the atomic charges to the engine
         mdi.MDI_Send_Command(">CHARGES", mdi_engine)
-        mdi.MDI_Send(charges, 3, mdi.MDI_DOUBLE, mdi_engine)
+        mdi.MDI_Send(charges, natoms, mdi.MDI_DOUBLE, mdi_engine)
       cpp: |
         #include "mdi.h"
+        #include <vector>
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
@@ -308,14 +325,14 @@ commands:
         MDI_Send_Command("<NATOMS", mdi_engine);
         MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
 
-        // create an array of atomic charges 
-        double* charges = new double[natoms];
+        // create an vector of atomic charges
+        std::vector<double> charges(natoms);
 
         // fill the array with charges.
 
         // send the atomic charges to the engine
         MDI_Send_Command(">CHARGES", mdi_engine);
-        MDI_Send(charges, 3, MDI_DOUBLE, mdi_engine);
+        MDI_Send(charges.data(), natoms, MDI_DOUBLE, mdi_engine);
   "<CHARGES":
     description: "Receive atomic charges."
     datatype: "MDI_DOUBLE"
@@ -343,6 +360,7 @@ commands:
         mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine, buf=charges) 
       cpp: |
         #include "mdi.h"
+        #include <vector>
 
         // connect to the engine
         MDI_Comm mdi_engine = MDI_Accept_Communicator();
@@ -352,12 +370,76 @@ commands:
         MDI_Send_Command("<NATOMS", mdi_engine);
         MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
 
-        // create a buffer to hold the atomic charges
-        double* charges = new double[natoms];
+        // create a vector to hold the atomic charges
+        std::vector<double> charges(natoms);
 
         // receive the atomic charges from the engine
         MDI_Send_Command("<CHARGES", mdi_engine);
-        MDI_Recv(charges, natoms, MDI_DOUBLE, mdi_engine);
+        MDI_Recv(charges.data(), natoms, MDI_DOUBLE, mdi_engine);
+  ">CLATTICE":
+    description: "Send lattice point charges."
+    datatype: "MDI_DOUBLE"
+    count: "3 * NLATTICE"
+    category: 2
+    tags:
+      - "Quantum Mechanics"
+      - "Gas Phase Quantum Mechanics"
+    doc: |
+      This command, along with the [>NLATTICE](NLATTICE) and [>LATTICE](LATTICE) commands, allows the driver to assign a lattice of point charges to an engine, 
+      which incorporates the effects of these charges in all further calculations. 
+      After sending this command, the driver sends the coordinates of each of the point charges to the engine. 
+      Prior to sending this command, the driver must have set the number of point charges using the [>NLATTICE](NLATTICE) comm[and.
+
+      This command is primarily intended for use with gas-phase quantum mechanics codes. For an alternative command that is more appropriate for plane wave quantum mechanics codes, see the [>POTENTIAL](POTENTIAL) command.
+    format: "Sequentially ascending order of lattice charge index, with the coordinates for each individual lattice charge being provided in xyz order."
+    examples:
+      python: |
+        import mdi
+        import numpy as np
+
+        # connect to the engine
+        mdi_engine = mdi.MDI_Accept_Communicator()
+
+        # get lattice information
+        lattice = # some array of lattice charge coordinates
+        clattice = # some array of lattice charges
+        nlattice = len(lattice) / 3
+        
+        # send the number of lattice points to the engine
+        mdi.MDI_Send_Command(">NLATTICE", mdi_engine)
+        mdi.MDI_Send(nlattice, 1, mdi.MDI_INT, mdi_engine)
+
+        # send the lattice coordinates to the engine
+        mdi.MDI_Send_Command(">LATTICE", mdi_engine)
+        mdi.MDI_Send(lattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
+
+        # send the lattice charges to the engine
+        mdi.MDI_Send_Command(">CLATTICE", mdi_engine)
+        mdi.MDI_Send(clattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
+      cpp: |
+        #include "mdi.h"
+        #include <vector>
+
+        // connect to the engine
+        MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+        // get lattice information
+        // get lattice information
+        std::vector<double> lattice; // some vector of lattice charge coordinates
+        std::vector<double> clattice; // some vector of lattice charges
+        int nlattice = lattice.size() / 3;
+
+        // send the number of lattice points to the engine
+        MDI_Send_Command(">NLATTICE", mdi_engine);
+        MDI_Send(nlattice, 1, MDI_INT, mdi_engine);
+
+        // send the lattice coordinates to the engine
+        MDI_Send_Command(">LATTICE", mdi_engine);
+        MDI_Send(lattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
+
+        // send the lattice charges to the engine
+        MDI_Send_Command(">CLATTICE", mdi_engine);
+        MDI_Send(clattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
   "<KE_NUC":
     description: "Receive nuclear kinetic energy"
     datatype: "MDI_DOUBLE"

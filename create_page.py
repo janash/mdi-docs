@@ -96,11 +96,13 @@ def create_page(command_name, command_list):
 
             page_text += "\n\n::::{tab-set}"
             page_text += "\n\n:::{tab-item} Python"
+            page_text += "\n:sync: python"
             page_text += "\n\n```python"
             page_text += f"\n{command_dict['examples']['python']}"
             page_text += "\n```\n:::"
 
             page_text += "\n\n:::{tab-item} C++"
+            page_text += "\n:sync: cpp"
             page_text += "\n\n```cpp"
             page_text += f"\n{command_dict['examples']['cpp']}"
             page_text += "\n```\n:::"
