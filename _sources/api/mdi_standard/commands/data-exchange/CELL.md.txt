@@ -18,6 +18,7 @@ Receive cell vectors.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -37,17 +38,21 @@ mdi.MDI_Recv(9, mdi.MDI_DOUBLE, mdi_engine, buf=cell)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"
+#include <vector>
 
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
+// make a buffer to hold the cell vectors 
+std::vector<double> cell(9);
+
 // receive the cell vectors from the engine
-double cell[9];
 MDI_Send_Command("<CELL", mdi_engine);
-MDI_Recv(cell, 9, MDI_DOUBLE, mdi_engine);
+MDI_Recv(cell.data(), 9, MDI_DOUBLE, mdi_engine);
 
 ```
 :::
@@ -70,6 +75,7 @@ Send cell vectors to resize simulation cell.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -89,19 +95,21 @@ mdi.MDI_Send(cell, 9, mdi.MDI_DOUBLE, mdi_engine)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"
+#include <vector>
 
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
-// create an array of cell vectors
-double cell[9] = {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
+// create a vector of cell vectors
+std::vector<double> cell = {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
 
 // send the cell vectors to the engine
 MDI_Send_Command(">CELL", mdi_engine);
-MDI_Send(cell, 9, MDI_DOUBLE, mdi_engine);
+MDI_Send(cell.data(), 9, MDI_DOUBLE, mdi_engine);
 
 ```
 :::

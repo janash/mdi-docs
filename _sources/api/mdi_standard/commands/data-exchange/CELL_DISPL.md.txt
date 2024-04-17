@@ -18,6 +18,7 @@ Retrieve the cell displacement vector.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -37,17 +38,21 @@ mdi.MDI_Recv(3, mdi.MDI_DOUBLE, mdi_engine, buf=cell_displ)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"
+#include <vector>
 
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
+// create a buffer to hold the cell displacement values
+std::vector<double> cell_displ(3);
+
 // receive the cell displacement values from the engine
-double cell_displ[3];
 MDI_Send_Command("<CELL_DISPL", mdi_engine);
-MDI_Recv(cell_displ, 3, MDI_DOUBLE, mdi_engine);
+MDI_Recv(cell_displ.data(), 3, MDI_DOUBLE, mdi_engine);
 
 ```
 :::
@@ -70,6 +75,7 @@ Send cell displacement vector to adjust simulation cell origin.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -89,19 +95,21 @@ mdi.MDI_Send(cell_displ, 3, mdi.MDI_DOUBLE, mdi_engine)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"
+#include <vector>
 
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
 // create an array of cell displacement values
-double cell_displ[3] = {0.0, 0.0, 0.0};
+std::vector<double> cell_displ = {0.0, 1.0, 1.0};
 
 // send the cell displacement values to the engine
 MDI_Send_Command(">CELL_DISPL", mdi_engine);
-MDI_Send(cell_displ, 3, MDI_DOUBLE, mdi_engine);
+MDI_Send(cell_displ.data(), 3, MDI_DOUBLE, mdi_engine);
 
 ```
 :::

@@ -21,6 +21,7 @@ This command may change the engine's atomic coordinates under certain circumstan
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -35,6 +36,7 @@ mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"

@@ -8,6 +8,7 @@ caption: Tags
 maxdepth: 1
 ---
 DFT (2) <dft>
+Gas Phase Quantum Mechanics (1) <gas-phase-quantum-mechanics>
 Plane Wave DFT (2) <plane-wave-dft>
-Quantum Mechanics (2) <quantum-mechanics>
+Quantum Mechanics (4) <quantum-mechanics>
 ```

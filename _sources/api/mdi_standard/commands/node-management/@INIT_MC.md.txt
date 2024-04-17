@@ -15,6 +15,7 @@ Go to the `INIT_MC` node. Initialize Monte Carlo simulation.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -29,6 +30,7 @@ mdi.MDI_Send_Command("@INIT_MC", mdi_engine)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"

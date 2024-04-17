@@ -39,7 +39,7 @@
   <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../_static/copybutton.js?v=f281be69"></script>
@@ -48,7 +48,7 @@
     <link rel="icon" href="../../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="KE_NUC" href="KE_NUC.html" />
+    <link rel="next" title="CLATTICE" href="CLATTICE.html" />
     <link rel="prev" title="CELL_DISPL" href="CELL_DISPL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -411,6 +411,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="CELL.html">CELL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CELL_DISPL.html">CELL_DISPL</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">CHARGES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LATTICE.html">LATTICE</a></li>
@@ -445,12 +446,18 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/gas-phase-quantum-mechanics.html">Gas Phase Quantum Mechanics (1)</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (2)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (4)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
@@ -535,7 +542,7 @@ document.write(`
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
+</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -558,9 +565,10 @@ Python</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-1">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="c1">// connect to the engine</span>
 <span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
@@ -570,12 +578,12 @@ C++</label><div class="sd-tab-content docutils">
 <span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;NATOMS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 <span class="n">MDI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 
-<span class="c1">// create a buffer to hold the atomic charges</span>
-<span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">charges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="n">natoms</span><span class="p">];</span>
+<span class="c1">// create a vector to hold the atomic charges</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">charges</span><span class="p">(</span><span class="n">natoms</span><span class="p">);</span>
 
 <span class="c1">// receive the atomic charges from the engine</span>
 <span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;CHARGES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Recv</span><span class="p">(</span><span class="n">charges</span><span class="p">,</span><span class="w"> </span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="n">charges</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -593,7 +601,7 @@ C++</label><div class="sd-tab-content docutils">
 <h3>Examples<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
+</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -605,20 +613,23 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;NATOMS&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 <span class="n">natoms</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
-<span class="c1"># create an array of atomic charges - use random charges for example</span>
-<span class="n">charges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">natoms</span><span class="p">)</span>
+<span class="c1"># create an array of atomic charges using</span>
+<span class="c1"># method appropriate for your use case.</span>
+<span class="c1"># Zeros shown here for example.</span>
+<span class="n">charges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">natoms</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
 <span class="c1"># send the atomic charges to the engine</span>
 <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;CHARGES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">charges</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">charges</span><span class="p">,</span> <span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-3">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="c1">// connect to the engine</span>
 <span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
@@ -628,14 +639,14 @@ C++</label><div class="sd-tab-content docutils">
 <span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;NATOMS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 <span class="n">MDI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 
-<span class="c1">// create an array of atomic charges </span>
-<span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">charges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="n">natoms</span><span class="p">];</span>
+<span class="c1">// create an vector of atomic charges</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">charges</span><span class="p">(</span><span class="n">natoms</span><span class="p">);</span>
 
 <span class="c1">// fill the array with charges.</span>
 
 <span class="c1">// send the atomic charges to the engine</span>
 <span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;CHARGES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Send</span><span class="p">(</span><span class="n">charges</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Send</span><span class="p">(</span><span class="n">charges</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -664,11 +675,11 @@ C++</label><div class="sd-tab-content docutils">
       </div>
     </a>
     <a class="right-next"
-       href="KE_NUC.html"
+       href="CLATTICE.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">KE_NUC</p>
+        <p class="prev-next-title">CLATTICE</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -760,7 +771,7 @@ C++</label><div class="sd-tab-content docutils">
  
         
         <p class="sphinx-version">
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.3.5.<br>
         </p>
         
 

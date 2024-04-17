@@ -4,6 +4,9 @@
 
 ## <CDENSITY
 
+```{tags} Quantum Mechanics
+```
+
 Receive Cartesian coordinates for grid points.
 
 **Datatype:** `MDI_DOUBLE`  
@@ -18,6 +21,7 @@ Receive Cartesian coordinates for grid points.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -41,9 +45,11 @@ mdi.MDI_Recv(3*ndensity, mdi.MDI_DOUBLE, mdi_engine, buf=cdensity)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"
+#include <vector>
 
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
@@ -53,9 +59,12 @@ int ndensity;
 MDI_Send_Command("<NDENSITY", mdi_engine);
 MDI_Recv(&ndensity, 1, MDI_INT, mdi_engine);
 
-double* cdensity = new double[3*ndensity];
+// create a vector to hold the Cartesian coordinates of the grid points
+std::vector<double> cdensity(3*ndensity);
+
+// receive the Cartesian coordinates of the grid points
 MDI_Send_Command("<CDENSITY", mdi_engine);
-MDI_Recv(cdensity, 3*ndensity, MDI_DOUBLE, mdi_engine);
+MDI_Recv(cdensity.data(), 3*ndensity, MDI_DOUBLE, mdi_engine);
 
 ```
 :::

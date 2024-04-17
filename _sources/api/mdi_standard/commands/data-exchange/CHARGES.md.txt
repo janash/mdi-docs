@@ -18,6 +18,7 @@ Receive atomic charges.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -41,9 +42,11 @@ mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine, buf=charges)
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"
+#include <vector>
 
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
@@ -53,12 +56,12 @@ int natoms;
 MDI_Send_Command("<NATOMS", mdi_engine);
 MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
 
-// create a buffer to hold the atomic charges
-double* charges = new double[natoms];
+// create a vector to hold the atomic charges
+std::vector<double> charges(natoms);
 
 // receive the atomic charges from the engine
 MDI_Send_Command("<CHARGES", mdi_engine);
-MDI_Recv(charges, natoms, MDI_DOUBLE, mdi_engine);
+MDI_Recv(charges.data(), natoms, MDI_DOUBLE, mdi_engine);
 
 ```
 :::
@@ -81,6 +84,7 @@ Send atomic charges.
 ::::{tab-set}
 
 :::{tab-item} Python
+:sync: python
 
 ```python
 import mdi
@@ -93,20 +97,24 @@ mdi_engine = mdi.MDI_Accept_Communicator()
 mdi.MDI_Send_Command("<NATOMS", mdi_engine)
 natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
 
-# create an array of atomic charges - use random charges for example
-charges = np.random.random(natoms)
+# create an array of atomic charges using
+# method appropriate for your use case.
+# Zeros shown here for example.
+charges = np.zeros(natoms, dtype=float)
 
 # send the atomic charges to the engine
 mdi.MDI_Send_Command(">CHARGES", mdi_engine)
-mdi.MDI_Send(charges, 3, mdi.MDI_DOUBLE, mdi_engine)
+mdi.MDI_Send(charges, natoms, mdi.MDI_DOUBLE, mdi_engine)
 
 ```
 :::
 
 :::{tab-item} C++
+:sync: cpp
 
 ```cpp
 #include "mdi.h"
+#include <vector>
 
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
@@ -116,14 +124,14 @@ int natoms;
 MDI_Send_Command("<NATOMS", mdi_engine);
 MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
 
-// create an array of atomic charges 
-double* charges = new double[natoms];
+// create an vector of atomic charges
+std::vector<double> charges(natoms);
 
 // fill the array with charges.
 
 // send the atomic charges to the engine
 MDI_Send_Command(">CHARGES", mdi_engine);
-MDI_Send(charges, 3, MDI_DOUBLE, mdi_engine);
+MDI_Send(charges.data(), natoms, MDI_DOUBLE, mdi_engine);
 
 ```
 :::
