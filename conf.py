@@ -148,6 +148,10 @@ html_static_path = ['_static']
 html_css_files = [
   'css/custom.css',
 ]
+
+html_context = {
+    'extrahead': '<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">'
+}
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
 #
