@@ -20,6 +20,7 @@ html[data-theme="dark"] {
     --pst-color-primary: #ed1c24;
 	--pst-color-warning: #ed1c24;
 	--pst-color-primary-highlight: #bc151b;
+	--pst-color-primary-text: #ffffff;
 	--pst-color-background: #1A1A1A;
 	--pst-color-on-background: #222222;
 	--pst-color-surface: #222222;
