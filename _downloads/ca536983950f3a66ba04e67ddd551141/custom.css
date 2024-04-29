@@ -1,4 +1,7 @@
-@import "../basic.css";
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
 
 .bd-main .bd-content .bd-article-container {
 	max-width: 100%;  /* default is 60em */
@@ -80,4 +83,10 @@ table.border, .border table, .border caption, .border thead, .border tbody, .bor
 	text-align: center;
 }
 
+/* Get rid of side bar , based on https://github.com/executablebooks/sphinx-book-theme/issues/732#issuecomment-1752572223 */
+.bd-sidebar-primary div#rtd-footer-container {
+	bottom:-1rem;
+	margin:-1rem;
+	position:fixed;
+	}
 
