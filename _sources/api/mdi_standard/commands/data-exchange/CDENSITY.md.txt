@@ -25,6 +25,26 @@ Receive Cartesian coordinates for grid points.
 
 ```python
 import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# retrieve the number of grid points
+mdi.MDI_Send_Command("<NDENSITY", mdi_engine)
+ndensity = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+# receive the Cartesian coordinates of the grid points
+mdi.MDI_Send_Command("<CDENSITY", mdi_engine)
+cdensity = mdi.MDI_Recv(3*ndensity, mdi.MDI_DOUBLE, mdi_engine, buf=cdensity)
+
+```
+:::
+
+:::{tab-item} Python (NumPy)
+:sync: python (numpy)
+
+```python
+import mdi
 import numpy as np
 
 # connect to the engine
