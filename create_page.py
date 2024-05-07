@@ -21,7 +21,10 @@ def group_commands(categories,standard):
     grouped_standard = {}
     for command, command_info in standard.items():
         if command.startswith("<") or command.startswith(">"):
-            command_group = command[1:]
+            if command[1] !="@" and not command[1].isalpha():
+                command_group = command[2:]
+            else:
+                command_group = command[1:]  
         else:   
             command_group = command
             
@@ -51,7 +54,6 @@ def group_commands(categories,standard):
         category_groups[category_id]["commands"][group_name] = group_commands
 
     return category_groups
-
 
 def create_page(command_name, command_list):
 
@@ -100,6 +102,13 @@ def create_page(command_name, command_list):
             page_text += "\n\n```python"
             page_text += f"\n{command_dict['examples']['python']}"
             page_text += "\n```\n:::"
+
+            if command_dict["examples"].get("python (numpy)"):
+                page_text += "\n\n:::{tab-item} Python (NumPy)"
+                page_text += "\n:sync: python (numpy)"
+                page_text += "\n\n```python"
+                page_text += f"\n{command_dict['examples']['python (numpy)']}"
+                page_text += "\n```\n:::"
 
             page_text += "\n\n:::{tab-item} C++"
             page_text += "\n:sync: cpp"
