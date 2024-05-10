@@ -1,11 +1,12 @@
 # CLATTICE
+```{tags} Quantum Mechanics, Gas Phase Quantum Mechanics
+```
+
+Send lattice point charges.
 
 
 
 ## >CLATTICE
-
-```{tags} Quantum Mechanics, Gas Phase Quantum Mechanics
-```
 
 Send lattice point charges.
 
@@ -31,7 +32,6 @@ This command is primarily intended for use with gas-phase quantum mechanics code
 
 ```python
 import mdi
-import numpy as np
 
 # connect to the engine
 mdi_engine = mdi.MDI_Accept_Communicator()

@@ -1,16 +1,17 @@
 # CHARGES
+Exchange atomic charge information.
 
 
 
-## <CHARGES
+## >CHARGES
 
-Receive atomic charges.
+Send atomic charges.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `NATOMS`  
 **Format:** Sequentially ascending order of atomic index
 
- The engine sends a set of atomic charges to the driver.
+ The driver sends a set of atomic charges to the engine, which replaces its atomic charges with those sent by the driver.
 
 ### Examples
 
@@ -31,60 +32,19 @@ mdi_engine = mdi.MDI_Accept_Communicator()
 mdi.MDI_Send_Command("<NATOMS", mdi_engine)
 natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
 
-# create a buffer to hold the atomic charges
-charges = np.zeros(natoms, dtype=float)
+# create a list of atomic charges using
+# method appropriate for your use case.
+charges = # some array of atomic charges
 
-# receive the atomic charges from the engine
-mdi.MDI_Send_Command("<CHARGES", mdi_engine)
-mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine, buf=charges) 
-
-```
-:::
-
-:::{tab-item} C++
-:sync: cpp
-
-```cpp
-#include "mdi.h"
-#include <vector>
-
-// connect to the engine
-MDI_Comm mdi_engine = MDI_Accept_Communicator();
-
-// retrieve the number of atoms
-int natoms;
-MDI_Send_Command("<NATOMS", mdi_engine);
-MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
-
-// create a vector to hold the atomic charges
-std::vector<double> charges(natoms);
-
-// receive the atomic charges from the engine
-MDI_Send_Command("<CHARGES", mdi_engine);
-MDI_Recv(charges.data(), natoms, MDI_DOUBLE, mdi_engine);
+# send the atomic charges to the engine
+mdi.MDI_Send_Command(">CHARGES", mdi_engine)
+mdi.MDI_Send(charges, natoms, mdi.MDI_DOUBLE, mdi_engine)
 
 ```
 :::
 
-::::
-
-## >CHARGES
-
-Send atomic charges.
-
-**Datatype:** `MDI_DOUBLE`  
-**Quantity**: `NATOMS`  
-**Format:** Sequentially ascending order of atomic index
-
- The driver sends a set of atomic charges to the engine, which replaces its atomic charges with those sent by the driver.
-
-### Examples
-
-
-::::{tab-set}
-
-:::{tab-item} Python
-:sync: python
+:::{tab-item} Python (NumPy)
+:sync: python (numpy)
 
 ```python
 import mdi
@@ -132,6 +92,93 @@ std::vector<double> charges(natoms);
 // send the atomic charges to the engine
 MDI_Send_Command(">CHARGES", mdi_engine);
 MDI_Send(charges.data(), natoms, MDI_DOUBLE, mdi_engine);
+
+```
+:::
+
+::::
+
+## <CHARGES
+
+Receive atomic charges.
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `NATOMS`  
+**Format:** Sequentially ascending order of atomic index
+
+ The engine sends a set of atomic charges to the driver.
+
+### Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+:sync: python
+
+```python
+import mdi
+import numpy as np
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# retrieve the number of atoms
+mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+# receive the atomic charges from the engine
+mdi.MDI_Send_Command("<CHARGES", mdi_engine)
+charges = mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine) 
+
+```
+:::
+
+:::{tab-item} Python (NumPy)
+:sync: python (numpy)
+
+```python
+import mdi
+import numpy as np
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# retrieve the number of atoms
+mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+# create a buffer to hold the atomic charges
+charges = np.zeros(natoms, dtype=float)
+
+# receive the atomic charges from the engine
+mdi.MDI_Send_Command("<CHARGES", mdi_engine)
+mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine, buf=charges) 
+
+```
+:::
+
+:::{tab-item} C++
+:sync: cpp
+
+```cpp
+#include "mdi.h"
+#include <vector>
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// retrieve the number of atoms
+int natoms;
+MDI_Send_Command("<NATOMS", mdi_engine);
+MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
+
+// create a vector to hold the atomic charges
+std::vector<double> charges(natoms);
+
+// receive the atomic charges from the engine
+MDI_Send_Command("<CHARGES", mdi_engine);
+MDI_Recv(charges.data(), natoms, MDI_DOUBLE, mdi_engine);
 
 ```
 :::

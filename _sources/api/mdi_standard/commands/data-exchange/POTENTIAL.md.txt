@@ -2,11 +2,12 @@
 
 
 
+
 ## >POTENTIAL
 
-Send potential grid values
+Receive total potential energy
 
 **Datatype:** `MDI_DOUBLE`  
-**Quantity**: `NPOTENTIAL`  
+**Quantity**: `1`  
 
- Driver sends set of values corresponding to a potential on a grid to engine.
+ Engine sends its total potential energy to the driver.

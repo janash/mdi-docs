@@ -9,4 +9,5 @@ caption:
 ../api/mdi_standard/commands/data-exchange/CLATTICE.md
 ../api/mdi_standard/commands/data-exchange/MONKHORST-PACK_NPOINTS.md
 ../api/mdi_standard/commands/data-exchange/MONKHORST-PACK_SHIFT.md
+../api/mdi_standard/commands/data-exchange/NPOTENTIAL.md
 ```

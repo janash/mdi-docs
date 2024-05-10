@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="KE_NUC" href="KE_NUC.html" />
-    <link rel="prev" title="CLATTICE" href="CLATTICE.html" />
+    <link rel="prev" title="CPOTENTIAL" href="CPOTENTIAL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -403,7 +403,6 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_OPTG.html">@INIT_OPTG</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../node-management/%40PRE-FORCES.html">@PRE-FORCES</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -412,6 +411,8 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="CELL_DISPL.html">CELL_DISPL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CHARGES.html">CHARGES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="COORDS.html">COORDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CPOTENTIAL.html">CPOTENTIAL</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
@@ -420,11 +421,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MASSES.html">MASSES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NATOMS.html">NATOMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NDENSITY.html">NDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PE.html">PE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_ELEC.html">PE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_NUC.html">PE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="POTENTIAL.html">POTENTIAL</a></li>
@@ -435,7 +436,6 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../information/index.html">Information</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../information/NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../information/VERSION.html">VERSION</a></li>
 </ul>
 </li>
@@ -451,16 +451,25 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/molecular-dynamics.html">Molecular Dynamics (1)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/monte-carlo.html">Monte Carlo (1)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (4)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (5)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
 </ul>
 </li>
 </ul>
@@ -532,18 +541,85 @@ document.write(`
                   
   <section id="forces">
 <h1>FORCES<a class="headerlink" href="#forces" title="Link to this heading">#</a></h1>
+<p>Exchange atomic forces information.</p>
 <section id="id1">
-<h2>&lt;FORCES<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Receive atomic forces.</p>
+<h2>&gt;FORCES<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Send atomic forces.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
 <strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
 <strong>Format:</strong> Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.</p>
-<p>If the engine is at the <a class="reference internal" href="#&#64;DEFAULT"><span class="xref myst">&#64;DEFAULT</span></a> node, it calculates and sends its atomic forces to the driver.  These forces include all force contributions, including the force contributions associated with any constraint algorithm (e.g. SHAKE, RATTLE, etc.).  If the engine has previously calculated the atomic forces of the system,  and no intervening commands from the driver could have changed the atomic forces,  the engine is permitted to send the previously calculated atomic forces instead of recalculating them.</p>
+<p>The driver sends a set of atomic forces to the engine,  which replaces its internal forces with the forces sent by the driver.</p>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># create an array of atomic forces</span>
+
+<span class="c1"># send the atomic forces to the engine </span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;FORCES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>  
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-1">
+Python (NumPy)</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># create an array of atomic forces</span>
+<span class="n">forces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># send the atomic forces to the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;FORCES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-2">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="c1">// connect to the engine</span>
+<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
+
+<span class="c1">// create a vector of atomic forces </span>
+
+<span class="c1">// send the atomic forces to the engine </span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;FORCES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h2>&lt;FORCES<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Receive atomic forces.</p>
+<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
+<strong>Format:</strong> Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.</p>
+<p>If the engine is at the <a class="reference internal" href="#&#64;DEFAULT"><span class="xref myst">&#64;DEFAULT</span></a> node, it calculates and sends its atomic forces to the driver.  These forces include all force contributions, including the force contributions associated with any constraint algorithm (e.g. SHAKE, RATTLE, etc.).  If the engine has previously calculated the atomic forces of the system,  and no intervening commands from the driver could have changed the atomic forces,  the engine is permitted to send the previously calculated atomic forces instead of recalculating them.</p>
+<section id="id3">
+<h3>Examples<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-3">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
 
@@ -557,8 +633,8 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-1">
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-4">
 Python (NumPy)</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -576,8 +652,8 @@ Python (NumPy)</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-2">
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-5">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -597,18 +673,18 @@ C++</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
-<section id="id2">
-<h2>&gt;+FORCES<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>&gt;+FORCES<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>Send additional atomic forces.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
 <strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
 <strong>Format:</strong> Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.</p>
 <p>The driver sends a set of additional atomic forces to the engine,  which adds these forces to its internal forces.</p>
-<section id="id3">
-<h3>Examples<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>Examples<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-3">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-6">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
 
@@ -624,8 +700,8 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-4">
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-7">
 Python (NumPy)</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -643,8 +719,8 @@ Python (NumPy)</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-5">
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-8">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -657,72 +733,6 @@ C++</label><div class="sd-tab-content docutils">
 <span class="c1">// send the additional atomic forces to the engine </span>
 <span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;+FORCES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 <span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span><span class="w">     </span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id4">
-<h2>&gt;FORCES<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>Send atomic forces.</p>
-<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
-<strong>Format:</strong> Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.</p>
-<p>The driver sends a set of atomic forces to the engine,  which replaces its internal forces with the forces sent by the driver.</p>
-<section id="id5">
-<h3>Examples<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-6">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-
-<span class="c1"># connect to the engine</span>
-<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
-
-<span class="c1"># create an array of atomic forces</span>
-
-<span class="c1"># send the atomic forces to the engine </span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;FORCES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>  
-
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-7">
-Python (NumPy)</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># connect to the engine</span>
-<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
-
-<span class="c1"># create an array of atomic forces</span>
-<span class="n">forces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="c1"># send the atomic forces to the engine</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;FORCES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-8">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="c1">// connect to the engine</span>
-<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
-
-<span class="c1">// create a vector of atomic forces </span>
-
-<span class="c1">// send the atomic forces to the engine </span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;FORCES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -742,12 +752,12 @@ C++</label><div class="sd-tab-content docutils">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="CLATTICE.html"
+       href="CPOTENTIAL.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CLATTICE</p>
+        <p class="prev-next-title">CPOTENTIAL</p>
       </div>
     </a>
     <a class="right-next"
@@ -777,15 +787,15 @@ C++</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&lt;FORCES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;FORCES</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">&gt;+FORCES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">&lt;FORCES</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">&gt;FORCES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">&gt;+FORCES</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Examples</a></li>
 </ul>
 </li>

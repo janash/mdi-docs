@@ -48,7 +48,7 @@
     <link rel="icon" href="../../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="FORCES" href="FORCES.html" />
+    <link rel="next" title="COORDS" href="COORDS.html" />
     <link rel="prev" title="CHARGES" href="CHARGES.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -403,7 +403,6 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_OPTG.html">@INIT_OPTG</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../node-management/%40PRE-FORCES.html">@PRE-FORCES</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -412,6 +411,8 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="CELL_DISPL.html">CELL_DISPL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CHARGES.html">CHARGES</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">CLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="COORDS.html">COORDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CPOTENTIAL.html">CPOTENTIAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FORCES.html">FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
@@ -420,11 +421,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MASSES.html">MASSES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NATOMS.html">NATOMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NDENSITY.html">NDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PE.html">PE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_ELEC.html">PE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_NUC.html">PE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="POTENTIAL.html">POTENTIAL</a></li>
@@ -435,7 +436,6 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../information/index.html">Information</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../information/NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../information/VERSION.html">VERSION</a></li>
 </ul>
 </li>
@@ -451,16 +451,25 @@ document.write(`
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">CLATTICE</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/molecular-dynamics.html">Molecular Dynamics (1)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/monte-carlo.html">Monte Carlo (1)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (4)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (5)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
 </ul>
 </li>
 </ul>
@@ -532,9 +541,10 @@ document.write(`
                   
   <section id="clattice">
 <h1>CLATTICE<a class="headerlink" href="#clattice" title="Link to this heading">#</a></h1>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/quantum-mechanics.html"><span class="doc">Quantum Mechanics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/gas-phase-quantum-mechanics.html"><span class="doc">Gas Phase Quantum Mechanics</span></a></p>
+<p>Send lattice point charges.</p>
 <section id="id1">
 <h2>&gt;CLATTICE<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/quantum-mechanics.html"><span class="doc">Quantum Mechanics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/gas-phase-quantum-mechanics.html"><span class="doc">Gas Phase Quantum Mechanics</span></a></p>
 <p>Send lattice point charges.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
 <strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NLATTICE</span></code><br />
@@ -551,7 +561,6 @@ Prior to sending this command, the driver must have set the number of point char
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># connect to the engine</span>
 <span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
@@ -630,11 +639,11 @@ C++</label><div class="sd-tab-content docutils">
       </div>
     </a>
     <a class="right-next"
-       href="FORCES.html"
+       href="COORDS.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">FORCES</p>
+        <p class="prev-next-title">COORDS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

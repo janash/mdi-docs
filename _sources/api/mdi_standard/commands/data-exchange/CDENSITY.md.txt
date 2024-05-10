@@ -1,11 +1,12 @@
 # CDENSITY
+```{tags} Quantum Mechanics
+```
+
+Exchange Cartesian coordinates for grid points.
 
 
 
 ## <CDENSITY
-
-```{tags} Quantum Mechanics
-```
 
 Receive Cartesian coordinates for grid points.
 

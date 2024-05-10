@@ -1,13 +1,18 @@
 # @INIT_MD
+```{tags} Molecular Dynamics
+```
+
+Initialize a Molecular Dynamics simulation.
 
 
 
 ## @INIT_MD
 
-Go to the `INIT_MD` node.
+Go to @INIT_MD node.
 
 
- The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, proceeding to the @INIT_MD node.
+ The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed,  proceeding to the `@INIT_MD` node
+
 
 :::{admonition} Note
 :class: caution
@@ -29,8 +34,8 @@ import mdi
 # connect to the engine
 mdi_engine = mdi.MDI_Accept_Communicator()
 
-# send the "@INIT_MD" command to the engine
-mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
+# initialize a Monte Carlo simulation
+mdi.MDI_Send_Command(">@INIT_MD", mdi_engine)
 
 ```
 :::
@@ -44,8 +49,8 @@ mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
 // connect to the engine
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
-// send the "@INIT_MD" command to the engine
-MDI_Send_Command("@INIT_MD", mdi_engine);
+// initialize a Monte Carlo simulation
+MDI_Send_Command(">@INIT_MC", mdi_engine);
 
 ```
 :::

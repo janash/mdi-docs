@@ -1,4 +1,5 @@
 # @
+Operations related to the current node.
 
 
 
@@ -63,3 +64,46 @@ Go to the next node.
 
 
  The engine proceeds to the next node. Typically not supported at the `@DEFAULT` node.
+
+### Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+:sync: python
+
+```python
+import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# send the "@INIT_MD" command to the engine (so we are not at default node)
+mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
+
+# send the engine to the next node.
+mdi.MDI_Send_Command("@", mdi_engine)
+
+```
+:::
+
+:::{tab-item} C++
+:sync: cpp
+
+```cpp
+#include "mdi.h"
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// send the "@INIT_MD" command to the engine (so we are not at default node)
+MDI_Send_Command("@INIT_MD", mdi_engine);
+
+// send the engine to the next node
+MDI_Send_Command("@", mdi_engine);  
+
+```
+:::
+
+::::

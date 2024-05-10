@@ -4,16 +4,8 @@ Commands that provide information about MDI and/or an engine.
 
 Command Name | Description
 ------------ | -----------
-[NAME](NAME.md) | Receive engine name
-[VERSION](VERSION.md) | Receive MDI Library version
-
-
-<!--Make a TOC for the sidebar and so Sphinx doesn't complain -->
-<!-- These comments are necessary to break up the table and the TOC -->
-
+[VERSION](VERSION) | 
 ```{toctree}
 :hidden:
 
-NAME
 VERSION
-```

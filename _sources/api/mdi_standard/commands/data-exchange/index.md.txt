@@ -4,36 +4,33 @@ Commands that exchange data between the driver and the engine.
 
 Command Name | Description
 ------------ | -----------
-[CDENSITY](CDENSITY.md) | Receive Cartesian coordinates for grid points.
-[CELL](CELL.md) | Receive cell vectors.
-[CELL_DISPL](CELL_DISPL.md) | Retrieve the cell displacement vector.
-[CHARGES](CHARGES.md) | Receive atomic charges.
-[CLATTICE](CLATTICE.md) | Send lattice point charges.
-[FORCES](FORCES.md) | Receive atomic forces.
-[KE_NUC](KE_NUC.md) | Receive nuclear kinetic energy
-[LABELS](LABELS.md) | Receive atom labels
-[LATTICE](LATTICE.md) | Send lattice point charges
-[LATTICE_FORCES](LATTICE_FORCES.md) | Receive lattice forces
-[MASSES](MASSES.md) | Receive atom masses
-[MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS.md) | Send Monkhorst-Pack grid points
-[MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT.md) | Send Monkhorst-Pack grid shift
-[NATOMS](NATOMS.md) | Receive number of atoms
-[NDENSITY](NDENSITY.md) | Receive number of density grid points
-[NLATTICE](NLATTICE.md) | Send number of lattice points
-[NPOTENTIAL](NPOTENTIAL.md) | Send number of potential grid points
-[PE](PE.md) | Receive total potential energy
-[PE_ELEC](PE_ELEC.md) | Receive electronic potential energy
-[PE_NUC](PE_NUC.md) | Receive nuclear potential energy
-[POTENTIAL](POTENTIAL.md) | Send potential grid values
-[SPIN_POLARIZATION](SPIN_POLARIZATION.md) | Receive spin polarization setting
-[STRESS](STRESS.md) | Receive virial stress tensor
-[TOTCHARGE](TOTCHARGE.md) | Receive total system charge
-[VELOCITES](VELOCITES.md) | Receive atomic velocities
-
-
-<!--Make a TOC for the sidebar and so Sphinx doesn't complain -->
-<!-- These comments are necessary to break up the table and the TOC -->
-
+[CDENSITY](CDENSITY) | Exchange Cartesian coordinates for grid points.
+[CELL](CELL) | Exchange cell vectors for simulation boxes.
+[CELL_DISPL](CELL_DISPL) | Exchange cell displacement vectors for simulation boxes.
+[CHARGES](CHARGES) | Exchange atomic charge information.
+[CLATTICE](CLATTICE) | Send lattice point charges.
+[COORDS](COORDS) | Exchange atomic coordinate information.
+[CPOTENTIAL](CPOTENTIAL) | 
+[FORCES](FORCES) | Exchange atomic forces information.
+[KE_NUC](KE_NUC) | Receive nuclear kinetic energy.
+[LABELS](LABELS) | Receive a label for each atom in the system.
+[LATTICE](LATTICE) | 
+[LATTICE_FORCES](LATTICE_FORCES) | 
+[MASSES](MASSES) | 
+[MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS) | 
+[MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT) | 
+[NAME](NAME) | 
+[NATOMS](NATOMS) | 
+[NDENSITY](NDENSITY) | 
+[NLATTICE](NLATTICE) | 
+[NPOTENTIAL](NPOTENTIAL) | 
+[PE_ELEC](PE_ELEC) | 
+[PE_NUC](PE_NUC) | 
+[POTENTIAL](POTENTIAL) | 
+[SPIN_POLARIZATION](SPIN_POLARIZATION) | 
+[STRESS](STRESS) | 
+[TOTCHARGE](TOTCHARGE) | 
+[VELOCITES](VELOCITES) | 
 ```{toctree}
 :hidden:
 
@@ -42,6 +39,8 @@ CELL
 CELL_DISPL
 CHARGES
 CLATTICE
+COORDS
+CPOTENTIAL
 FORCES
 KE_NUC
 LABELS
@@ -50,11 +49,11 @@ LATTICE_FORCES
 MASSES
 MONKHORST-PACK_NPOINTS
 MONKHORST-PACK_SHIFT
+NAME
 NATOMS
 NDENSITY
 NLATTICE
 NPOTENTIAL
-PE
 PE_ELEC
 PE_NUC
 POTENTIAL
@@ -62,4 +61,3 @@ SPIN_POLARIZATION
 STRESS
 TOTCHARGE
 VELOCITES
-```

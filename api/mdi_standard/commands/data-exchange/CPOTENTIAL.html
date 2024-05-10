@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PE &#8212; MolSSI Driver Interface (MDI)  documentation</title>
+    <title>CPOTENTIAL &#8212; MolSSI Driver Interface (MDI)  documentation</title>
   
   
   
@@ -44,12 +44,12 @@
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/data-exchange/PE';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/data-exchange/CPOTENTIAL';</script>
     <link rel="icon" href="../../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="PE_ELEC" href="PE_ELEC.html" />
-    <link rel="prev" title="NPOTENTIAL" href="NPOTENTIAL.html" />
+    <link rel="next" title="FORCES" href="FORCES.html" />
+    <link rel="prev" title="COORDS" href="COORDS.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -403,7 +403,6 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_OPTG.html">@INIT_OPTG</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../node-management/%40PRE-FORCES.html">@PRE-FORCES</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -412,6 +411,8 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="CELL_DISPL.html">CELL_DISPL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CHARGES.html">CHARGES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="COORDS.html">COORDS</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">CPOTENTIAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FORCES.html">FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
@@ -420,11 +421,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MASSES.html">MASSES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NATOMS.html">NATOMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NDENSITY.html">NDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">PE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_ELEC.html">PE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_NUC.html">PE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="POTENTIAL.html">POTENTIAL</a></li>
@@ -435,7 +436,6 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../information/index.html">Information</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../information/NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../information/VERSION.html">VERSION</a></li>
 </ul>
 </li>
@@ -451,16 +451,25 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/molecular-dynamics.html">Molecular Dynamics (1)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/monte-carlo.html">Monte Carlo (1)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (4)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (5)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
 </ul>
 </li>
 </ul>
@@ -513,7 +522,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Data Exchange</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">PE</li>
+    <li class="breadcrumb-item active" aria-current="page">CPOTENTIAL</li>
   </ul>
 </nav>
 </div>
@@ -530,14 +539,88 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="pe">
-<h1>PE<a class="headerlink" href="#pe" title="Link to this heading">#</a></h1>
+  <section id="cpotential">
+<h1>CPOTENTIAL<a class="headerlink" href="#cpotential" title="Link to this heading">#</a></h1>
 <section id="id1">
-<h2>&lt;PE<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Receive total potential energy</p>
+<h2>&gt;CPOTENTIAL<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Send Cartesian coordinates of grid points.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
-<p>Engine sends its total potential energy to the driver.</p>
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NPOTENTIAL</span></code></p>
+<p>The driver sends the Cartesian coordinates of a set of grid points.  This command is intended to be used in conjuction with the <a class="reference internal" href="NPOTENTIAL.html"><span class="doc std std-doc">&gt;NPOTENTIAL</span></a> and <a class="reference internal" href="POTENTIAL.html"><span class="doc std std-doc">&gt;POTENTIAL</span></a> commands;  these three commands enable a driver to set an external potential that is incorporated into a subsequent scf_command command.  See the <a class="reference internal" href="POTENTIAL.html"><span class="doc std std-doc">&gt;POTENTIAL</span></a> command for more details.
+Before sending this command, the driver must have first sent the number of grid points used to represent the potential via the &gt;NPOTENTIAL command.  It is also necessary that the driver send the values of the grid points via the &gt;CPOTENTIAL command prior to any subsequent scf_command command.</p>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Acmmunicator</span><span class="p">()</span>
+
+<span class="c1"># retrieve the number of atoms</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;NATOMS&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">natoms</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+<span class="c1"># create a list of atomic core potentials using</span>
+<span class="c1"># method appropriate for your use case.</span>
+<span class="n">cpotential</span> <span class="o">=</span> <span class="c1"># some array of atomic core potentials</span>
+
+<span class="c1"># send the atomic core potentials to the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;CPOTENTIAL&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">cpotential</span><span class="p">,</span> <span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-1">
+Python (NumPy)</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># retrieve the number of atoms</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;NATOMS&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">natoms</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+<span class="c1"># create an array of atomic core potentials using</span>
+<span class="c1"># method appropriate for your use case.</span>
+<span class="c1"># Zeros shown here for example.</span>
+<span class="n">cpotential</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">natoms</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># send the atomic core potentials to the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;CPOTENTIAL&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">cpotential</span><span class="p">,</span> <span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-2">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="c1">// connect to the engine</span>
+<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
+
+<span class="c1">// retrieve the number of atoms</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">natoms</span><span class="p">;</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;NATOMS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+
+<span class="c1">// create an vector of atomic core potentials</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -552,20 +635,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="NPOTENTIAL.html"
+       href="COORDS.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">NPOTENTIAL</p>
+        <p class="prev-next-title">COORDS</p>
       </div>
     </a>
     <a class="right-next"
-       href="PE_ELEC.html"
+       href="FORCES.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PE_ELEC</p>
+        <p class="prev-next-title">FORCES</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -587,14 +670,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&lt;PE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;CPOTENTIAL</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../../../_sources/api/mdi_standard/commands/data-exchange/PE.md.txt">
+    <a href="../../../../_sources/api/mdi_standard/commands/data-exchange/CPOTENTIAL.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

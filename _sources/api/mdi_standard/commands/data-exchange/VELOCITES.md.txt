@@ -2,14 +2,6 @@
 
 
 
-## <VELOCITES
-
-Receive atomic velocities
-
-**Datatype:** `MDI_DOUBLE`  
-**Quantity**: `3 * NATOMS`  
-
- Engine sends the velocities of atoms in its system to the driver.
 
 ## >VELOCITES
 
@@ -19,3 +11,12 @@ Send atomic velocities
 **Quantity**: `3 * NATOMS`  
 
  Driver sends set of atomic velocities to engine.
+
+## <VELOCITES
+
+Receive atomic velocities
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `3 * NATOMS`  
+
+ Engine sends the velocities of atoms in its system to the driver.

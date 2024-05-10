@@ -1,6 +1,82 @@
 # FORCES
+Exchange atomic forces information.
 
 
+
+## >FORCES
+
+Send atomic forces.
+
+**Datatype:** `MDI_DOUBLE`  
+**Quantity**: `3 * NATOMS`  
+**Format:** Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.
+
+ The driver sends a set of atomic forces to the engine,  which replaces its internal forces with the forces sent by the driver.
+
+
+### Examples
+
+
+::::{tab-set}
+
+:::{tab-item} Python
+:sync: python
+
+```python
+import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# create an array of atomic forces
+
+# send the atomic forces to the engine 
+mdi.MDI_Send_Command(">FORCES", mdi_engine)
+mdi.MDI_Send(forces, 3*natoms, mdi.MDI_DOUBLE, mdi_engine)  
+
+```
+:::
+
+:::{tab-item} Python (NumPy)
+:sync: python (numpy)
+
+```python
+import mdi
+import numpy as np
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# create an array of atomic forces
+forces = np.zeros(3*natoms, dtype=float)
+
+# send the atomic forces to the engine
+mdi.MDI_Send_Command(">FORCES", mdi_engine)
+mdi.MDI_Send(forces, 3*natoms, mdi.MDI_DOUBLE, mdi_engine)
+
+```
+:::
+
+:::{tab-item} C++
+:sync: cpp
+
+```cpp
+#include "mdi.h"
+#include <vector>
+
+// connect to the engine
+MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+// create a vector of atomic forces 
+
+// send the atomic forces to the engine 
+MDI_Send_Command(">FORCES", mdi_engine);
+MDI_Send(forces.data(), 3*natoms, MDI_DOUBLE, mdi_engine);
+
+```
+:::
+
+::::
 
 ## <FORCES
 
@@ -145,81 +221,6 @@ MDI_Comm mdi_engine = MDI_Accept_Communicator();
 // send the additional atomic forces to the engine 
 MDI_Send_Command(">+FORCES", mdi_engine);
 MDI_Send(forces.data(), 3*natoms, MDI_DOUBLE, mdi_engine);     
-
-```
-:::
-
-::::
-
-## >FORCES
-
-Send atomic forces.
-
-**Datatype:** `MDI_DOUBLE`  
-**Quantity**: `3 * NATOMS`  
-**Format:** Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.
-
- The driver sends a set of atomic forces to the engine,  which replaces its internal forces with the forces sent by the driver.
-
-
-### Examples
-
-
-::::{tab-set}
-
-:::{tab-item} Python
-:sync: python
-
-```python
-import mdi
-
-# connect to the engine
-mdi_engine = mdi.MDI_Accept_Communicator()
-
-# create an array of atomic forces
-
-# send the atomic forces to the engine 
-mdi.MDI_Send_Command(">FORCES", mdi_engine)
-mdi.MDI_Send(forces, 3*natoms, mdi.MDI_DOUBLE, mdi_engine)  
-
-```
-:::
-
-:::{tab-item} Python (NumPy)
-:sync: python (numpy)
-
-```python
-import mdi
-import numpy as np
-
-# connect to the engine
-mdi_engine = mdi.MDI_Accept_Communicator()
-
-# create an array of atomic forces
-forces = np.zeros(3*natoms, dtype=float)
-
-# send the atomic forces to the engine
-mdi.MDI_Send_Command(">FORCES", mdi_engine)
-mdi.MDI_Send(forces, 3*natoms, mdi.MDI_DOUBLE, mdi_engine)
-
-```
-:::
-
-:::{tab-item} C++
-:sync: cpp
-
-```cpp
-#include "mdi.h"
-#include <vector>
-
-// connect to the engine
-MDI_Comm mdi_engine = MDI_Accept_Communicator();
-
-// create a vector of atomic forces 
-
-// send the atomic forces to the engine 
-MDI_Send_Command(">FORCES", mdi_engine);
-MDI_Send(forces.data(), 3*natoms, MDI_DOUBLE, mdi_engine);
 
 ```
 :::

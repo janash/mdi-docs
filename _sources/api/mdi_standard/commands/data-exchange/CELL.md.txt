@@ -1,4 +1,5 @@
 # CELL
+Exchange cell vectors for simulation boxes.
 
 
 
@@ -22,6 +23,22 @@ Receive cell vectors.
 
 ```python
 import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# receive the cell vectors from the engine
+mdi.MDI_Send_Command("<CELL", mdi_engine)
+cell = mdi.MDI_Recv(9, mdi.MDI_DOUBLE, mdi_engine) 
+
+```
+:::
+
+:::{tab-item} Python (NumPy)
+:sync: python (numpy)
+
+```python
+import mdi
 import numpy as np
 
 # connect to the engine
@@ -32,7 +49,7 @@ cell = np.zeros(9, dtype=float)
 
 # receive the cell vectors from the engine
 mdi.MDI_Send_Command("<CELL", mdi_engine)
-mdi.MDI_Recv(9, mdi.MDI_DOUBLE, mdi_engine, buf=cell) 
+mdi.MDI_Recv(9, mdi.MDI_DOUBLE, mdi_engine, buf=cell)
 
 ```
 :::
@@ -76,6 +93,25 @@ Send cell vectors to resize simulation cell.
 
 :::{tab-item} Python
 :sync: python
+
+```python
+import mdi
+
+# connect to the engine
+mdi_engine = mdi.MDI_Accept_Communicator()
+
+# create a list of cell vectors
+cell = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+
+# send the cell vectors to the engine
+mdi.MDI_Send_Command(">CELL", mdi_engine)
+mdi.MDI_Send(cell, 9, mdi.MDI_DOUBLE, mdi_engine)
+
+```
+:::
+
+:::{tab-item} Python (NumPy)
+:sync: python (numpy)
 
 ```python
 import mdi

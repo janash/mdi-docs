@@ -1,11 +1,12 @@
 # MONKHORST-PACK_NPOINTS
+```{tags} Quantum Mechanics, DFT, Plane Wave DFT
+```
+
+
 
 
 
 ## >MONKHORST-PACK_NPOINTS
-
-```{tags} Quantum Mechanics, DFT, Plane Wave DFT
-```
 
 Send Monkhorst-Pack grid points
 

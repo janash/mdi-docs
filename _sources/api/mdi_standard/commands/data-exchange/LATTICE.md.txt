@@ -2,6 +2,7 @@
 
 
 
+
 ## >LATTICE
 
 Send lattice point charges
