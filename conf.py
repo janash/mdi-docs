@@ -94,7 +94,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'default'
 
 #================== Create API Pages ==================
-from create_page import generate_api_pages
+from create_page_v2 import generate_api_pages
 
 def setup(app):
     app.connect("config-inited", generate_api_pages)
