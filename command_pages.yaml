@@ -876,7 +876,7 @@ CPOTENTIAL:
             '
 FORCES:
   category: 2
-  summary: ""
+  summary: "Exchange atomic forces information."
   commands:
     - '>FORCES':
         count: 3 * NATOMS
@@ -1010,22 +1010,60 @@ FORCES:
           individual atom being provided in xyz order.
 KE_NUC:
   category: 2
-  summary: ""
+  summary: "Receive nuclear kinetic energy."
   commands:
     - <KE_NUC:
         count: 1
         datatype: MDI_DOUBLE
-        description: Receive nuclear kinetic energy
-        doc: Engine sends total kinetic energy of all nuclei.
+        description: Receive nuclear kinetic energy.
+        doc: >
+          If the engine is at the @DEFAULT node, it calculates and sends the total kinetic energy of all nuclei in its system to the driver. 
+          If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy, 
+          the engine is permitted to send the previously calculated energy instead of recalculating it.
+
+          If the engine is not at the @DEFAULT node, it sends its most recently calculated nuclear kinetic energy to the driver.
+        examples:
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the nuclear kinetic energy
+            double ke_nuc;
+
+            // receive the nuclear kinetic energy from the engine
+            MDI_Send_Command("<KE_NUC", mdi_engine);
+            MDI_Recv(&ke_nuc, 1, MDI_DOUBLE, mdi_engine);
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the nuclear kinetic energy from the engine
+            mdi.MDI_Send_Command("<KE_NUC", mdi_engine)
+            ke_nuc = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
 LABELS:
   category: 2
-  summary: ""
+  summary: "Receive a label for each atom in the system."
   commands:
     - <LABELS:
         count: MDI_LABEL_LENGTH * NATOMS
         datatype: MDI_CHAR
-        description: Receive atom labels
-        doc: Engine sends a label for each atom, intended for human-readable identification.
+        description: Receive atom labels.
+        format: An array of characters corresponding to the label of each atom in ascending order of atomic index, with each label consisting of `MDI_LABEL_LENGTH` characters and being padded with spaces where necessary.
+        doc: >
+          The engine sends a label for each atom in its system. 
+          "Labels" are intended primarily for the purpose of providing a human-readable identifier for each of the atoms, 
+          and do not have a standardized physical meaning. 
+          It is recommended that the labels correspond to the element of each atom (i.e., "H", "He", "Li", etc.), 
+          a name associated with atoms of a particular type (i.e., "Carboxyl_Hydrogen", "Methyl_Hydrogen"), 
+          or a similarly descriptive term. 
+          The atom labels may correspond to a number identifier (i.e., "1", "2", "3", etc.) in cases where more descriptive labels are not practical, 
+          but note that such labels must be represented using the MDI_CHAR data type, as indicated below. 
+          It is required that atoms having different physical properties (i.e., different force field terms in a molecular mechanics simulation or different nuclear charges in a quantum chemistry simulation) 
+          have different labels.
 LATTICE:
   category: 2
   summary: ""
