@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>FORCES &#8212; MolSSI Driver Interface (MDI)  documentation</title>
+    <title>ENERGY &#8212; MolSSI Driver Interface (MDI)  documentation</title>
   
   
   
@@ -44,12 +44,12 @@
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/data-exchange/FORCES';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/data-exchange/ENERGY';</script>
     <link rel="icon" href="../../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="KE_NUC" href="KE_NUC.html" />
-    <link rel="prev" title="ENERGY" href="ENERGY.html" />
+    <link rel="next" title="FORCES" href="FORCES.html" />
+    <link rel="prev" title="ELEMENTS" href="ELEMENTS.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -419,8 +419,8 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="DIMENSIONS.html">DIMENSIONS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ELECT_MULT.html">ELECT_MULT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ELEMENTS.html">ELEMENTS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ENERGY.html">ENERGY</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">FORCES</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">ENERGY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FORCES.html">FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LATTICE.html">LATTICE</a></li>
@@ -531,7 +531,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Data Exchange</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">FORCES</li>
+    <li class="breadcrumb-item active" aria-current="page">ENERGY</li>
   </ul>
 </nav>
 </div>
@@ -548,16 +548,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="forces">
-<h1>FORCES<a class="headerlink" href="#forces" title="Link to this heading">#</a></h1>
-<p>Exchange atomic forces information.</p>
+  <section id="energy">
+<h1>ENERGY<a class="headerlink" href="#energy" title="Link to this heading">#</a></h1>
+<p>Receive total energy information.</p>
 <section id="id1">
-<h2>&gt;FORCES<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Send atomic forces.</p>
+<h2>&lt;ENERGY<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Receive total energy.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
-<strong>Format:</strong> Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.</p>
-<p>The driver sends a set of atomic forces to the engine,  which replaces its internal forces with the forces sent by the driver.</p>
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>If the engine is at the &#64;DEFAULT node, it calculates and sends the total energy of its system to the driver.  If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy,  the engine is permitted to send the previously calculated energy instead of recalculating it.</p>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
@@ -569,158 +568,27 @@ Python</label><div class="sd-tab-content docutils">
 <span class="c1"># connect to the engine</span>
 <span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
 
-<span class="c1"># create an array of atomic forces</span>
-
-<span class="c1"># send the atomic forces to the engine </span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;FORCES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>  
+<span class="c1"># receive the total energy from the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;ENERGY&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-1">
-Python (NumPy)</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># connect to the engine</span>
-<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
-
-<span class="c1"># create an array of atomic forces</span>
-<span class="n">forces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="c1"># send the atomic forces to the engine</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;FORCES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-2">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-1">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="c1">// connect to the engine</span>
 <span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
 
-<span class="c1">// create a vector of atomic forces </span>
+<span class="c1">// create a buffer to hold the total energy</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">energy</span><span class="p">;</span>
 
-<span class="c1">// send the atomic forces to the engine </span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;FORCES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id2">
-<h2>&lt;FORCES<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>Receive atomic forces.</p>
-<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
-<strong>Format:</strong> Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.</p>
-<p>If the engine is at the <a class="reference internal" href="#%40DEFAULT"><span class="xref myst">&#64;DEFAULT</span></a> node, it calculates and sends its atomic forces to the driver.  These forces include all force contributions, including the force contributions associated with any constraint algorithm (e.g. SHAKE, RATTLE, etc.).  If the engine has previously calculated the atomic forces of the system,  and no intervening commands from the driver could have changed the atomic forces,  the engine is permitted to send the previously calculated atomic forces instead of recalculating them.</p>
-<section id="id3">
-<h3>Examples<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-3">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-
-<span class="c1"># connect to the engine</span>
-<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
-
-<span class="c1"># receive the atomic forces from the engine</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;FORCES&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">forces</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python (numpy)" for="sd-tab-item-4">
-Python (NumPy)</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># connect to the engine</span>
-<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
-
-<span class="c1"># create a buffer to hold the atomic forces</span>
-<span class="n">forces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="c1"># receive the atomic forces from the engine</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">,</span> <span class="n">buf</span><span class="o">=</span><span class="n">forces</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-5">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="c1">// connect to the engine</span>
-<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
-
-<span class="c1">// create a buffer to hold the atomic forces</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">forces</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">);</span>
-
-<span class="c1">// receive the atomic forces from the engine</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;FORCES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Recv</span><span class="p">(</span><span class="n">forces</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id4">
-<h2>&gt;+FORCES<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>Send additional atomic forces.</p>
-<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
-<strong>Format:</strong> Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.</p>
-<p>The driver sends a set of additional atomic forces to the engine,  which adds these forces to its internal forces.</p>
-<section id="id5">
-<h3>Examples<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-6">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-<span class="c1"># connect to the engine</span>
-<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
-
-<span class="c1"># create an array of additional atomic forces</span>
-
-<span class="c1"># send the additional atomic forces to the engine</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span>\<span class="s2">&quot;&gt;+FORCES</span><span class="se">\&quot;</span><span class="s2">, mdi_engine)</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span><span class="s2">&quot;</span>
-
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-7">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="c1">// connect to the engine</span>
-<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
-
-<span class="c1">// create a vector of additional atomic forces </span>
-
-<span class="c1">// send the additional atomic forces to the engine</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;+FORCES&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Send</span><span class="p">(</span><span class="n">forces</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="c1">// receive the total energy from the engine</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;ENERGY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">energy</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -740,20 +608,20 @@ C++</label><div class="sd-tab-content docutils">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ENERGY.html"
+       href="ELEMENTS.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ENERGY</p>
+        <p class="prev-next-title">ELEMENTS</p>
       </div>
     </a>
     <a class="right-next"
-       href="KE_NUC.html"
+       href="FORCES.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">KE_NUC</p>
+        <p class="prev-next-title">FORCES</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -775,16 +643,8 @@ C++</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;FORCES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&lt;ENERGY</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">&lt;FORCES</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Examples</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">&gt;+FORCES</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -793,7 +653,7 @@ C++</label><div class="sd-tab-content docutils">
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../../../_sources/api/mdi_standard/commands/data-exchange/FORCES.md.txt">
+    <a href="../../../../_sources/api/mdi_standard/commands/data-exchange/ENERGY.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

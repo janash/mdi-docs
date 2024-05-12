@@ -86,8 +86,7 @@ Receive atomic forces.
 **Quantity**: `3 * NATOMS`  
 **Format:** Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.
 
- If the engine is at the [@DEFAULT](@DEFAULT) node, it calculates and sends its atomic forces to the driver.  These forces include all force contributions, including the force contributions associated with any constraint algorithm (e.g. SHAKE, RATTLE, etc.).  If the engine has previously calculated the atomic forces of the system,  and no intervening commands from the driver could have changed the atomic forces,  the engine is permitted to send the previously calculated atomic forces instead of recalculating them.
-
+ If the engine is at the [@DEFAULT](%40DEFAULT) node, it calculates and sends its atomic forces to the driver.  These forces include all force contributions, including the force contributions associated with any constraint algorithm (e.g. SHAKE, RATTLE, etc.).  If the engine has previously calculated the atomic forces of the system,  and no intervening commands from the driver could have changed the atomic forces,  the engine is permitted to send the previously calculated atomic forces instead of recalculating them. 
 
 ### Examples
 
@@ -105,7 +104,7 @@ mdi_engine = mdi.MDI_Accept_Communicator()
 
 # receive the atomic forces from the engine
 mdi.MDI_Send_Command("<FORCES", mdi_engine)
-forces = mdi.MDI_Recv(3*natoms, mdi.MDI_DOUBLE, mdi_engine) 
+forces = mdi.MDI_Recv(3*natoms, mdi.MDI_DOUBLE, mdi_engine)
 
 ```
 :::
@@ -124,8 +123,7 @@ mdi_engine = mdi.MDI_Accept_Communicator()
 forces = np.zeros(3*natoms, dtype=float)
 
 # receive the atomic forces from the engine
-mdi.MDI_Send_Command("<FORCES", mdi_engine)
-mdi.MDI_Recv(3*natoms, mdi.MDI_DOUBLE, mdi_engine, buf=forces) 
+mdi.MDI_Recv(3*natoms, mdi.MDI_DOUBLE, mdi_engine, buf=forces)
 
 ```
 :::
@@ -160,8 +158,7 @@ Send additional atomic forces.
 **Quantity**: `3 * NATOMS`  
 **Format:** Sequentially ascending order of atomic index, with the forces for each individual atom being provided in xyz order.
 
- The driver sends a set of additional atomic forces to the engine,  which adds these forces to its internal forces.
-
+ The driver sends a set of additional atomic forces to the engine,  which adds these forces to its internal forces. 
 
 ### Examples
 
@@ -173,35 +170,14 @@ Send additional atomic forces.
 
 ```python
 import mdi
-
 # connect to the engine
 mdi_engine = mdi.MDI_Accept_Communicator()
 
 # create an array of additional atomic forces
-
-# send the additional atomic forces to the engine 
-mdi.MDI_Send_Command(">+FORCES", mdi_engine)
-mdi.MDI_Send(forces, 3*natoms, mdi.MDI_DOUBLE, mdi_engine)  
-
-```
-:::
-
-:::{tab-item} Python (NumPy)
-:sync: python (numpy)
-
-```python
-import mdi
-import numpy as np
-
-# connect to the engine
-mdi_engine = mdi.MDI_Accept_Communicator()
-
-# create an array of additional atomic forces
-forces = np.ones(3*natoms, dtype=float)
 
 # send the additional atomic forces to the engine
-mdi.MDI_Send_Command(">+FORCES", mdi_engine)
-mdi.MDI_Send(forces, 3*natoms, mdi.MDI_DOUBLE, mdi_engine)
+mdi.MDI_Send_Command(\">+FORCES\", mdi_engine)
+mdi.MDI_Send(forces, 3*natoms, mdi.MDI_DOUBLE, mdi_engine)"
 
 ```
 :::
@@ -218,9 +194,9 @@ MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
 // create a vector of additional atomic forces 
 
-// send the additional atomic forces to the engine 
+// send the additional atomic forces to the engine
 MDI_Send_Command(">+FORCES", mdi_engine);
-MDI_Send(forces.data(), 3*natoms, MDI_DOUBLE, mdi_engine);     
+MDI_Send(forces.data(), 3*natoms, MDI_DOUBLE, mdi_engine);
 
 ```
 :::

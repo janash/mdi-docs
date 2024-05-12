@@ -5,6 +5,8 @@ Commands that control the flow of the simulation and manage the engine's nodes.
 Command Name | Description
 ------------ | -----------
 [@](@) | Operations related to the current node.
+[@DEFAULT](@DEFAULT) | Go to the @DEFAULT node.
+[@FORCES](@FORCES) | Go to force calculation node.
 [@INIT_MC](@INIT_MC) | Initialize a Monte Carlo simulation.
 [@INIT_MD](@INIT_MD) | Initialize a Molecular Dynamics simulation.
 [@INIT_OPTG](@INIT_OPTG) | Initialize a geometry optimization.
@@ -12,6 +14,8 @@ Command Name | Description
 :hidden:
 
 @
+@DEFAULT
+@FORCES
 @INIT_MC
 @INIT_MD
 @INIT_OPTG

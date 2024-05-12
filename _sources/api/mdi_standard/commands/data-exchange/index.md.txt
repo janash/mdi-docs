@@ -11,6 +11,11 @@ Command Name | Description
 [CLATTICE](CLATTICE) | Send lattice point charges.
 [COORDS](COORDS) | Exchange atomic coordinate information.
 [CPOTENTIAL](CPOTENTIAL) | 
+[DENSITY](DENSITY) | Retrieve electronic density information.
+[DIMENSIONS](DIMENSIONS) | Retrieve simulation cell dimensionality (periodic or non-periodic).
+[ELECT_MULT](ELECT_MULT) | Exchange electronic multiplicity.
+[ELEMENTS](ELEMENTS) | Exchange atomic element information.
+[ENERGY](ENERGY) | Receive total energy information.
 [FORCES](FORCES) | Exchange atomic forces information.
 [KE_NUC](KE_NUC) | Receive nuclear kinetic energy.
 [LABELS](LABELS) | Receive a label for each atom in the system.
@@ -28,7 +33,7 @@ Command Name | Description
 [PE_NUC](PE_NUC) | 
 [POTENTIAL](POTENTIAL) | 
 [SPIN_POLARIZATION](SPIN_POLARIZATION) | 
-[STRESS](STRESS) | 
+[STRESS](STRESS) | Exchange virial stress tensor.
 [TOTCHARGE](TOTCHARGE) | 
 [VELOCITES](VELOCITES) | 
 ```{toctree}
@@ -41,6 +46,11 @@ CHARGES
 CLATTICE
 COORDS
 CPOTENTIAL
+DENSITY
+DIMENSIONS
+ELECT_MULT
+ELEMENTS
+ENERGY
 FORCES
 KE_NUC
 LABELS

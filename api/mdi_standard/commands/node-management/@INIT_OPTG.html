@@ -400,6 +400,8 @@ document.write(`
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MDI Standard by Category</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Simulation Control and Node Management</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%40.html">@</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%40DEFAULT.html">@DEFAULT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%40FORCES.html">@FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">@INIT_OPTG</a></li>
@@ -413,6 +415,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/COORDS.html">COORDS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/CPOTENTIAL.html">CPOTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data-exchange/DENSITY.html">DENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data-exchange/DIMENSIONS.html">DIMENSIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data-exchange/ELECT_MULT.html">ELECT_MULT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data-exchange/ELEMENTS.html">ELEMENTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data-exchange/ENERGY.html">ENERGY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/FORCES.html">FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/LABELS.html">LABELS</a></li>
@@ -464,9 +471,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (5)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (7)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/CLATTICE.html">CLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data-exchange/DENSITY.html">DENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data-exchange/ELECT_MULT.html">ELECT_MULT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data-exchange/NPOTENTIAL.html">NPOTENTIAL</a></li>
@@ -561,8 +570,8 @@ Python</label><div class="sd-tab-content docutils">
 <span class="c1"># connect to the engine</span>
 <span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
 
-<span class="c1"># initialize a Monte Carlo simulation</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;@INIT_MD&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="c1"># initialize a geometry optimization.</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;@INIT_OPTG&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -575,8 +584,8 @@ C++</label><div class="sd-tab-content docutils">
 <span class="c1">// connect to the engine</span>
 <span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
 
-<span class="c1">// initialize a Monte Carlo simulation</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;@INIT_MC&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="c1">// initialize a geometry optimization.</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;@INIT_OPTG&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

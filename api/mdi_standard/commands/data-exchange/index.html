@@ -400,6 +400,8 @@ document.write(`
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MDI Standard by Category</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../node-management/index.html">Simulation Control and Node Management</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40.html">@</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40DEFAULT.html">@DEFAULT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40FORCES.html">@FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_OPTG.html">@INIT_OPTG</a></li>
@@ -413,6 +415,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="COORDS.html">COORDS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CPOTENTIAL.html">CPOTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DENSITY.html">DENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DIMENSIONS.html">DIMENSIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ELECT_MULT.html">ELECT_MULT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ELEMENTS.html">ELEMENTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ENERGY.html">ENERGY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FORCES.html">FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
@@ -464,9 +471,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (5)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (7)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DENSITY.html">DENSITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ELECT_MULT.html">ELECT_MULT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
@@ -565,64 +574,79 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="CPOTENTIAL.html"><span class="doc std std-doc">CPOTENTIAL</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="FORCES.html"><span class="doc std std-doc">FORCES</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="DENSITY.html"><span class="doc std std-doc">DENSITY</span></a></p></td>
+<td><p>Retrieve electronic density information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="DIMENSIONS.html"><span class="doc std std-doc">DIMENSIONS</span></a></p></td>
+<td><p>Retrieve simulation cell dimensionality (periodic or non-periodic).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ELECT_MULT.html"><span class="doc std std-doc">ELECT_MULT</span></a></p></td>
+<td><p>Exchange electronic multiplicity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ELEMENTS.html"><span class="doc std std-doc">ELEMENTS</span></a></p></td>
+<td><p>Exchange atomic element information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ENERGY.html"><span class="doc std std-doc">ENERGY</span></a></p></td>
+<td><p>Receive total energy information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="FORCES.html"><span class="doc std std-doc">FORCES</span></a></p></td>
 <td><p>Exchange atomic forces information.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="KE_NUC.html"><span class="doc std std-doc">KE_NUC</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="KE_NUC.html"><span class="doc std std-doc">KE_NUC</span></a></p></td>
 <td><p>Receive nuclear kinetic energy.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="LABELS.html"><span class="doc std std-doc">LABELS</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="LABELS.html"><span class="doc std std-doc">LABELS</span></a></p></td>
 <td><p>Receive a label for each atom in the system.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">LATTICE</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">LATTICE</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="LATTICE_FORCES.html"><span class="doc std std-doc">LATTICE_FORCES</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="LATTICE_FORCES.html"><span class="doc std std-doc">LATTICE_FORCES</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="MASSES.html"><span class="doc std std-doc">MASSES</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="MASSES.html"><span class="doc std std-doc">MASSES</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html"><span class="doc std std-doc">MONKHORST-PACK_NPOINTS</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html"><span class="doc std std-doc">MONKHORST-PACK_NPOINTS</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="MONKHORST-PACK_SHIFT.html"><span class="doc std std-doc">MONKHORST-PACK_SHIFT</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="MONKHORST-PACK_SHIFT.html"><span class="doc std std-doc">MONKHORST-PACK_SHIFT</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NAME.html"><span class="doc std std-doc">NAME</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NAME.html"><span class="doc std std-doc">NAME</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NATOMS.html"><span class="doc std std-doc">NATOMS</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NATOMS.html"><span class="doc std std-doc">NATOMS</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NDENSITY.html"><span class="doc std std-doc">NDENSITY</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NDENSITY.html"><span class="doc std std-doc">NDENSITY</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">NLATTICE</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">NLATTICE</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NPOTENTIAL.html"><span class="doc std std-doc">NPOTENTIAL</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NPOTENTIAL.html"><span class="doc std std-doc">NPOTENTIAL</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="PE_ELEC.html"><span class="doc std std-doc">PE_ELEC</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="PE_ELEC.html"><span class="doc std std-doc">PE_ELEC</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="PE_NUC.html"><span class="doc std std-doc">PE_NUC</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="PE_NUC.html"><span class="doc std std-doc">PE_NUC</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="POTENTIAL.html"><span class="doc std std-doc">POTENTIAL</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="POTENTIAL.html"><span class="doc std std-doc">POTENTIAL</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="SPIN_POLARIZATION.html"><span class="doc std std-doc">SPIN_POLARIZATION</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="SPIN_POLARIZATION.html"><span class="doc std std-doc">SPIN_POLARIZATION</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="STRESS.html"><span class="doc std std-doc">STRESS</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="STRESS.html"><span class="doc std std-doc">STRESS</span></a></p></td>
+<td><p>Exchange virial stress tensor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="TOTCHARGE.html"><span class="doc std std-doc">TOTCHARGE</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="TOTCHARGE.html"><span class="doc std std-doc">TOTCHARGE</span></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="VELOCITES.html"><span class="doc std std-doc">VELOCITES</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="VELOCITES.html"><span class="doc std std-doc">VELOCITES</span></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

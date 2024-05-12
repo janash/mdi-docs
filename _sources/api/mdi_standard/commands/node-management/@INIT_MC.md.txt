@@ -29,7 +29,7 @@ import mdi
 mdi_engine = mdi.MDI_Accept_Communicator()
 
 # initialize a Monte Carlo simulation
-mdi.MDI_Send_Command(">@INIT_MC", mdi_engine)
+mdi.MDI_Send_Command("@INIT_MC", mdi_engine)
 
 ```
 :::
@@ -44,7 +44,7 @@ mdi.MDI_Send_Command(">@INIT_MC", mdi_engine)
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
 // initialize a Monte Carlo simulation
-MDI_Send_Command(">@INIT_MC", mdi_engine);
+MDI_Send_Command("@INIT_MC", mdi_engine);
 
 ```
 :::
