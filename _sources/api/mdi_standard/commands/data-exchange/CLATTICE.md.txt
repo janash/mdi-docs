@@ -2,24 +2,29 @@
 ```{tags} Quantum Mechanics, Gas Phase Quantum Mechanics
 ```
 
-Send lattice point charges.
+Send lattice coordinates.
 
 
 
 ## >CLATTICE
 
-Send lattice point charges.
+Send lattice coordinates.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `3 * NLATTICE`  
 **Format:** Sequentially ascending order of lattice charge index, with the coordinates for each individual lattice charge being provided in xyz order.
 
- This command, along with the [>NLATTICE](NLATTICE) and [>LATTICE](LATTICE) commands, allows the driver to assign a lattice of point charges to an engine, 
-which incorporates the effects of these charges in all further calculations. 
-After sending this command, the driver sends the coordinates of each of the point charges to the engine. 
-Prior to sending this command, the driver must have set the number of point charges using the [>NLATTICE](NLATTICE) comm[and.
+ This command, along with the [>NLATTICE](NLATTICE) and [>LATTICE](LATTICE)
+commands, allows the driver to assign a lattice of point charges to an engine,
+which incorporates the effects of these charges in all further calculations.
+After sending this command, the driver sends the coordinates of each of
+the point charges to the engine.
+Prior to sending this command, the driver must have set the number of point charges using the [>NLATTICE](NLATTICE)
+command.
 
-This command is primarily intended for use with gas-phase quantum mechanics codes. For an alternative command that is more appropriate for plane wave quantum mechanics codes, see the [>POTENTIAL](POTENTIAL) command.
+This command is primarily intended for use with gas-phase quantum mechanics codes. 
+For an alternative command that is more appropriate for plane
+wave quantum mechanics codes, see the [>POTENTIAL](POTENTIAL) command.
 
 
 ### Examples
@@ -32,26 +37,29 @@ This command is primarily intended for use with gas-phase quantum mechanics code
 
 ```python
 import mdi
-
 # connect to the engine
+
 mdi_engine = mdi.MDI_Accept_Communicator()
 
 # get lattice information
-lattice = # some array of lattice charge coordinates
-clattice = # some array of lattice charges
-nlattice = len(lattice) / 3
+lattice = # some array of lattice charges
+clattice = # some array of lattice charge coordintaes
+nlattice = len(lattice)
 
 # send the number of lattice points to the engine
 mdi.MDI_Send_Command(">NLATTICE", mdi_engine)
 mdi.MDI_Send(nlattice, 1, mdi.MDI_INT, mdi_engine)
 
-# send the lattice coordinates to the engine
-mdi.MDI_Send_Command(">LATTICE", mdi_engine)
-mdi.MDI_Send(lattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
 
-# send the lattice charges to the engine
+# send the lattice coordinates to the engine
 mdi.MDI_Send_Command(">CLATTICE", mdi_engine)
 mdi.MDI_Send(clattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
+
+
+# send the lattice charges to the engine
+mdi.MDI_Send_Command(">LATTICE", mdi_engine)
+
+mdi.MDI_Send(clattice, nlattice, mdi.MDI_DOUBLE, mdi_engine)
 
 ```
 :::
@@ -67,22 +75,25 @@ mdi.MDI_Send(clattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
 // get lattice information
-// get lattice information
-std::vector<double> lattice; // some vector of lattice charge coordinates
-std::vector<double> clattice; // some vector of lattice charges
-int nlattice = lattice.size() / 3;
+std::vector<double> lattice; // some vector of lattice charges
+
+std::vector<double> clattice; // some vector of lattice charge coordinates
+
+int nlattice = lattice.size();
 
 // send the number of lattice points to the engine
 MDI_Send_Command(">NLATTICE", mdi_engine);
 MDI_Send(nlattice, 1, MDI_INT, mdi_engine);
 
-// send the lattice coordinates to the engine
-MDI_Send_Command(">LATTICE", mdi_engine);
-MDI_Send(lattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
 
-// send the lattice charges to the engine
+// send the lattice coordinates to the engine
 MDI_Send_Command(">CLATTICE", mdi_engine);
 MDI_Send(clattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
+
+
+// send the lattice charges to the engine
+MDI_Send_Command(">LATTICE", mdi_engine);
+MDI_Send(clattice, nlattice, MDI_DOUBLE, mdi_engine);
 
 ```
 :::

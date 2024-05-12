@@ -10,6 +10,7 @@ Command Name | Description
 [@INIT_MC](@INIT_MC) | Initialize a Monte Carlo simulation.
 [@INIT_MD](@INIT_MD) | Initialize a Molecular Dynamics simulation.
 [@INIT_OPTG](@INIT_OPTG) | Initialize a geometry optimization.
+[EXIT](EXIT) | Exit the engine.
 ```{toctree}
 :hidden:
 
@@ -19,3 +20,4 @@ Command Name | Description
 @INIT_MC
 @INIT_MD
 @INIT_OPTG
+EXIT

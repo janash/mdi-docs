@@ -8,7 +8,7 @@ Command Name | Description
 [CELL](CELL) | Exchange cell vectors for simulation boxes.
 [CELL_DISPL](CELL_DISPL) | Exchange cell displacement vectors for simulation boxes.
 [CHARGES](CHARGES) | Exchange atomic charge information.
-[CLATTICE](CLATTICE) | Send lattice point charges.
+[CLATTICE](CLATTICE) | Send lattice coordinates.
 [COORDS](COORDS) | Exchange atomic coordinate information.
 [CPOTENTIAL](CPOTENTIAL) | 
 [DENSITY](DENSITY) | Retrieve electronic density information.
@@ -17,15 +17,16 @@ Command Name | Description
 [ELEMENTS](ELEMENTS) | Exchange atomic element information.
 [ENERGY](ENERGY) | Receive total energy information.
 [FORCES](FORCES) | Exchange atomic forces information.
+[KE](KE) | Receive total kinetic energy.
+[KE_ELEC](KE_ELEC) | Receive electronic kinetic energy.
 [KE_NUC](KE_NUC) | Receive nuclear kinetic energy.
 [LABELS](LABELS) | Receive a label for each atom in the system.
-[LATTICE](LATTICE) | 
-[LATTICE_FORCES](LATTICE_FORCES) | 
-[MASSES](MASSES) | 
+[LATTICE](LATTICE) | Send lattice point charges.
+[LATTICE_FORCES](LATTICE_FORCES) | Receive lattice forces.
+[MASSES](MASSES) | Retrieve atom masses.
 [MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS) | 
 [MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT) | 
-[NAME](NAME) | 
-[NATOMS](NATOMS) | 
+[NATOMS](NATOMS) | Receive number of atoms.
 [NDENSITY](NDENSITY) | 
 [NLATTICE](NLATTICE) | 
 [NPOTENTIAL](NPOTENTIAL) | 
@@ -52,6 +53,8 @@ ELECT_MULT
 ELEMENTS
 ENERGY
 FORCES
+KE
+KE_ELEC
 KE_NUC
 LABELS
 LATTICE
@@ -59,7 +62,6 @@ LATTICE_FORCES
 MASSES
 MONKHORST-PACK_NPOINTS
 MONKHORST-PACK_SHIFT
-NAME
 NATOMS
 NDENSITY
 NLATTICE

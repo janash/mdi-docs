@@ -8,7 +8,10 @@ Go to force calculation node.
 Go to @FORCES node.
 
 
- The engine proceeds to the next @FORCES node.  This command is not valid at the [@DEFAULT](#@DEFAULT) node. One would typically proceed to the @FORCES node after initializing a simulation (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
+ The engine proceeds to the next @FORCES node. 
+This command is not valid at the [@DEFAULT](#@DEFAULT) node.
+One would typically proceed to the @FORCES node after initializing a simulation 
+(e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
 
 
 ### Examples

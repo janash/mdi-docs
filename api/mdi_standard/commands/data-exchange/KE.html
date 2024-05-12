@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LABELS &#8212; MolSSI Driver Interface (MDI)  documentation</title>
+    <title>KE &#8212; MolSSI Driver Interface (MDI)  documentation</title>
   
   
   
@@ -44,12 +44,12 @@
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/data-exchange/LABELS';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/data-exchange/KE';</script>
     <link rel="icon" href="../../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="LATTICE" href="LATTICE.html" />
-    <link rel="prev" title="KE_NUC" href="KE_NUC.html" />
+    <link rel="next" title="KE_ELEC" href="KE_ELEC.html" />
+    <link rel="prev" title="FORCES" href="FORCES.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -422,10 +422,10 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="ELEMENTS.html">ELEMENTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ENERGY.html">ENERGY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FORCES.html">FORCES</a></li>
-<li class="toctree-l3"><a class="reference internal" href="KE.html">KE</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">KE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_ELEC.html">KE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">LABELS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LATTICE.html">LATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LATTICE_FORCES.html">LATTICE_FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MASSES.html">MASSES</a></li>
@@ -534,7 +534,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Data Exchange</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">LABELS</li>
+    <li class="breadcrumb-item active" aria-current="page">KE</li>
   </ul>
 </nav>
 </div>
@@ -551,16 +551,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="labels">
-<h1>LABELS<a class="headerlink" href="#labels" title="Link to this heading">#</a></h1>
-<p>Receive a label for each atom in the system.</p>
+  <section id="ke">
+<h1>KE<a class="headerlink" href="#ke" title="Link to this heading">#</a></h1>
+<p>Receive total kinetic energy.</p>
 <section id="id1">
-<h2>&lt;LABELS<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Receive atom labels.</p>
-<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_CHAR</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">MDI_LABEL_LENGTH</span> <span class="pre">*</span> <span class="pre">NATOMS</span></code><br />
-<strong>Format:</strong> An array of characters corresponding to the label of each atom in ascending order of atomic index, with each label consisting of <code class="docutils literal notranslate"><span class="pre">MDI_LABEL_LENGTH</span></code> characters and being padded with spaces where necessary.</p>
-<p>The engine sends a label for each atom in its system.  “Labels” are intended primarily for the purpose of providing a human-readable identifier for each of the atoms,  and do not have a standardized physical meaning.  It is recommended that the labels correspond to the element of each atom (i.e., “H”, “He”, “Li”, etc.),  a name associated with atoms of a particular type (i.e., “Carboxyl_Hydrogen”, “Methyl_Hydrogen”),  or a similarly descriptive term.  The atom labels may correspond to a number identifier (i.e., “1”, “2”, “3”, etc.) in cases where more descriptive labels are not practical,  but note that such labels must be represented using the MDI_CHAR data type, as indicated below.  It is required that atoms having different physical properties (i.e., different force field terms in a molecular mechanics simulation or different nuclear charges in a quantum chemistry simulation)  have different labels.</p>
+<h2>&lt;KE<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Receive total kinetic energy.</p>
+<p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>If the engine is at the &#64;DEFAULT node, it calculates and sends the total kinetic energy of to the driver.  If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy,  the engine is permitted to send the previously calculated energy instead of recalculating it.
+If the engine is not at the &#64;DEFAULT node, it sends its most recently calculated nuclear kinetic energy to the driver.</p>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
@@ -572,13 +572,9 @@ Python</label><div class="sd-tab-content docutils">
 <span class="c1"># connect to the engine</span>
 <span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
 
-<span class="c1"># get the number of atoms</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;NATOMS&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">natoms</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-
-<span class="c1"># receive the atom labels from the engine</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;LABELS&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="n">MDI_LABEL_LENGTH</span> <span class="o">*</span> <span class="n">natoms</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_CHAR</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="c1"># receive the nuclear kinetic energy from the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&lt;KE&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">kinetic_energy</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Recv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -587,22 +583,16 @@ Python</label><div class="sd-tab-content docutils">
 </input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-1">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="c1">// connect to the engine</span>
 <span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
 
-<span class="c1">// get the number of atoms</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">natoms</span><span class="p">;</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;NATOMS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="c1">// create a buffer to hold the nuclear kinetic energy</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">kinetic_energy</span><span class="p">;</span>
 
-<span class="c1">// create a buffer to hold the atom labels</span>
-<span class="n">std</span><span class="o">::&lt;</span><span class="n">vector</span><span class="o">&gt;</span><span class="kt">char</span><span class="w"> </span><span class="n">labels</span><span class="p">(</span><span class="n">MDI_LABEL_LENGTH</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">natoms</span><span class="p">);</span>
-
-<span class="c1">// receive the atom labels from the engine</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;LABELS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Recv</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_LABEL_LENGTH</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">natoms</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_CHAR</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">)</span>
+<span class="c1">// receive the nuclear kinetic energy from the engine</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&lt;KE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">kinetic_energy</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -622,20 +612,20 @@ C++</label><div class="sd-tab-content docutils">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="KE_NUC.html"
+       href="FORCES.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">KE_NUC</p>
+        <p class="prev-next-title">FORCES</p>
       </div>
     </a>
     <a class="right-next"
-       href="LATTICE.html"
+       href="KE_ELEC.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LATTICE</p>
+        <p class="prev-next-title">KE_ELEC</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -657,7 +647,7 @@ C++</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&lt;LABELS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&lt;KE</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -667,7 +657,7 @@ C++</label><div class="sd-tab-content docutils">
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../../../_sources/api/mdi_standard/commands/data-exchange/LABELS.md.txt">
+    <a href="../../../../_sources/api/mdi_standard/commands/data-exchange/KE.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

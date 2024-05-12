@@ -11,7 +11,8 @@ Initialize a Monte Carlo simulation.
 Go to @INIT_MC node.
 
 
- The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed,  proceeding to the `@INIT_MC` node
+ The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, 
+proceeding to the `@INIT_MC` node
 
 
 ### Examples

@@ -405,6 +405,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_OPTG.html">@INIT_OPTG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/EXIT.html">EXIT</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -421,6 +422,8 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="ELEMENTS.html">ELEMENTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ENERGY.html">ENERGY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FORCES.html">FORCES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="KE.html">KE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="KE_ELEC.html">KE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LATTICE.html">LATTICE</a></li>
@@ -428,7 +431,6 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MASSES.html">MASSES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NATOMS.html">NATOMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NDENSITY.html">NDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
@@ -443,6 +445,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../information/index.html">Information</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../information/NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../information/VERSION.html">VERSION</a></li>
 </ul>
 </li>
@@ -551,18 +554,23 @@ document.write(`
   <section id="clattice">
 <h1>CLATTICE<a class="headerlink" href="#clattice" title="Link to this heading">#</a></h1>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/quantum-mechanics.html"><span class="doc">Quantum Mechanics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/gas-phase-quantum-mechanics.html"><span class="doc">Gas Phase Quantum Mechanics</span></a></p>
-<p>Send lattice point charges.</p>
+<p>Send lattice coordinates.</p>
 <section id="id1">
 <h2>&gt;CLATTICE<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Send lattice point charges.</p>
+<p>Send lattice coordinates.</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
 <strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NLATTICE</span></code><br />
 <strong>Format:</strong> Sequentially ascending order of lattice charge index, with the coordinates for each individual lattice charge being provided in xyz order.</p>
-<p>This command, along with the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a> and <a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">&gt;LATTICE</span></a> commands, allows the driver to assign a lattice of point charges to an engine,
+<p>This command, along with the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a> and <a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">&gt;LATTICE</span></a>
+commands, allows the driver to assign a lattice of point charges to an engine,
 which incorporates the effects of these charges in all further calculations.
-After sending this command, the driver sends the coordinates of each of the point charges to the engine.
-Prior to sending this command, the driver must have set the number of point charges using the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a> comm[and.</p>
-<p>This command is primarily intended for use with gas-phase quantum mechanics codes. For an alternative command that is more appropriate for plane wave quantum mechanics codes, see the <a class="reference internal" href="POTENTIAL.html"><span class="doc std std-doc">&gt;POTENTIAL</span></a> command.</p>
+After sending this command, the driver sends the coordinates of each of
+the point charges to the engine.
+Prior to sending this command, the driver must have set the number of point charges using the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a>
+command.</p>
+<p>This command is primarily intended for use with gas-phase quantum mechanics codes.
+For an alternative command that is more appropriate for plane
+wave quantum mechanics codes, see the <a class="reference internal" href="POTENTIAL.html"><span class="doc std std-doc">&gt;POTENTIAL</span></a> command.</p>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
@@ -570,26 +578,29 @@ Prior to sending this command, the driver must have set the number of point char
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
-
 <span class="c1"># connect to the engine</span>
+
 <span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
 
 <span class="c1"># get lattice information</span>
-<span class="n">lattice</span> <span class="o">=</span> <span class="c1"># some array of lattice charge coordinates</span>
-<span class="n">clattice</span> <span class="o">=</span> <span class="c1"># some array of lattice charges</span>
-<span class="n">nlattice</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+<span class="n">lattice</span> <span class="o">=</span> <span class="c1"># some array of lattice charges</span>
+<span class="n">clattice</span> <span class="o">=</span> <span class="c1"># some array of lattice charge coordintaes</span>
+<span class="n">nlattice</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
 
 <span class="c1"># send the number of lattice points to the engine</span>
 <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;NLATTICE&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">nlattice</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
-<span class="c1"># send the lattice coordinates to the engine</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;LATTICE&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
-<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">nlattice</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
-<span class="c1"># send the lattice charges to the engine</span>
+<span class="c1"># send the lattice coordinates to the engine</span>
 <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;CLATTICE&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">clattice</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">nlattice</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+
+<span class="c1"># send the lattice charges to the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;LATTICE&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">clattice</span><span class="p">,</span> <span class="n">nlattice</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -604,22 +615,25 @@ C++</label><div class="sd-tab-content docutils">
 <span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
 
 <span class="c1">// get lattice information</span>
-<span class="c1">// get lattice information</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lattice</span><span class="p">;</span><span class="w"> </span><span class="c1">// some vector of lattice charge coordinates</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">clattice</span><span class="p">;</span><span class="w"> </span><span class="c1">// some vector of lattice charges</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">nlattice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lattice</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lattice</span><span class="p">;</span><span class="w"> </span><span class="c1">// some vector of lattice charges</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">clattice</span><span class="p">;</span><span class="w"> </span><span class="c1">// some vector of lattice charge coordinates</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">nlattice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lattice</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
 
 <span class="c1">// send the number of lattice points to the engine</span>
 <span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;NLATTICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 <span class="n">MDI_Send</span><span class="p">(</span><span class="n">nlattice</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 
-<span class="c1">// send the lattice coordinates to the engine</span>
-<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;LATTICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
-<span class="n">MDI_Send</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">nlattice</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 
-<span class="c1">// send the lattice charges to the engine</span>
+<span class="c1">// send the lattice coordinates to the engine</span>
 <span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;CLATTICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 <span class="n">MDI_Send</span><span class="p">(</span><span class="n">clattice</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">nlattice</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+
+
+<span class="c1">// send the lattice charges to the engine</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;LATTICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Send</span><span class="p">(</span><span class="n">clattice</span><span class="p">,</span><span class="w"> </span><span class="n">nlattice</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

@@ -11,7 +11,8 @@ Initialize a Molecular Dynamics simulation.
 Go to @INIT_MD node.
 
 
- The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed,  proceeding to the `@INIT_MD` node
+ The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, 
+proceeding to the `@INIT_MD` node
 
 
 :::{admonition} Note

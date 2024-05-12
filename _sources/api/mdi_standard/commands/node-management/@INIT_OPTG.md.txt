@@ -8,7 +8,8 @@ Initialize a geometry optimization.
 Go to @INIT_OPTG node.
 
 
- The engine performs any initialization operations that are necessary before a geometry optimization can be performed,  proceeding to the @INIT_OPTG node.
+ The engine performs any initialization operations that are necessary before a geometry optimization can be performed, 
+proceeding to the @INIT_OPTG node.
 
 
 :::{admonition} Note

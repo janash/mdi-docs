@@ -405,6 +405,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_OPTG.html">@INIT_OPTG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/EXIT.html">EXIT</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -421,6 +422,8 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="ELEMENTS.html">ELEMENTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ENERGY.html">ENERGY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FORCES.html">FORCES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="KE.html">KE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="KE_ELEC.html">KE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="KE_NUC.html">KE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LABELS.html">LABELS</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">LATTICE</a></li>
@@ -428,7 +431,6 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MASSES.html">MASSES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NATOMS.html">NATOMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NDENSITY.html">NDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
@@ -443,6 +445,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../information/index.html">Information</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../information/NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../information/VERSION.html">VERSION</a></li>
 </ul>
 </li>
@@ -550,12 +553,67 @@ document.write(`
                   
   <section id="lattice">
 <h1>LATTICE<a class="headerlink" href="#lattice" title="Link to this heading">#</a></h1>
+<p>Send lattice point charges.</p>
 <section id="id1">
 <h2>&gt;LATTICE<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Send lattice point charges</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">NLATTICE</span></code></p>
-<p>Driver assigns a lattice of point charges to the engine.</p>
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">NLATTICE</span></code><br />
+<strong>Format:</strong> Sequentially ascending order of lattice charge index.</p>
+<p>This command, along with the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a> and <a class="reference internal" href="CLATTICE.html"><span class="doc std std-doc">&gt;CLATTICE</span></a> commands,  allows the driver to assign a lattice of point charges to an engine,  which incorporates the effects of these charges in all further calculations.  After sending this command, the driver sends the charges of each of the point charges to the engine.  Prior to sending this command, the driver must have set the number of point charges using the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a> command.
+This command is primarily intended for use with gas-phase quantum mechanics codes.  For an alternative command that is more appropriate for plane wave quantum mechanics codes,  see the <a class="reference internal" href="POTENTIAL.html"><span class="doc std std-doc">&gt;POTENTIAL</span></a> command.</p>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># send nlattice points to the engine</span>
+<span class="n">nlattice</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;NLATTICE&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">nlattice</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+<span class="c1"># create a list of lattice point charges</span>
+
+<span class="c1"># send the lattice point charges to the engine</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;LATTICE&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">(</span><span class="n">lattice_charges</span><span class="p">,</span> <span class="n">NLATTICE</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_DOUBLE</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-1">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="c1">// connect to the engine</span>
+<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
+
+<span class="c1">// send nlattice points to the engine</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">nlattice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;NLATTICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Send</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nlattice</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+
+<span class="c1">// create a buffer to hold the lattice point charges</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lattice_charges</span><span class="p">(</span><span class="n">NLATTICE</span><span class="p">);</span>
+
+<span class="c1">// fill the lattice point charges with some values</span>
+
+<span class="c1">// send the lattice point charges to the engine</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;LATTICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Send</span><span class="p">(</span><span class="n">lattice_charges</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">NLATTICE</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -605,7 +663,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;LATTICE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;LATTICE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
