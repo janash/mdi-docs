@@ -68,7 +68,7 @@
   commands:
     - '@INIT_MC':
         description: "Go to @INIT_MC node."
-        doc: >
+        doc: |
           The engine performs any initialization operations that are necessary before a Monte Carlo simulation can be performed, 
           proceeding to the `@INIT_MC` node
         examples:
@@ -100,7 +100,7 @@
           type: caution
           title: "Note"
           content: "This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used."
-        doc: >
+        doc: |
           The engine performs any initialization operations that are necessary before a molecular dynamics simulation can be performed, 
           proceeding to the `@INIT_MD` node
         examples:
@@ -130,7 +130,7 @@
           type: caution
           title: "Note"
           content: "This command may change the engine's atomic coordinates under certain circumstances, such as if the SHAKE algorithm is used."
-        doc: >
+        doc: |
           The engine performs any initialization operations that are necessary before a geometry optimization can be performed, 
           proceeding to the @INIT_OPTG node.
         examples:
@@ -184,10 +184,11 @@
   commands:
     - '@FORCES':
         description: "Go to @FORCES node."
-        doc: >
+        doc: |
           The engine proceeds to the next @FORCES node. 
           This command is not valid at the [@DEFAULT](#@DEFAULT) node.
-          One would typically proceed to the @FORCES node after initializing a simulation (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
+          One would typically proceed to the @FORCES node after initializing a simulation 
+          (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
         examples:
           python: |
             import mdi
@@ -211,6 +212,35 @@
 
             // go to forces node.
             MDI_Send_Command("@FORCES", mdi_engine);
+EXIT:
+  category: 1
+  summary: "Exit the engine."
+  commands:
+    - EXIT:
+        description: "End engine execution."
+        doc: >
+          The engine terminates and can no longer be sent commands.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # perform some operations
+
+            # exit the engine
+            mdi.MDI_Send_Command("EXIT", mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // perform some operations
+
+            // exit the engine
+            MDI_Send_Command("EXIT", mdi_engine);
 CDENSITY:
   category: 2
   summary: "Exchange Cartesian coordinates for grid points."
@@ -647,7 +677,7 @@ CHARGES:
         format: Sequentially ascending order of atomic index
 CLATTICE:
   category: 2
-  summary: "Send lattice point charges."
+  summary: "Send lattice coordinates."
   tags:
     - Quantum Mechanics
     - Gas Phase Quantum Mechanics
@@ -655,97 +685,74 @@ CLATTICE:
     - '>CLATTICE':
         count: 3 * NLATTICE
         datatype: MDI_DOUBLE
-        description: Send lattice point charges.
-        doc: "This command, along with the [>NLATTICE](NLATTICE) and [>LATTICE](LATTICE)\
-          \ commands, allows the driver to assign a lattice of point charges to an engine,\
-          \ \nwhich incorporates the effects of these charges in all further calculations.\
-          \ \nAfter sending this command, the driver sends the coordinates of each of\
-          \ the point charges to the engine. \nPrior to sending this command, the driver\
-          \ must have set the number of point charges using the [>NLATTICE](NLATTICE)\
-          \ comm[and.\n\nThis command is primarily intended for use with gas-phase quantum\
-          \ mechanics codes. For an alternative command that is more appropriate for plane\
-          \ wave quantum mechanics codes, see the [>POTENTIAL](POTENTIAL) command.\n"
+        description: Send lattice coordinates.
+        doc: |
+          This command, along with the [>NLATTICE](NLATTICE) and [>LATTICE](LATTICE)
+          commands, allows the driver to assign a lattice of point charges to an engine,
+          which incorporates the effects of these charges in all further calculations.
+          After sending this command, the driver sends the coordinates of each of
+          the point charges to the engine.
+          Prior to sending this command, the driver must have set the number of point charges using the [>NLATTICE](NLATTICE)
+          command.
+          
+          This command is primarily intended for use with gas-phase quantum mechanics codes. 
+          For an alternative command that is more appropriate for plane
+          wave quantum mechanics codes, see the [>POTENTIAL](POTENTIAL) command.
         examples:
-          cpp: '#include "mdi.h"
-
+          cpp: |
+            #include "mdi.h"
             #include <vector>
 
-
             // connect to the engine
-
             MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
-
             // get lattice information
+            std::vector<double> lattice; // some vector of lattice charges
 
-            // get lattice information
+            std::vector<double> clattice; // some vector of lattice charge coordinates
 
-            std::vector<double> lattice; // some vector of lattice charge coordinates
-
-            std::vector<double> clattice; // some vector of lattice charges
-
-            int nlattice = lattice.size() / 3;
-
+            int nlattice = lattice.size();
 
             // send the number of lattice points to the engine
-
             MDI_Send_Command(">NLATTICE", mdi_engine);
-
             MDI_Send(nlattice, 1, MDI_INT, mdi_engine);
 
 
             // send the lattice coordinates to the engine
-
-            MDI_Send_Command(">LATTICE", mdi_engine);
-
-            MDI_Send(lattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
+            MDI_Send_Command(">CLATTICE", mdi_engine);
+            MDI_Send(clattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
 
 
             // send the lattice charges to the engine
+            MDI_Send_Command(">LATTICE", mdi_engine);
+            MDI_Send(clattice, nlattice, MDI_DOUBLE, mdi_engine);
 
-            MDI_Send_Command(">CLATTICE", mdi_engine);
-
-            MDI_Send(clattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
-
-            '
-          python: 'import mdi
-
-
+          python: |
+            import mdi
             # connect to the engine
 
             mdi_engine = mdi.MDI_Accept_Communicator()
 
-
             # get lattice information
-
-            lattice = # some array of lattice charge coordinates
-
-            clattice = # some array of lattice charges
-
-            nlattice = len(lattice) / 3
-
+            lattice = # some array of lattice charges
+            clattice = # some array of lattice charge coordintaes
+            nlattice = len(lattice)
 
             # send the number of lattice points to the engine
-
             mdi.MDI_Send_Command(">NLATTICE", mdi_engine)
-
             mdi.MDI_Send(nlattice, 1, mdi.MDI_INT, mdi_engine)
 
 
             # send the lattice coordinates to the engine
-
-            mdi.MDI_Send_Command(">LATTICE", mdi_engine)
-
-            mdi.MDI_Send(lattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
+            mdi.MDI_Send_Command(">CLATTICE", mdi_engine)
+            mdi.MDI_Send(clattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
 
 
             # send the lattice charges to the engine
+            mdi.MDI_Send_Command(">LATTICE", mdi_engine)
 
-            mdi.MDI_Send_Command(">CLATTICE", mdi_engine)
+            mdi.MDI_Send(clattice, nlattice, mdi.MDI_DOUBLE, mdi_engine)
 
-            mdi.MDI_Send(clattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
-
-            '
         format: Sequentially ascending order of lattice charge index, with the coordinates
           for each individual lattice charge being provided in xyz order.
 COORDS:
@@ -1376,6 +1383,78 @@ ENERGY:
             # receive the total energy from the engine
             mdi.MDI_Send_Command("<ENERGY", mdi_engine)
             energy = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
+KE:
+  category: 2
+  summary: "Receive total kinetic energy."
+  commands:
+    - <KE:
+        count: 1
+        datatype: MDI_DOUBLE
+        description: Receive total kinetic energy.
+        doc: >
+          If the engine is at the @DEFAULT node, it calculates and sends the total kinetic energy of to the driver. 
+          If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy, 
+          the engine is permitted to send the previously calculated energy instead of recalculating it.
+
+          If the engine is not at the @DEFAULT node, it sends its most recently calculated nuclear kinetic energy to the driver.
+        examples:
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the nuclear kinetic energy
+            double kinetic_energy;
+
+            // receive the nuclear kinetic energy from the engine
+            MDI_Send_Command("<KE", mdi_engine);
+            MDI_Recv(&kinetic_energy, 1, MDI_DOUBLE, mdi_engine);
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the nuclear kinetic energy from the engine
+            mdi.MDI_Send_Command("<KE", mdi_engine)
+            kinetic_energy = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
+KE_ELEC:
+  category: 2
+  summary: "Receive electronic kinetic energy."
+  commands:
+    - <KE_NUC:
+        count: 1
+        datatype: MDI_DOUBLE
+        description: Receive kinetic energy of all electrons in the system.
+        doc: >
+          If the engine is at the @DEFAULT node, it calculates and sends the total kinetic energy of all electrons in its system to the driver. 
+          If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy, 
+          the engine is permitted to send the previously calculated energy instead of recalculating it.
+
+          If the engine is not at the @DEFAULT node, it sends its most recently calculated electronic kinetic energy to the driver.
+        examples:
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the nuclear kinetic energy
+            double ke_elec;
+
+            // receive the nuclear kinetic energy from the engine
+            MDI_Send_Command("<KE_NUC", mdi_engine);
+            MDI_Recv(&ke_elec, 1, MDI_DOUBLE, mdi_engine);
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the nuclear kinetic energy from the engine
+            mdi.MDI_Send_Command("<KE_ELEC", mdi_engine)
+            ke_elec = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
 KE_NUC:
   category: 2
   summary: "Receive nuclear kinetic energy."
@@ -1432,33 +1511,263 @@ LABELS:
           but note that such labels must be represented using the MDI_CHAR data type, as indicated below. 
           It is required that atoms having different physical properties (i.e., different force field terms in a molecular mechanics simulation or different nuclear charges in a quantum chemistry simulation) 
           have different labels.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # get the number of atoms
+            mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+            natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+            # receive the atom labels from the engine
+            mdi.MDI_Send_Command("<LABELS", mdi_engine)
+            labels = mdi.MDI_Recv(MDI_LABEL_LENGTH * natoms, mdi.MDI_CHAR, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+            #include <vector>
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // get the number of atoms
+            int natoms;
+            MDI_Send_Command("<NATOMS", mdi_engine);
+            MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
+
+            // create a buffer to hold the atom labels
+            std::<vector>char labels(MDI_LABEL_LENGTH * natoms);
+
+            // receive the atom labels from the engine
+            MDI_Send_Command("<LABELS", mdi_engine);
+            MDI_Recv(labels, MDI_LABEL_LENGTH * natoms, MDI_CHAR, mdi_engine)
 LATTICE:
   category: 2
-  summary: ""
+  summary: "Send lattice point charges."
   commands:
     - '>LATTICE':
         count: NLATTICE
         datatype: MDI_DOUBLE
         description: Send lattice point charges
-        doc: Driver assigns a lattice of point charges to the engine.
+        tags:
+          - Quantum Mechanics
+          - Gas Phase Quantum Mechanics
+        format: Sequentially ascending order of lattice charge index.
+        doc: >
+          This command, along with the [>NLATTICE](NLATTICE) and [>CLATTICE](CLATTICE) commands, 
+          allows the driver to assign a lattice of point charges to an engine, 
+          which incorporates the effects of these charges in all further calculations. 
+          After sending this command, the driver sends the charges of each of the point charges to the engine. 
+          Prior to sending this command, the driver must have set the number of point charges using the [>NLATTICE](NLATTICE) command.
+
+          This command is primarily intended for use with gas-phase quantum mechanics codes. 
+          For an alternative command that is more appropriate for plane wave quantum mechanics codes, 
+          see the [>POTENTIAL](POTENTIAL) command.
+        examples:
+          cpp: |
+            #include "mdi.h"
+            #include <vector>
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send nlattice points to the engine
+            int nlattice = 10;
+            MDI_Send_Command(">NLATTICE", mdi_engine);
+            MDI_Send(&nlattice, 1, MDI_INT, mdi_engine);
+
+            // create a buffer to hold the lattice point charges
+            std::vector<double> lattice_charges(NLATTICE);
+
+            // fill the lattice point charges with some values
+
+            // send the lattice point charges to the engine
+            MDI_Send_Command(">LATTICE", mdi_engine);
+            MDI_Send(lattice_charges.data(), NLATTICE, MDI_DOUBLE, mdi_engine);
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send nlattice points to the engine
+            nlattice = 10
+            mdi.MDI_Send_Command(">NLATTICE", mdi_engine)
+            mdi.MDI_Send(nlattice, 1, mdi.MDI_INT, mdi_engine)
+
+            # create a list of lattice point charges
+
+            # send the lattice point charges to the engine
+            mdi.MDI_Send_Command(">LATTICE", mdi_engine)
+            mdi.MDI_Send(lattice_charges, NLATTICE, mdi.MDI_DOUBLE, mdi_engine)
 LATTICE_FORCES:
   category: 2
-  summary: ""
+  summary: "Receive lattice forces."
   commands:
     - <LATTICE_FORCES:
         count: 3 * NLATTICE
         datatype: MDI_DOUBLE
-        description: Receive lattice forces
-        doc: Engine sends forces on lattice charges to the driver.
+        description: Receive lattice forces on lattice charges.
+        format: Sequentially ascending order of lattice charge index, with the forces for each individual lattice charge being provided in xyz order.
+        tags:
+          - Quantum Mechanics
+          - Gas Phase Quantum Mechanics
+        doc: 
+          If the engine is at the [@DEFAULT](#@DEFAULT) node, it calculates and sends the forces on any lattice charges (which must have previously assigned with the [>LATTICE](#LATTICE) command) to the driver.
+          Prior to sending this command, the driver must have set the number, coordinates, and magnitudes of the lattice charges using the [>NLATTICE](NLATTICE), [>CLATTICE](CLATTICE), and [>LATTICE](LATTICE) commands. 
+          These forces must include only electrostatic interactions between the lattice charges and the atomic nuclei, and between the lattice charges and any electrons. 
+          They must not include electrostatic interactions between the lattice charges and other lattice charges. 
+          If the engine has previously calculated these forces, and no intervening commands from the driver could have changed the forces, the engine is permitted to send the previously calculated forces instead of recalculating them.  
+
+          If the engine is not at the @DEFAULT node, it sends its most recently calculated lattice forces to the driver.  
+
+          This command is primarily intended for use with gas-phase quantum mechanics codes.
+        examples:
+          cpp: |
+            #include "mdi.h"
+            #include <vector>
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // get lattice information
+            std::vector<double> lattice; // some vector of lattice charges
+
+            std::vector<double> clattice; // some vector of lattice charge coordinates
+
+            int nlattice = lattice.size();
+
+            // send the number of lattice points to the engine
+            MDI_Send_Command(">NLATTICE", mdi_engine);
+            MDI_Send(nlattice, 1, MDI_INT, mdi_engine);
+
+
+            // send the lattice coordinates to the engine
+            MDI_Send_Command(">CLATTICE", mdi_engine);
+            MDI_Send(clattice, 3*nlattice, MDI_DOUBLE, mdi_engine);
+
+
+            // send the lattice charges to the engine
+            MDI_Send_Command(">LATTICE", mdi_engine);
+            MDI_Send(clattice, nlattice, MDI_DOUBLE, mdi_engine);
+
+            // receive the lattice forces from the engine
+            std::vector<double> lattice_forces(3*nlattice);
+            MDI_Send_Command("<LATTICE_FORCES", mdi_engine);
+            MDI_Recv(lattice_forces.data(), 3*nlattice, MDI_DOUBLE, mdi_engine);
+          python: |
+            import mdi
+            # connect to the engine
+
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # get lattice information
+            lattice = # some array of lattice charges
+            clattice = # some array of lattice charge coordintaes
+            nlattice = len(lattice)
+
+            # send the number of lattice points to the engine
+            mdi.MDI_Send_Command(">NLATTICE", mdi_engine)
+            mdi.MDI_Send(nlattice, 1, mdi.MDI_INT, mdi_engine)
+
+            # send the lattice coordinates to the engine
+            mdi.MDI_Send_Command(">CLATTICE", mdi_engine)
+            mdi.MDI_Send(clattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
+
+            # send the lattice charges to the engine
+            mdi.MDI_Send_Command(">LATTICE", mdi_engine)
+            mdi.MDI_Send(clattice, nlattice, mdi.MDI_DOUBLE, mdi_engine)
+
+            # receive the lattice forces from the engine
+            lattice_forces = mdi.MDI_Recv(3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
+          python(numpy): |
+            import mdi
+            import numpy as np
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # get lattice information
+            lattice = # some array of lattice charges
+            clattice = # some array of lattice charge coordintaes
+            nlattice = len(lattice)
+
+            # send the number of lattice points to the engine
+            mdi.MDI_Send_Command(">NLATTICE", mdi_engine)
+            mdi.MDI_Send(nlattice, 1, mdi.MDI_INT, mdi_engine)
+
+            # send the lattice coordinates to the engine
+            mdi.MDI_Send_Command(">CLATTICE", mdi_engine)
+            mdi.MDI_Send(clattice, 3*nlattice, mdi.MDI_DOUBLE, mdi_engine)
+
+            # send the lattice charges to the engine
+            mdi.MDI_Send_Command(">LATTICE", mdi_engine)
+            mdi.MDI_Send(clattice, nlattice, mdi.MDI_DOUBLE, mdi_engine)
+
+            # receive the lattice forces from the engine
+            lattice_forces = np.zeros(3*nlattice, dtype=float)
+            mdi.MDI_Recv(3*nlattice, mdi.MDI_DOUBLE, mdi_engine, buf=lattice_forces)
 MASSES:
   category: 2
-  summary: ""
+  summary: "Retrieve atom masses."
   commands: 
     - <MASSES:
         count: NATOMS
         datatype: MDI_DOUBLE
         description: Receive atom masses
-        doc: Engine sends the mass of each atom to the driver.
+        doc: |
+          The engine sends the driver the mass of each of the atoms.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # get the number of atoms
+            mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+            natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+            # receive the atom masses from the engine
+            mdi.MDI_Send_Command("<MASSES", mdi_engine)
+            masses = mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine)
+          python (numpy): |
+            import mdi
+            import numpy as np
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # get the number of atoms
+            mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+            natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+
+            # create a buffer to hold the atom masses
+            masses = np.zeros(natoms, dtype=float)
+
+            # receive the atom masses from the engine
+            mdi.MDI_Send_Command("<MASSES", mdi_engine)
+            mdi.MDI_Recv(natoms, mdi.MDI_DOUBLE, mdi_engine, buf=masses)
+          cpp: |
+            #include "mdi.h"
+            #include <vector>
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // get the number of atoms
+            int natoms;
+            MDI_Send_Command("<NATOMS", mdi_engine);
+            MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
+
+            // create a buffer to hold the atom masses
+            std::vector<double> masses(natoms);
+
+            // receive the atom masses from the engine
+            MDI_Send_Command("<MASSES", mdi_engine);
+            MDI_Recv(masses.data(), natoms, MDI_DOUBLE, mdi_engine)
 MONKHORST-PACK_NPOINTS:
   category: 2
   summary: ""
@@ -1494,8 +1803,8 @@ MONKHORST-PACK_SHIFT:
         description: Send Monkhorst-Pack grid shift
         doc: Driver sends shift for k-points on Monkhorst-Pack grid to engine.
 NAME:
-  category: 2
-  summary: ""
+  category: 3
+  summary: "Receive engine name."
   commands:
     - <NAME:
         category: 3
@@ -1503,16 +1812,61 @@ NAME:
         datatype: MDI_CHAR
         description: Receive engine name
         doc: Engine sends its name as per `-name` option in MDI initialization.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the engine name from the engine
+            mdi.MDI_Send_Command("<NAME", mdi_engine)
+            name = mdi.MDI_Recv(MDI_NAME_LENGTH, mdi.MDI_CHAR, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+            #include <vector>
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the engine name
+            std::vector<char> name(MDI_NAME_LENGTH);
+
+            // receive the engine name from the engine
+            MDI_Send_Command("<NAME", mdi_engine);
+            MDI_Recv(name.data(), MDI_NAME_LENGTH, MDI_CHAR, mdi_engine)
 NATOMS:
   category: 2
-  summary: ""
+  summary: "Receive number of atoms."
   commands:
     - <NATOMS:
         category: 2
         count: 1
         datatype: MDI_INT
         description: Receive number of atoms
-        doc: Engine sends the number of atoms in its system to the driver.
+        doc: The engine sends the driver the number of atoms in the engine's system.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the number of atoms from the engine
+            mdi.MDI_Send_Command("<NATOMS", mdi_engine)
+            natoms = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the number of atoms
+            int natoms;
+
+            // receive the number of atoms from the engine
+            MDI_Send_Command("<NATOMS", mdi_engine);
+            MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
 NDENSITY:
   category: 2
   summary: ""
