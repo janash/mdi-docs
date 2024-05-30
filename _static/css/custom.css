@@ -13,6 +13,7 @@ html[data-theme="light"] {
 	--pst-color-primary-highlight: #bc151b;
 	--pst-color-secondary: #1A1A1A;
 	--pst-color-secondary-highlight: #222222;
+	--pst-color-table-row-hover-bg: #1a1a1a2b; 
 
 }
 
@@ -26,6 +27,7 @@ html[data-theme="dark"] {
 	--pst-color-surface: #222222;
 	--pst-color-secondary: #ffffff;
 	--pst-color-secondary-highlight: #ffffffb3;
+	--pst-color-table-row-hover-bg: #1a1a1a2b; 
 }
 
 html[data-theme="light"] a:hover {
