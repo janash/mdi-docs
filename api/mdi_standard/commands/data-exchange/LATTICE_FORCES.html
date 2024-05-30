@@ -14,36 +14,36 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=03a2335e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/commands/data-exchange/LATTICE_FORCES';</script>
     <link rel="icon" href="../../../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -59,27 +59,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -101,12 +97,17 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
@@ -144,45 +145,45 @@
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
-                        Getting Started
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+    Getting Started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../../../index.html">
-                        API Documentation
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../developer_guide/index.html">
-                        Developer Guide
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
+
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    API Documentation
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../../developer_guide/index.html">
+    Developer Guide
+  </a>
+</li>
+
+            <li class="nav-item dropdown pst-header-nav-item">
                 <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                <li class="nav-item">
-                  <a class="nav-link dropdown-item nav-external" href="https://molssi.org">
-                    MolSSI
-                  </a>
-                </li>
-                
+<li class="nav-item ">
+  <a class="nav-link dropdown-item nav-external" href="https://molssi.org">
+    MolSSI
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -269,9 +270,9 @@ document.write(`
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
@@ -292,54 +293,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
+          
+          
+            <div class="navbar-item">
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
-                        Getting Started
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../../getting_started/index.html">
+    Getting Started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../../../index.html">
-                        API Documentation
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../developer_guide/index.html">
-                        Developer Guide
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                <li class="nav-item">
-                  <a class="nav-link dropdown-item nav-external" href="https://molssi.org">
-                    MolSSI
-                  </a>
-                </li>
-                
-                </ul>
-            </li>
-            
+
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    API Documentation
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../../developer_guide/index.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-external" href="https://molssi.org">
+    MolSSI
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -397,18 +393,20 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MDI Standard by Category</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="../node-management/index.html">Simulation Control and Node Management</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MDI Standard by Category</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../node-management/index.html">Simulation Control and Node Management</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40.html">@</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40COORDS.html">@COORDS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40DEFAULT.html">@DEFAULT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40FORCES.html">@FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_OPTG.html">@INIT_OPTG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../node-management/%40PRE-FORCES.html">@PRE-FORCES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/EXIT.html">EXIT</a></li>
 </ul>
-</li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data Exchange</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Data Exchange</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CELL.html">CELL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CELL_DISPL.html">CELL_DISPL</a></li>
@@ -435,6 +433,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="NDENSITY.html">NDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PE.html">PE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_ELEC.html">PE_ELEC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PE_NUC.html">PE_NUC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="POTENTIAL.html">POTENTIAL</a></li>
@@ -443,49 +442,51 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="TOTCHARGE.html">TOTCHARGE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="VELOCITES.html">VELOCITES</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../information/index.html">Information</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../information/index.html">Information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../information/NAME.html">NAME</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../information/VERSION.html">VERSION</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_tags/tagsindex.html">MDI Standard by Tag</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/dft.html">DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_tags/tagsindex.html">MDI Standard by Tag</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/dft.html">DFT (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/gas-phase-quantum-mechanics.html">Gas Phase Quantum Mechanics (1)</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/gas-phase-quantum-mechanics.html">Gas Phase Quantum Mechanics (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/molecular-dynamics.html">Molecular Dynamics (1)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/molecular-dynamics.html">Molecular Dynamics (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MD.html">@INIT_MD</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/monte-carlo.html">Monte Carlo (1)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/monte-carlo.html">Monte Carlo (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (7)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (8)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DENSITY.html">DENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ELECT_MULT.html">ELECT_MULT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_NPOINTS.html">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -500,13 +501,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -517,7 +518,7 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -552,7 +553,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="lattice-forces">
-<h1>LATTICE_FORCES<a class="headerlink" href="#lattice-forces" title="Link to this heading">#</a></h1>
+<span id="lattice-forces-target"></span><h1>LATTICE_FORCES<a class="headerlink" href="#lattice-forces" title="Link to this heading">#</a></h1>
 <p>Receive lattice forces.</p>
 <section id="id1">
 <h2>&lt;LATTICE_FORCES<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -560,14 +561,14 @@ document.write(`
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_DOUBLE</span></code><br />
 <strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">NLATTICE</span></code><br />
 <strong>Format:</strong> Sequentially ascending order of lattice charge index, with the forces for each individual lattice charge being provided in xyz order.</p>
-<p>If the engine is at the <a class="reference internal" href="#&#64;DEFAULT"><span class="xref myst">&#64;DEFAULT</span></a> node, it calculates and sends the forces on any lattice charges (which must have previously assigned with the <a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">&gt;LATTICE</span></a> command) to the driver. Prior to sending this command, the driver must have set the number, coordinates, and magnitudes of the lattice charges using the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a>, <a class="reference internal" href="CLATTICE.html"><span class="doc std std-doc">&gt;CLATTICE</span></a>, and <a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">&gt;LATTICE</span></a> commands. These forces must include only electrostatic interactions between the lattice charges and the atomic nuclei, and between the lattice charges and any electrons. They must not include electrostatic interactions between the lattice charges and other lattice charges. If the engine has previously calculated these forces, and no intervening commands from the driver could have changed the forces, the engine is permitted to send the previously calculated forces instead of recalculating them.
+<p>If the engine is at the <a class="reference internal" href="../node-management/%40DEFAULT.html#default-target"><span class="std std-ref">&#64;DEFAULT</span></a> node, it calculates and sends the forces on any lattice charges (which must have previously assigned with the <a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">&gt;LATTICE</span></a> command) to the driver. Prior to sending this command, the driver must have set the number, coordinates, and magnitudes of the lattice charges using the <a class="reference internal" href="NLATTICE.html"><span class="doc std std-doc">&gt;NLATTICE</span></a>, <a class="reference internal" href="CLATTICE.html"><span class="doc std std-doc">&gt;CLATTICE</span></a>, and <a class="reference internal" href="LATTICE.html"><span class="doc std std-doc">&gt;LATTICE</span></a> commands. These forces must include only electrostatic interactions between the lattice charges and the atomic nuclei, and between the lattice charges and any electrons. They must not include electrostatic interactions between the lattice charges and other lattice charges. If the engine has previously calculated these forces, and no intervening commands from the driver could have changed the forces, the engine is permitted to send the previously calculated forces instead of recalculating them.
 If the engine is not at the &#64;DEFAULT node, it sends its most recently calculated lattice forces to the driver.
 This command is primarily intended for use with gas-phase quantum mechanics codes.</p>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
 <span class="c1"># connect to the engine</span>
@@ -598,7 +599,7 @@ Python</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-1">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-1">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -646,7 +647,7 @@ C++</label><div class="sd-tab-content docutils">
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -714,8 +715,8 @@ C++</label><div class="sd-tab-content docutils">
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -756,7 +757,7 @@ C++</label><div class="sd-tab-content docutils">
         
 
         <p class="theme-version">
-        Built with a customized <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+        Built with a customized <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
         </p>
 
     </div>

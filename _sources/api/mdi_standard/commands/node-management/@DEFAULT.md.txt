@@ -1,5 +1,6 @@
+(@DEFAULT-target)=
 # @DEFAULT
-Go to the @DEFAULT node.
+Operations related to the @DEFAULT node. The @DEFAULT node is the node that the engine goes to when launched.
 
 
 

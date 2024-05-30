@@ -1,3 +1,4 @@
+(COORDS-target)=
 # COORDS
 Exchange atomic coordinate information.
 

@@ -1,3 +1,4 @@
+(MONKHORST-PACK_NPOINTS-target)=
 # MONKHORST-PACK_NPOINTS
 ```{tags} Quantum Mechanics, DFT, Plane Wave DFT
 ```

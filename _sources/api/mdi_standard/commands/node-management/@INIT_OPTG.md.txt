@@ -1,3 +1,4 @@
+(@INIT_OPTG-target)=
 # @INIT_OPTG
 Initialize a geometry optimization.
 

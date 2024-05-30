@@ -1,3 +1,4 @@
+(KE_NUC-target)=
 # KE_NUC
 Receive nuclear kinetic energy.
 

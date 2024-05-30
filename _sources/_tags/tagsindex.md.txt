@@ -8,9 +8,9 @@ caption: Tags
 maxdepth: 1
 ---
 DFT (2) <dft>
-Gas Phase Quantum Mechanics (1) <gas-phase-quantum-mechanics>
+Gas Phase Quantum Mechanics (2) <gas-phase-quantum-mechanics>
 Molecular Dynamics (1) <molecular-dynamics>
 Monte Carlo (1) <monte-carlo>
 Plane Wave DFT (2) <plane-wave-dft>
-Quantum Mechanics (7) <quantum-mechanics>
+Quantum Mechanics (8) <quantum-mechanics>
 ```

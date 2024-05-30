@@ -1,3 +1,4 @@
+(@INIT_MD-target)=
 # @INIT_MD
 ```{tags} Molecular Dynamics
 ```

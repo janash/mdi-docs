@@ -1,5 +1,6 @@
+(@FORCES-target)=
 # @FORCES
-Go to force calculation node.
+Go to point in code after forces have been calculated.
 
 
 
@@ -9,7 +10,8 @@ Go to @FORCES node.
 
 
  The engine proceeds to the next @FORCES node. 
-This command is not valid at the [@DEFAULT](#@DEFAULT) node.
+This node occurs after all contributions to the atomic forces have been calculated.
+This command is not valid at the [@DEFAULT](#@DEFAULT-target) node.
 One would typically proceed to the @FORCES node after initializing a simulation 
 (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
 

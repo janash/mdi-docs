@@ -1,4 +1,4 @@
-(mdi_standard)=
+(mdi_standard_user)=
 # MDI Standard
 
 **Notes** move everythng thta is on own page to this page. We don't need multiple sections here.

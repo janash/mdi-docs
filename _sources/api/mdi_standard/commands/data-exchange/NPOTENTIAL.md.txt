@@ -1,3 +1,4 @@
+(NPOTENTIAL-target)=
 # NPOTENTIAL
 ```{tags} Quantum Mechanics
 ```
@@ -30,8 +31,8 @@ import mdi
 # connect to the engine
 mdi_engine = mdi.MDI_Accept_Communicator()
 
-# create a list of potential grid points
-npotential = # some integer value
+# set the number of potential points
+npotential = 10
 
 # send the number of potential grid points to the engine
 mdi.MDI_Send_Command(">NPOTENTIAL", mdi_engine)
@@ -50,7 +51,7 @@ mdi.MDI_Send(npotential, 1, mdi.MDI_INT, mdi_engine)
 MDI_Comm mdi_engine = MDI_Accept_Communicator();
 
 // create a variable for the number of potential grid points
-int npotential = # some integer value
+int npotential = 10
 
 // send the number of potential grid points to the engine
 MDI_Send_Command(">NPOTENTIAL", mdi_engine);

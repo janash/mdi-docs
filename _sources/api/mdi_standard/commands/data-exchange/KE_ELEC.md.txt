@@ -1,3 +1,4 @@
+(KE_ELEC-target)=
 # KE_ELEC
 Receive electronic kinetic energy.
 

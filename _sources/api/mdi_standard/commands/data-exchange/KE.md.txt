@@ -1,3 +1,4 @@
+(KE-target)=
 # KE
 Receive total kinetic energy.
 

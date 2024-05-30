@@ -10,7 +10,7 @@ Command Name | Description
 [CHARGES](CHARGES) | Exchange atomic charge information.
 [CLATTICE](CLATTICE) | Send lattice coordinates.
 [COORDS](COORDS) | Exchange atomic coordinate information.
-[CPOTENTIAL](CPOTENTIAL) | 
+[CPOTENTIAL](CPOTENTIAL) | Send Cartesian coordinates of grid points.
 [DENSITY](DENSITY) | Retrieve electronic density information.
 [DIMENSIONS](DIMENSIONS) | Retrieve simulation cell dimensionality (periodic or non-periodic).
 [ELECT_MULT](ELECT_MULT) | Exchange electronic multiplicity.
@@ -27,12 +27,13 @@ Command Name | Description
 [MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS) | 
 [MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT) | 
 [NATOMS](NATOMS) | Receive number of atoms.
-[NDENSITY](NDENSITY) | 
-[NLATTICE](NLATTICE) | 
+[NDENSITY](NDENSITY) | Receive number of points for electronic density on a grid.
+[NLATTICE](NLATTICE) | Send number of lattice points.
 [NPOTENTIAL](NPOTENTIAL) | 
+[PE](PE) | Receive total potential energy.
 [PE_ELEC](PE_ELEC) | 
 [PE_NUC](PE_NUC) | 
-[POTENTIAL](POTENTIAL) | 
+[POTENTIAL](POTENTIAL) | Send potential grid values.
 [SPIN_POLARIZATION](SPIN_POLARIZATION) | 
 [STRESS](STRESS) | Exchange virial stress tensor.
 [TOTCHARGE](TOTCHARGE) | 
@@ -66,6 +67,7 @@ NATOMS
 NDENSITY
 NLATTICE
 NPOTENTIAL
+PE
 PE_ELEC
 PE_NUC
 POTENTIAL

@@ -1,3 +1,4 @@
+(LABELS-target)=
 # LABELS
 Receive a label for each atom in the system.
 

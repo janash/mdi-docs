@@ -1,3 +1,4 @@
+(DENSITY-target)=
 # DENSITY
 ```{tags} Quantum Mechanics
 ```

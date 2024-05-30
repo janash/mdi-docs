@@ -1,3 +1,4 @@
+(STRESS-target)=
 # STRESS
 Exchange virial stress tensor.
 

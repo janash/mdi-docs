@@ -1,3 +1,4 @@
+(MASSES-target)=
 # MASSES
 Retrieve atom masses.
 

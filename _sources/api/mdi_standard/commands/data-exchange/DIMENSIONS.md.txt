@@ -1,3 +1,4 @@
+(DIMENSIONS-target)=
 # DIMENSIONS
 Retrieve simulation cell dimensionality (periodic or non-periodic).
 

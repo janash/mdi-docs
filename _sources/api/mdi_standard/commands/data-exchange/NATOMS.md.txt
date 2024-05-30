@@ -1,3 +1,4 @@
+(NATOMS-target)=
 # NATOMS
 Receive number of atoms.
 

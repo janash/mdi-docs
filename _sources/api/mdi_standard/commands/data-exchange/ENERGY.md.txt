@@ -1,3 +1,4 @@
+(ENERGY-target)=
 # ENERGY
 Receive total energy information.
 

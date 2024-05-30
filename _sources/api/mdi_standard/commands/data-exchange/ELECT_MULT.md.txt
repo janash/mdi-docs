@@ -1,3 +1,4 @@
+(ELECT_MULT-target)=
 # ELECT_MULT
 ```{tags} Quantum Mechanics
 ```

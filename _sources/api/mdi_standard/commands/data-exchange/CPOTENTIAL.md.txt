@@ -1,5 +1,6 @@
+(CPOTENTIAL-target)=
 # CPOTENTIAL
-
+Send Cartesian coordinates of grid points.
 
 
 

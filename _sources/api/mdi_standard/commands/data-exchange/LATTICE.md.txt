@@ -1,3 +1,4 @@
+(LATTICE-target)=
 # LATTICE
 Send lattice point charges.
 

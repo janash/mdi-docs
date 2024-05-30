@@ -1,3 +1,4 @@
+(@INIT_MC-target)=
 # @INIT_MC
 ```{tags} Monte Carlo
 ```

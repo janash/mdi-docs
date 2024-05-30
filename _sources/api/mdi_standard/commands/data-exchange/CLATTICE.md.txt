@@ -1,3 +1,4 @@
+(CLATTICE-target)=
 # CLATTICE
 ```{tags} Quantum Mechanics, Gas Phase Quantum Mechanics
 ```
