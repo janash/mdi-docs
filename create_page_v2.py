@@ -50,7 +50,8 @@ def create_page(command_group_info, command_list):
     tags = command_group_info["tags"]
 
     # Create a new page for the command
-    page_text = f"# {command_name}\n"
+    page_text = f"({command_name}-target)=\n"
+    page_text += f"# {command_name}\n"
 
     if tags:
         page_text += "```{tags}"

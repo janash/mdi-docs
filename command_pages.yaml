@@ -1,6 +1,6 @@
 '@':
+  summary: "Manage operations related to the current node."
   category: 1
-  summary: "Operations related to the current node."
   commands:
   - <@:
       count: MDI_NAME_LENGTH
@@ -61,8 +61,8 @@
           // send the engine to the next node
           MDI_Send_Command("@", mdi_engine);  
 '@INIT_MC':
-  category: 1
   summary: "Initialize a Monte Carlo simulation."
+  category: 1
   tags:
     - Monte Carlo
   commands:
@@ -152,7 +152,7 @@
             MDI_Send_Command("@INIT_OPTG", mdi_engine);
 '@DEFAULT':
   category: 1
-  summary: "Go to the @DEFAULT node."
+  summary: "Operations related to the @DEFAULT node. The @DEFAULT node is the node that the engine goes to when launched."
   commands:
     - '@DEFAULT':
         description: ""
@@ -180,13 +180,14 @@
             MDI_Send_Command(">@DEFAULT", mdi_engine);
 '@FORCES':
   category: 1
-  summary: "Go to force calculation node."
+  summary: "Go to point in code after forces have been calculated."
   commands:
     - '@FORCES':
         description: "Go to @FORCES node."
         doc: |
           The engine proceeds to the next @FORCES node. 
-          This command is not valid at the [@DEFAULT](#@DEFAULT) node.
+          This node occurs after all contributions to the atomic forces have been calculated.
+          This command is not valid at the [@DEFAULT](#@DEFAULT-target) node.
           One would typically proceed to the @FORCES node after initializing a simulation 
           (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
         examples:
@@ -212,6 +213,111 @@
 
             // go to forces node.
             MDI_Send_Command("@FORCES", mdi_engine);
+'@PRE-FORCES':
+  category: 1
+  summary: "Go to point in code where forces have been partially calcualted."
+  commands:
+    - '@FORCES':
+        description: "Go to @PRE-FORCES node."
+        doc: |
+          The engine proceeds to the next @PRE-FORCES node. 
+          This node occurs after calculating all contributions to the atomic forces, except those associated with a constraint algorithm like SHAKE or RATTLE.
+          This command is not valid at the [@DEFAULT](#@DEFAULT) node.
+          One would typically proceed to the @FORCES node after initializing a simulation 
+          (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # first initialize a simulation
+            mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
+
+            # go to forces node
+            mdi.MDI_Send_Command("@PRE-FORCES", mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // first initialize a simulation
+            MDI_Send_Command("@INIT_MD", mdi_engine);
+
+            // go to forces node.
+            MDI_Send_Command("@PRE-FORCES", mdi_engine);
+'@COORDS':
+  category: 1
+  summary: "Go to point in code after atomic coordinates have been updated."
+  commands:
+    - '@COORDS':
+        description: "Go to @COORDS node."
+        doc: |
+          The engine proceeds to the next @PRE-FORCES node. 
+          The `@COORDS` node occurs after updating the atomic coordinates.
+          This command is not valid at the [@DEFAULT](#@DEFAULT) node.
+          One would typically proceed to the @FORCES node after initializing a simulation 
+          (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # first initialize a simulation
+            mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
+
+            # go to forces node
+            mdi.MDI_Send_Command("@COORDS", mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // first initialize a simulation
+            MDI_Send_Command("@INIT_MD", mdi_engine);
+
+            // go to forces node.
+            MDI_Send_Command("@COORDS", mdi_engine);
+'COORDS':
+  category: 1
+  summary: "Go to point in code after atomic coordinates have been updated."
+  commands:
+    - '@COORDS':
+        description: "Go to @PRE-FORCES node."
+        doc: |
+          The engine proceeds to the next @PRE-FORCES node. 
+          After calculating all contributions to the atomic forces, except those associated with a constraint algorithm like SHAKE or RATTLE.
+          This command is not valid at the [@DEFAULT](#@DEFAULT) node.
+          One would typically proceed to the @FORCES node after initializing a simulation 
+          (e.g. [@INIT_MD](#@INIT_MD), [@INIT_MC](#@INIT_MC), or [@INIT_OPTG](#@INIT_OPTG)).
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # first initialize a simulation
+            mdi.MDI_Send_Command("@INIT_MD", mdi_engine)
+
+            # go to forces node
+            mdi.MDI_Send_Command("@PRE-FORCES", mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // first initialize a simulation
+            MDI_Send_Command("@INIT_MD", mdi_engine);
+
+            // go to forces node.
+            MDI_Send_Command("@PRE-FORCES", mdi_engine);
 EXIT:
   category: 1
   summary: "Exit the engine."
@@ -834,7 +940,7 @@ COORDS:
           each individual atom being provided in xyz order.
 CPOTENTIAL:
   category: 2
-  summary: ""
+  summary: "Send Cartesian coordinates of grid points."
   commands:
     - '>CPOTENTIAL':
         category: 2
@@ -991,7 +1097,7 @@ FORCES:
         count: 3 * NATOMS
         datatype: MDI_DOUBLE
         description: Receive atomic forces.
-        doc: 'If the engine is at the [@DEFAULT](%40DEFAULT) node, it calculates and sends
+        doc: 'If the engine is at the [@DEFAULT](#@DEFAULT-target) node, it calculates and sends
           its atomic forces to the driver.  These forces include all force contributions,
           including the force contributions associated with any constraint algorithm (e.g.
           SHAKE, RATTLE, etc.).  If the engine has previously calculated the atomic forces
@@ -1615,7 +1721,7 @@ LATTICE_FORCES:
           - Quantum Mechanics
           - Gas Phase Quantum Mechanics
         doc: 
-          If the engine is at the [@DEFAULT](#@DEFAULT) node, it calculates and sends the forces on any lattice charges (which must have previously assigned with the [>LATTICE](#LATTICE) command) to the driver.
+          If the engine is at the [@DEFAULT](#@DEFAULT-target) node, it calculates and sends the forces on any lattice charges (which must have previously assigned with the [>LATTICE](#LATTICE) command) to the driver.
           Prior to sending this command, the driver must have set the number, coordinates, and magnitudes of the lattice charges using the [>NLATTICE](NLATTICE), [>CLATTICE](CLATTICE), and [>LATTICE](LATTICE) commands. 
           These forces must include only electrostatic interactions between the lattice charges and the atomic nuclei, and between the lattice charges and any electrons. 
           They must not include electrostatic interactions between the lattice charges and other lattice charges. 
@@ -1869,24 +1975,77 @@ NATOMS:
             MDI_Recv(&natoms, 1, MDI_INT, mdi_engine);
 NDENSITY:
   category: 2
-  summary: ""
+  summary: "Receive number of points for electronic density on a grid."
   commands:
     - <NDENSITY:
-        category: 2
         count: 1
         datatype: MDI_INT
         description: Receive number of density grid points
-        doc: Engine sends number of grid points used for electronic density representation.
+        doc: |
+          The engine sends the number of grid points it is using to represent its electronic density on a grid. 
+          This command is intended to be used in conjuction with the [<CDENSITY](CDENSITY) and [<DENSITY](DENSITY) commands; 
+          these three commands enable a driver to acquire the electronic density distribution of an engine in a grid representation. 
+          See the [<DENSITY](DENSITY) command for more details.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the number of density grid points from the engine
+            mdi.MDI_Send_Command("<NDENSITY", mdi_engine)
+            ndensity = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the number of density grid points
+            int ndensity;
+
+            // receive the number of density grid points from the engine
+            MDI_Send_Command("<NDENSITY", mdi_engine);
+            MDI_Recv(&ndensity, 1, MDI_INT, mdi_engine);
 NLATTICE:
   category: 2
-  summary: ""
+  summary: "Send number of lattice points."
+  tags: 
+    - Quantum Mechanics
+    - Gas Phase Quantum Mechanics
   commands:
     - '>NLATTICE':
         category: 2
         count: 1
         datatype: MDI_INT
         description: Send number of lattice points
-        doc: Driver sends number of point charges in the lattice to engine.
+        doc: |
+          This command, along with the [>CLATTICE](CLATTICE) and [>LATTICE](LATTICE) commands, allows the driver to assign a lattice of point charges to an engine, which incorporates the effects of these charges in all further calculations. 
+          After sending this command, the driver sends the number of point charges to the engine. This command must be sent before either the [>CLATTICE](CLATTICE) or [>LATTICE](LATTICE) commands can be sent.
+
+          This command is primarily intended for use with gas-phase quantum mechanics codes. For an alternative command that is more appropriate for plane wave quantum mechanics codes, see the [>POTENTIAL](POTENTIAL) command.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send the number of lattice points to the engine
+            nlattice = 10
+            mdi.MDI_Send_Command(">NLATTICE", mdi_engine)
+            mdi.MDI_Send(nlattice, 1, mdi.MDI_INT, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send the number of lattice points to the engine
+            int nlattice = 10;
+            MDI_Send_Command(">NLATTICE", mdi_engine);
+            MDI_Send(&nlattice, 1, MDI_INT, mdi_engine);
 NPOTENTIAL:
   category: 2
   summary: ""
@@ -1914,8 +2073,8 @@ NPOTENTIAL:
 
 
             // create a variable for the number of potential grid points
-
-            int npotential = # some integer value
+            
+            int npotential = 10
 
 
             // send the number of potential grid points to the engine
@@ -1933,9 +2092,9 @@ NPOTENTIAL:
             mdi_engine = mdi.MDI_Accept_Communicator()
 
 
-            # create a list of potential grid points
+            # set the number of potential points
 
-            npotential = # some integer value
+            npotential = 10
 
 
             # send the number of potential grid points to the engine
@@ -1945,6 +2104,89 @@ NPOTENTIAL:
             mdi.MDI_Send(npotential, 1, mdi.MDI_INT, mdi_engine)
 
             '
+POTENTIAL:
+  category: 2
+  summary: "Send potential grid values."
+  commands:
+    - '>POTENTIAL':
+        count: NPOTENTIAL
+        datatype: MDI_DOUBLE
+        description: Send potential grid values.
+        doc: |
+          The driver sends an set of values to the engine that correspond to a potential on a grid. 
+          If an scf_command command is later issued, this potential will be incorporated into the SCF calculation as an external potential.
+
+          Before sending this command, the driver must have first sent the number of grid points used to represent the potential via the [>NPOTENTIAL](NPOTENTIAL) command. 
+          It is also necessary that the driver send the Cartesian coordinates of the grid points via the [>CPOTENTIAL](CPOTENTIAL) command prior to any subsequent scf_command command.
+        examples:
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send the number of potential grid points to the engine
+            int npotential = 10;
+            MDI_Send_Command(">NPOTENTIAL", mdi_engine);
+            MDI_Send(&npotential, 1, MDI_INT, mdi_engine);
+
+            // create vector of the potential grid points with npotential elements
+
+            // send the potential grid points to the engine
+            MDI_Send_Command(">POTENTIAL", mdi_engine);
+            MDI_Send(&potential, npotential, MDI_DOUBLE, mdi_engine);
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send the number of potential grid points to the engine
+            npotential = 10
+            mdi.MDI_Send_Command(">NPOTENTIAL", mdi_engine)
+            mdi.MDI_Send(npotential, 1, mdi.MDI_INT, mdi_engine)
+
+            # create a list of potential grid points with npotential elements
+
+            # send the potential grid points to the engine
+            mdi.MDI_Send_Command(">POTENTIAL", mdi_engine)
+            mdi.MDI_Send(potential, npotential, mdi.MDI_DOUBLE, mdi_engine)
+PE:
+  category: 2
+  summary: "Receive total potential energy."
+  commands:
+    - '<PE':
+        count: 1
+        datatype: MDI_DOUBLE
+        description: Receive number of potential grid points
+        doc: |
+          If the engine is at the [@DEFAULT](#@DEFAULT-target) node, it calculates and sends its total potential energy to the driver. 
+          If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy, 
+          the engine is permitted to send the previously calculated energy instead of recalculating it.
+
+          If the engine is not at the [@DEFAULT](#@DEFAULT-target) node, it sends its most recently calculated total potential energy to the driver.
+        examples:
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the total potential energy
+            double pe;
+
+            // receive the total potential energy from the engine
+            MDI_Send_Command("<PE", mdi_engine);
+            MDI_Recv(&pe, 1, MDI_DOUBLE, mdi_engine);   
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the total potential energy from the engine
+            mdi.MDI_Send_Command("<PE", mdi_engine)
+            pe = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)           
 PE_ELEC:
   category: 2
   summary: ""
@@ -1963,16 +2205,6 @@ PE_NUC:
         datatype: MDI_DOUBLE
         description: Receive nuclear potential energy
         doc: Engine sends its nuclear potential energy to the driver.
-POTENTIAL:
-  category: 2
-  summary: ""
-  commands:
-    - '>POTENTIAL':
-        category: 2
-        count: 1
-        datatype: MDI_DOUBLE
-        description: Receive total potential energy
-        doc: Engine sends its total potential energy to the driver.
 SPIN_POLARIZATION:
   category: 2
   summary: ""
