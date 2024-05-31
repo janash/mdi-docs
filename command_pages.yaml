@@ -1876,7 +1876,7 @@ MASSES:
             MDI_Recv(masses.data(), natoms, MDI_DOUBLE, mdi_engine)
 MONKHORST-PACK_NPOINTS:
   category: 2
-  summary: ""
+  summary: "Send number of points for a Monkhorst-Pack grid."
   tags:
     - Quantum Mechanics
     - DFT
@@ -1886,18 +1886,38 @@ MONKHORST-PACK_NPOINTS:
         count: 3
         datatype: MDI_INT
         description: Send Monkhorst-Pack grid points
+        format: The number of k-points to generate along each vector of the Brillouin zone, in ascending order of vector.
         doc: 'This command is typically expected for use with plane wave DFT engines.  The
           driver sends the engine the number of k-points to generate on a Monkhorst-Pack
           grid.  The engine then uses the k-points generated on this Monkhorst-Pack grid
           for all further simulations.
-
-          The number of k-points to generate along each vector of the Brillouin zone,
-          in ascending order of vector.
-
           '
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send the number of k-points to generate on a Monkhorst-Pack grid
+            mdi.MDI_Send_Command(">MONKHORST-PACK_NPOINTS", mdi_engine)
+            mdi.MDI_Send([10, 10, 10], 3, mdi.MDI_INT, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+            #include <vector>
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send the number of k-points to generate on a Monkhorst-Pack grid
+            std::vector<int> npts = {10, 10, 10};
+
+            // send the number of k-points to generate on a Monkhorst-Pack grid
+            MDI_Send_Command(">MONKHORST-PACK_NPOINTS", mdi_engine);
+            MDI_Send(npts.data(), 3, MDI_INT, mdi_engine);          
 MONKHORST-PACK_SHIFT:
   category: 2
-  summary: ""
+  summary: "Send Monkhorst-Pack grid shift."
   tags:
     - Quantum Mechanics
     - DFT
@@ -1907,7 +1927,41 @@ MONKHORST-PACK_SHIFT:
         count: 3
         datatype: MDI_DOUBLE
         description: Send Monkhorst-Pack grid shift
-        doc: Driver sends shift for k-points on Monkhorst-Pack grid to engine.
+        admonition:
+          type: note
+          title: "Note"
+          content: Some engines can only support values of 0.0 or 0.5.
+        format: |
+          The fraction of a grid step by which the k-points should be displaced, in ascending order of vector. 
+          A value of 0.0 indicates no displacement along the corresponding vector, while a value of 0.5 indicates a displacement of half a grid step in along the corresponding vector. 
+          Note that some engines can only support values of 0.0 or 0.5.
+        doc: |
+          This command is typically expected for use with plane wave DFT engines. 
+          The driver sends the engine a set of values that indicate the extent to which a set of k-points on a Monkhorst-Pack grid should be displaced relative to the original (non-displaced) Monkhorst-Pack grid. 
+          The engine then uses the shifted k-points for all further simulations.  
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send the Monkhorst-Pack grid shift
+            mdi.MDI_Send_Command(">MONKHORST-PACK_SHIFT", mdi_engine)
+            mdi.MDI_Send([0.0, 0.0, 0.0], 3, mdi.MDI_DOUBLE, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+            #include <vector>
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send the Monkhorst-Pack grid shift
+            std::vector<double> shift = {0.0, 0.0, 0.0};
+
+            // send the Monkhorst-Pack grid shift
+            MDI_Send_Command(">MONKHORST-PACK_SHIFT", mdi_engine);
+            MDI_Send(shift.data(), 3, MDI_DOUBLE, mdi_engine);
 NAME:
   category: 3
   summary: "Receive engine name."
@@ -2048,7 +2102,7 @@ NLATTICE:
             MDI_Send(&nlattice, 1, MDI_INT, mdi_engine);
 NPOTENTIAL:
   category: 2
-  summary: ""
+  summary: "Send the number of potential grid points."
   tags:
         - Quantum Mechanics
   commands:
@@ -2189,36 +2243,153 @@ PE:
             pe = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)           
 PE_ELEC:
   category: 2
-  summary: ""
+  summary: "Receive electronic potential energy."
   commands:
     - <PE_ELEC:
         count: 1
         datatype: MDI_DOUBLE
-        description: Receive electronic potential energy
-        doc: Engine sends its electronic potential energy to the driver.
-PE_NUC:
+        description: Receive electronic potential energy.
+        doc: |
+          If the engine is at the [@DEFAULT](#@DEFAULT-target) node, it calculates and sends its electronic potential energy to the driver. 
+          The electronic potential energy is defined as including all interactions between the electrons and any other particles or fields in the system. 
+          It also includes the interactions between the electrons and themselves. If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy, 
+          the engine is permitted to send the previously calculated energy instead of recalculating it.
+
+          If the engine is not at the [@DEFAULT](#@DEFAULT-target) node, it sends its most recently calculated electronic potential energy to the driver.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the electronic potential energy from the engine
+            mdi.MDI_Send_Command("<PE_ELEC", mdi_engine)
+            pe_elec = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the electronic potential energy
+            double pe_elec;
+
+            // receive the electronic potential energy from the engine
+            MDI_Send_Command("<PE_ELEC", mdi_engine);
+            MDI_Recv(&pe_elec, 1, MDI_DOUBLE, mdi_engine);
+PE_NUC: 
   category: 2
-  summary: ""
+  summary: "Receive nuclear potential energy."
   commands:
     - <PE_NUC:
         count: 1
         datatype: MDI_DOUBLE
         description: Receive nuclear potential energy
-        doc: Engine sends its nuclear potential energy to the driver.
+        doc: |
+          If the engine is at the [@DEFAULT](#@DEFAULT-target) node, it calculates and sends its nuclear potential energy to the driver. 
+          The nuclear potential energy is defined as including all interactions between the nuclei and any other particles or fields in the system, excluding any electrons. 
+          It also includes the interactions between the nuclei and themselves. 
+          If the engine has previously calculated the energy of the system, and no intervening commands from the driver could have changed the energy, 
+          the engine is permitted to send the previously calculated energy instead of recalculating it.
+
+          If the engine is not at the [@DEFAULT](#@DEFAULT-target) node, it sends its most recently calculated nuclear potential energy to the driver.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the nuclear potential energy from the engine
+            mdi.MDI_Send_Command("<PE_NUC", mdi_engine)
+            pe_nuc = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the nuclear potential energy
+            double pe_nuc;
+
+            // receive the nuclear potential energy from the engine
+            MDI_Send_Command("<PE_NUC", mdi_engine);
+            MDI_Recv(&pe_nuc, 1, MDI_DOUBLE, mdi_engine);
 SPIN_POLARIZATION:
   category: 2
-  summary: ""
+  summary: "Exchange spin polarization information."
+  tags:
+    - Quantum Mechanics
+    - DFT
+    - Plane Wave DFT
   commands:
     - <SPIN_POLARIZATION:
         count: 1
         datatype: MDI_INT
-        description: Receive spin polarization setting
-        doc: Engine sends its current spin polarization simulation mode to the driver.
+        description: Receive spin polarization setting.
+        format: |
+          A value of 0 indicates that simulations will be performed in a non-spin-polarized manner. 
+          A value of 1 indicates that simulations will be performed in a spin-polarized manner,
+          within the local spin density approximation (LSDA). 
+          A value of 2 indicates that simulations will be performed in a spin-polarized, noncollinear manner.
+        doc: |
+          The engine sends a value that indicates the manner in which it is currently simulating spin polarization. 
+          This command is typically intended for use with plane wave DFT engines.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the spin polarization setting from the engine
+            mdi.MDI_Send_Command("<SPIN_POLARIZATION", mdi_engine)
+            spin_polarization = mdi.MDI_Recv(1, mdi.MDI_INT, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the spin polarization setting
+            int spin_polarization;
+
+            // receive the spin polarization setting from the engine
+            MDI_Send_Command("<SPIN_POLARIZATION", mdi_engine);
+            MDI_Recv(&spin_polarization, 1, MDI_INT, mdi_engine);
     - '>SPIN_POLARIZATION':
         count: 1
         datatype: MDI_INT
-        description: Send spin polarization setting
-        doc: Driver sends desired spin polarization simulation mode to engine.
+        description: Send spin polarization setting.
+        format: |
+          A value of 0 indicates that simulations will be performed in a non-spin-polarized manner. 
+          A value of 1 indicates that simulations will be performed in a spin-polarized manner,
+          within the local spin density approximation (LSDA). 
+          A value of 2 indicates that simulations will be performed in a spin-polarized, noncollinear manner.
+        doc: |
+          The driver sends a value that indicates the manner in which spin polarization should be simulated by the engine. 
+          This command is typically intended for use with plane wave DFT engines.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send the spin polarization setting to the engine
+            mdi.MDI_Send_Command(">SPIN_POLARIZATION", mdi_engine)
+            mdi.MDI_Send(1, 1, mdi.MDI_INT, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send the spin polarization setting to the engine
+            int spin_polarization = 1;
+            MDI_Send_Command(">SPIN_POLARIZATION", mdi_engine);
+            MDI_Send(&spin_polarization, 1, MDI_INT, mdi_engine);
 STRESS:
   category: 2
   summary: "Exchange virial stress tensor."
@@ -2272,40 +2443,171 @@ STRESS:
         doc: Driver sends virial stress tensor to engine, replacing its internal tensor.
 TOTCHARGE:
   category: 2
-  summary: ""
+  summary: "Exchange total charge information"
   commands:
     - '>TOTCHARGE':
         category: 2
         count: 1
         datatype: MDI_DOUBLE
         description: Send total system charge
-        doc: Driver sends total charge of the system to engine, adjusting number of electrons.
+        doc: |
+          The driver sends a value for the total charge of the system, including electron and nuclear charges, to the engine, 
+          which adjusts the number of electrons present in its system to the value required to reproduce the value sent by the driver. 
+          This command is typically only appropriate for quantum mechanics engines. 
+          Engines that support this command are not required to support non-integer charges; they are permitted to produce an error message if the value received deviates by more than 10^-12 from an integer, 
+          and to otherwise round the value received to the nearest integer.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send the total charge of the system to the engine
+            mdi.MDI_Send_Command(">TOTCHARGE", mdi_engine)
+            mdi.MDI_Send(0.0, 1, mdi.MDI_DOUBLE, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send the total charge of the system to the engine
+            double totcharge = 0.0;
+            MDI_Send_Command(">TOTCHARGE", mdi_engine);
+            MDI_Send(&totcharge, 1, MDI_DOUBLE, mdi_engine);
     - <TOTCHARGE:
         category: 2
         count: 1
         datatype: MDI_DOUBLE
         description: Receive total system charge
-        doc: Engine sends the total charge of its system to the driver.
+        doc: |
+          The engine sends the total charge of its system, including electron and nuclear charges, to the driver.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the total charge of the system from the engine
+            mdi.MDI_Send_Command("<TOTCHARGE", mdi_engine)
+            totcharge = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the total charge of the system
+            double totcharge;
+
+            // receive the total charge of the system from the engine
+            MDI_Send_Command("<TOTCHARGE", mdi_engine);
+            MDI_Recv(&totcharge, 1, MDI_DOUBLE, mdi_engine)
 VELOCITES:
   category: 2
-  summary: ""
+  summary: "Exchange atomic velocities."
   commands:
     - '>VELOCITES':
         count: 3 * NATOMS
         datatype: MDI_DOUBLE
-        description: Send atomic velocities
-        doc: Driver sends set of atomic velocities to engine.
+        description: Send atomic velocities.
+        format: |
+          Sequentially ascending order of atom index, with the velocities for each individual atom being provided in xyz order.
+        doc: |
+            The driver sends a set of atomic velocities to the driver, which replaces its atomic velocities with those provided by the driver.
+        exmaples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # send the atomic velocities to the engine
+            mdi.MDI_Send_Command(">VELOCITES", mdi_engine)
+            mdi.MDI_Send(velocities, 3*NATOMS, mdi.MDI_DOUBLE, mdi_engine)
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // send the atomic velocities to the engine
+            MDI_Send_Command(">VELOCITES", mdi_engine);
+            MDI_Send(velocities, 3*NATOMS, MDI_DOUBLE, mdi_engine);
     - <VELOCITES:
         count: 3 * NATOMS
         datatype: MDI_DOUBLE
-        description: Receive atomic velocities
-        doc: Engine sends the velocities of atoms in its system to the driver.
+        description: Receive atomic velocities.
+        format: |
+          Sequentially ascending order of atom index, with the velocities for each individual atom being provided in xyz order.
+        doc: |
+          The engine sends the velocities of the atoms in its system to the driver.
+        examples:
+          python: |
+            import mdi
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # receive the atomic velocities from the engine
+            mdi.MDI_Send_Command("<VELOCITES", mdi_engine)
+            velocities = mdi.MDI_Recv(3*NATOMS, mdi.MDI_DOUBLE, mdi_engine)
+          python (numpy): |
+            import mdi
+            import numpy as np
+
+            # connect to the engine
+            mdi_engine = mdi.MDI_Accept_Communicator()
+
+            # create a buffer to hold the atomic velocities
+            velocities = np.zeros(3*NATOMS, dtype=float)
+
+            # receive the atomic velocities from the engine
+            mdi.MDI_Send_Command("<VELOCITES", mdi_engine)
+            mdi.MDI_Recv(3*NATOMS, mdi.MDI_DOUBLE, mdi_engine, buf=velocities
+          cpp: |
+            #include "mdi.h"
+
+            // connect to the engine
+            MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+            // create a buffer to hold the atomic velocities
+            double velocities[3*NATOMS];
+
+            // receive the atomic velocities from the engine
+            MDI_Send_Command("<VELOCITES", mdi_engine);
+            MDI_Recv(velocities, 3*NATOMS, MDI_DOUBLE, mdi_engine);
 VERSION:
   category: 3
-  summary: ""
+  summary: "Receive MDI Library version."
   commands:
   - <VERSION:
       count: 1
       datatype: MDI_DOUBLE
       description: Receive MDI Library version
-      doc: Engine sends the version number of the MDI Library it is linked to.
+      doc: The engine sends the version number of the MDI Library to which it is linked to the driver.
+      examples:
+        python: |
+          import mdi
+
+          # connect to the engine
+          mdi_engine = mdi.MDI_Accept_Communicator()
+
+          # receive the MDI Library version from the engine
+          mdi.MDI_Send_Command("<VERSION", mdi_engine)
+          version = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, mdi_engine)
+        cpp: |
+          #include "mdi.h"
+
+          // connect to the engine
+          MDI_Comm mdi_engine = MDI_Accept_Communicator();
+
+          // create a buffer to hold the MDI Library version
+          double version;
+
+          // receive the MDI Library version from the engine
+          MDI_Send_Command("<VERSION", mdi_engine);
+          MDI_Recv(&version, 1, MDI_DOUBLE, mdi_engine)
+
