@@ -88,15 +88,17 @@ language = 'en'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'user_guide/mdi_ecosystem/starter']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'default'
 
 #================== Create API Pages ==================
 from create_page_v2 import generate_api_pages
+from engine_reports import start_pages
 
 def setup(app):
+    app.connect("config-inited", start_pages)   
     app.connect("config-inited", generate_api_pages)
 
 # -- Options for HTML output -------------------------------------------------
