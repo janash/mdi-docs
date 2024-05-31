@@ -13,6 +13,8 @@ Send lattice coordinates.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `3 * NLATTICE`  
+**Units:** Bohr
+
 **Format:** Sequentially ascending order of lattice charge index, with the coordinates for each individual lattice charge being provided in xyz order.
 
  This command, along with the [>NLATTICE](NLATTICE) and [>LATTICE](LATTICE)

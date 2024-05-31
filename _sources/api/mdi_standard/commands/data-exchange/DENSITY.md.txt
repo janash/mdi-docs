@@ -9,7 +9,7 @@ Retrieve electronic density information.
 
 ## <DENSITY
 
-Send atomic forces.
+Retrieve electronic density on a set of grid points.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `3 * NDENSITY`  

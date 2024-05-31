@@ -1,19 +1,10 @@
-# MDI Standard by Category
+# MDI Standard 
 
-This section provides details on the commands defined by the MDI Standard.The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines.
-
-## Command Categories
-
-**- Simulation Control and Node Management**: Commands that control the flow of the simulation and manage the engine's nodes.  
-**- Data Exchange**: Commands that exchange data between the driver and the engine.  
-**- Information**: Commands that provide information about MDI and/or an engine.  
-
+The MDI Standard provides a straightforward, API-like method for enabling interoperability among computational molecular sciences codes. It uses a driver/engine model in which a driver code controls the high-level program flow of one or more engine codes. The driver exercises this control through the use of commands that are defined by the MDI Standard. Commands are available that correspond to a variety of tasks, such as "receive a new set of nuclear coordinates from me" (>COORDS), "start an MD simulation" (@INIT_MD) and "send me the forces on the nuclei" (<FORCES). The MDI standard defines the units, data types, and formatting of any data communicated between codes in response to a command.
 
 ```{toctree}
-:hidden:
-:maxdepth:3
+:maxdepth: 1
 
-commands/node-management/index
-commands/data-exchange/index
-commands/information/index
+mdi_standard_category
+../../../_tags/tagsindex
 ```

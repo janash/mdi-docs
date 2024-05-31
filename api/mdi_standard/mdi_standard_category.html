@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>MDI Standard &#8212; MolSSI Driver Interface (MDI)  documentation</title>
+    <title>MDI Standard by Category &#8212; MolSSI Driver Interface (MDI)  documentation</title>
   
   
   
@@ -45,12 +45,12 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/mdi_standard/mdi_standard_category';</script>
     <link rel="icon" href="../../_static/molssi_square.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="MDI Standard by Category" href="mdi_standard_category.html" />
-    <link rel="prev" title="API Documentation" href="../index.html" />
+    <link rel="next" title="Simulation Control and Node Management" href="commands/node-management/index.html" />
+    <link rel="prev" title="MDI Standard" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -394,8 +394,8 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">MDI Standard</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="mdi_standard_category.html">MDI Standard by Category</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">MDI Standard</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">MDI Standard by Category</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="commands/node-management/index.html">Simulation Control and Node Management</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="commands/node-management/%40.html">@</a></li>
 <li class="toctree-l4"><a class="reference internal" href="commands/node-management/%40COORDS.html">@COORDS</a></li>
@@ -534,7 +534,10 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API Documentation</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">MDI Standard</li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">MDI Standard</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">MDI...</li>
   </ul>
 </nav>
 </div>
@@ -551,15 +554,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="mdi-standard">
-<h1>MDI Standard<a class="headerlink" href="#mdi-standard" title="Link to this heading">#</a></h1>
-<p>The MDI Standard provides a straightforward, API-like method for enabling interoperability among computational molecular sciences codes. It uses a driver/engine model in which a driver code controls the high-level program flow of one or more engine codes. The driver exercises this control through the use of commands that are defined by the MDI Standard. Commands are available that correspond to a variety of tasks, such as “receive a new set of nuclear coordinates from me” (&gt;COORDS), “start an MD simulation” (&#64;INIT_MD) and “send me the forces on the nuclei” (&lt;FORCES). The MDI standard defines the units, data types, and formatting of any data communicated between codes in response to a command.</p>
+  <section id="mdi-standard-by-category">
+<h1>MDI Standard by Category<a class="headerlink" href="#mdi-standard-by-category" title="Link to this heading">#</a></h1>
+<p>This section provides details on the commands defined by the MDI Standard.The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines.</p>
+<section id="command-categories">
+<h2>Command Categories<a class="headerlink" href="#command-categories" title="Link to this heading">#</a></h2>
+<p><strong>- Simulation Control and Node Management</strong>: Commands that control the flow of the simulation and manage the engine’s nodes.<br />
+<strong>- Data Exchange</strong>: Commands that exchange data between the driver and the engine.<br />
+<strong>- Information</strong>: Commands that provide information about MDI and/or an engine.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="mdi_standard_category.html">MDI Standard by Category</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_tags/tagsindex.html">MDI Standard by Tag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/node-management/index.html">Simulation Control and Node Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/data-exchange/index.html">Data Exchange</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/information/index.html">Information</a></li>
 </ul>
 </div>
+</section>
 </section>
 
 
@@ -573,20 +583,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API Documentation</p>
+        <p class="prev-next-title">MDI Standard</p>
       </div>
     </a>
     <a class="right-next"
-       href="mdi_standard_category.html"
+       href="commands/node-management/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MDI Standard by Category</p>
+        <p class="prev-next-title">Simulation Control and Node Management</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -601,9 +611,21 @@ document.write(`
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-categories">Command Categories</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/api/mdi_standard/index.md.txt">
+    <a href="../../_sources/api/mdi_standard/mdi_standard_category.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

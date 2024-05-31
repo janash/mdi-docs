@@ -10,6 +10,8 @@ Send atomic charges.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `NATOMS`  
+**Units:** elementary charge ({math}`e`)
+
 **Format:** Sequentially ascending order of atomic index
 
  The driver sends a set of atomic charges to the engine, which replaces its atomic charges with those sent by the driver.
@@ -105,6 +107,8 @@ Receive atomic charges.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `NATOMS`  
+**Units:** elementary charge ({math}`e`)
+
 **Format:** Sequentially ascending order of atomic index
 
  The engine sends a set of atomic charges to the driver.

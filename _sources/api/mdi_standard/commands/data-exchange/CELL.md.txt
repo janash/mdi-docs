@@ -10,6 +10,8 @@ Receive cell vectors.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `9`  
+**Units:** Bohr
+
 **Format:** The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector.
 
  The engine sends a set of cell vectors to the driver.
@@ -83,6 +85,8 @@ Send cell vectors to resize simulation cell.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `9`  
+**Units:** Bohr
+
 **Format:** The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector.
 
  The driver sends a set of cell vectors to the engine, which resizes its simulation cell to the dimensions specified by the cell vectors.

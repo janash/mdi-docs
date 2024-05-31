@@ -10,6 +10,8 @@ Send atomic coordinates.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `3 * NATOMS`  
+**Units:** Bohr
+
 **Format:** Sequentially ascending order of atomic index, with the coordinates for each individual atom being provided in xyz order.
 
  The driver sends a set of atomic coordinates to the engine,  which replaces its atomic coordinates with those sent by the driver.
@@ -65,6 +67,8 @@ Receive atomic coordinates.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `3 * NATOMS`  
+**Units:** Bohr
+
 **Format:** Sequentially ascending order of atomic index, with the coordinates for each individual atom being provided in xyz order.
 
  The engine sends a set of atomic coordinates to the driver.

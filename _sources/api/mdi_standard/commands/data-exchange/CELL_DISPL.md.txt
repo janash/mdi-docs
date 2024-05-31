@@ -10,6 +10,8 @@ Send cell displacement vector to adjust simulation cell origin.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `3`  
+**Units:** Bohr
+
 **Format:** The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector.
 
  The driver sends a displacement vector to the engine, which adjusts the origin of its simulation cell to the value of the displacement vector.
@@ -86,6 +88,8 @@ Retrieve the cell displacement vector.
 
 **Datatype:** `MDI_DOUBLE`  
 **Quantity**: `3`  
+**Units:** Bohr
+
 **Format:** The 3 values correspond to the x, y, and z values, respectively, of the simulation cell displacement vector.
 
  The engine sends the displacement vector of the origin of its simulation cell to the driver.
