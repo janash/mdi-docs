@@ -24,20 +24,20 @@ Command Name | Description
 [LATTICE](LATTICE) | Send lattice point charges.
 [LATTICE_FORCES](LATTICE_FORCES) | Receive lattice forces.
 [MASSES](MASSES) | Retrieve atom masses.
-[MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS) | 
-[MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT) | 
+[MONKHORST-PACK_NPOINTS](MONKHORST-PACK_NPOINTS) | Send number of points for a Monkhorst-Pack grid.
+[MONKHORST-PACK_SHIFT](MONKHORST-PACK_SHIFT) | Send Monkhorst-Pack grid shift.
 [NATOMS](NATOMS) | Receive number of atoms.
 [NDENSITY](NDENSITY) | Receive number of points for electronic density on a grid.
 [NLATTICE](NLATTICE) | Send number of lattice points.
-[NPOTENTIAL](NPOTENTIAL) | 
+[NPOTENTIAL](NPOTENTIAL) | Send the number of potential grid points.
 [PE](PE) | Receive total potential energy.
-[PE_ELEC](PE_ELEC) | 
-[PE_NUC](PE_NUC) | 
+[PE_ELEC](PE_ELEC) | Receive electronic potential energy.
+[PE_NUC](PE_NUC) | Receive nuclear potential energy.
 [POTENTIAL](POTENTIAL) | Send potential grid values.
-[SPIN_POLARIZATION](SPIN_POLARIZATION) | 
+[SPIN_POLARIZATION](SPIN_POLARIZATION) | Exchange spin polarization information.
 [STRESS](STRESS) | Exchange virial stress tensor.
-[TOTCHARGE](TOTCHARGE) | 
-[VELOCITES](VELOCITES) | 
+[TOTCHARGE](TOTCHARGE) | Exchange total charge information
+[VELOCITES](VELOCITES) | Exchange atomic velocities.
 ```{toctree}
 :hidden:
 

@@ -5,7 +5,7 @@ Commands that provide information about MDI and/or an engine.
 Command Name | Description
 ------------ | -----------
 [NAME](NAME) | Receive engine name.
-[VERSION](VERSION) | 
+[VERSION](VERSION) | Receive MDI Library version.
 ```{toctree}
 :hidden:
 

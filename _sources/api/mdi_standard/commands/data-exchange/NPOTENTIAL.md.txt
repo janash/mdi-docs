@@ -3,7 +3,7 @@
 ```{tags} Quantum Mechanics
 ```
 
-
+Send the number of potential grid points.
 
 
 

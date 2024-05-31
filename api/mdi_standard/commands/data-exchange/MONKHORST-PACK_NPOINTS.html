@@ -451,9 +451,10 @@ document.write(`
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../../_tags/tagsindex.html">MDI Standard by Tag</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/dft.html">DFT (2)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/dft.html">DFT (3)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPIN_POLARIZATION.html">SPIN_POLARIZATION</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_tags/gas-phase-quantum-mechanics.html">Gas Phase Quantum Mechanics (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -469,12 +470,13 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../node-management/%40INIT_MC.html">@INIT_MC</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (2)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/plane-wave-dft.html">Plane Wave DFT (3)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">MONKHORST-PACK_NPOINTS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPIN_POLARIZATION.html">SPIN_POLARIZATION</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (8)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../../_tags/quantum-mechanics.html">Quantum Mechanics (9)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="CDENSITY.html">CDENSITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CLATTICE.html">CLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DENSITY.html">DENSITY</a></li>
@@ -483,6 +485,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="MONKHORST-PACK_SHIFT.html">MONKHORST-PACK_SHIFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NLATTICE.html">NLATTICE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NPOTENTIAL.html">NPOTENTIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPIN_POLARIZATION.html">SPIN_POLARIZATION</a></li>
 </ul>
 </details></li>
 </ul>
@@ -555,13 +558,52 @@ document.write(`
   <section id="monkhorst-pack-npoints">
 <span id="monkhorst-pack-npoints-target"></span><h1>MONKHORST-PACK_NPOINTS<a class="headerlink" href="#monkhorst-pack-npoints" title="Link to this heading">#</a></h1>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/quantum-mechanics.html"><span class="doc">Quantum Mechanics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/dft.html"><span class="doc">DFT</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../../../_tags/plane-wave-dft.html"><span class="doc">Plane Wave DFT</span></a></p>
+<p>Send number of points for a Monkhorst-Pack grid.</p>
 <section id="id1">
 <h2>&gt;MONKHORST-PACK_NPOINTS<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Send Monkhorst-Pack grid points</p>
 <p><strong>Datatype:</strong> <code class="docutils literal notranslate"><span class="pre">MDI_INT</span></code><br />
-<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
-<p>This command is typically expected for use with plane wave DFT engines.  The driver sends the engine the number of k-points to generate on a Monkhorst-Pack grid.  The engine then uses the k-points generated on this Monkhorst-Pack grid for all further simulations.
-The number of k-points to generate along each vector of the Brillouin zone, in ascending order of vector.</p>
+<strong>Quantity</strong>: <code class="docutils literal notranslate"><span class="pre">3</span></code><br />
+<strong>Format:</strong> The number of k-points to generate along each vector of the Brillouin zone, in ascending order of vector.</p>
+<p>This command is typically expected for use with plane wave DFT engines.  The driver sends the engine the number of k-points to generate on a Monkhorst-Pack grid.  The engine then uses the k-points generated on this Monkhorst-Pack grid for all further simulations.</p>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="python" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mdi</span>
+
+<span class="c1"># connect to the engine</span>
+<span class="n">mdi_engine</span> <span class="o">=</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Accept_Communicator</span><span class="p">()</span>
+
+<span class="c1"># send the number of k-points to generate on a Monkhorst-Pack grid</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s2">&quot;&gt;MONKHORST-PACK_NPOINTS&quot;</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+<span class="n">mdi</span><span class="o">.</span><span class="n">MDI_Send</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">mdi</span><span class="o">.</span><span class="n">MDI_INT</span><span class="p">,</span> <span class="n">mdi_engine</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-1">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;mdi.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="c1">// connect to the engine</span>
+<span class="n">MDI_Comm</span><span class="w"> </span><span class="n">mdi_engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDI_Accept_Communicator</span><span class="p">();</span>
+
+<span class="c1">// send the number of k-points to generate on a Monkhorst-Pack grid</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">npts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+
+<span class="c1">// send the number of k-points to generate on a Monkhorst-Pack grid</span>
+<span class="n">MDI_Send_Command</span><span class="p">(</span><span class="s">&quot;&gt;MONKHORST-PACK_NPOINTS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span>
+<span class="n">MDI_Send</span><span class="p">(</span><span class="n">npts</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">MDI_INT</span><span class="p">,</span><span class="w"> </span><span class="n">mdi_engine</span><span class="p">);</span><span class="w">          </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -611,7 +653,10 @@ The number of k-points to generate along each vector of the Brillouin zone, in a
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;MONKHORST-PACK_NPOINTS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">&gt;MONKHORST-PACK_NPOINTS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

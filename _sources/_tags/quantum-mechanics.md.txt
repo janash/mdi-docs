@@ -13,4 +13,5 @@ caption:
 ../api/mdi_standard/commands/data-exchange/MONKHORST-PACK_SHIFT.md
 ../api/mdi_standard/commands/data-exchange/NLATTICE.md
 ../api/mdi_standard/commands/data-exchange/NPOTENTIAL.md
+../api/mdi_standard/commands/data-exchange/SPIN_POLARIZATION.md
 ```
