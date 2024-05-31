@@ -33,9 +33,8 @@ The following codes support i-PI, with which MDI is compatible (see the -ipi opt
 
 :caption: MDI Ecosystem
 
-lammps
-openmm
-psi4
+reports/LAMMPS/README
+reports/Psi4/README
 qcengine
 quantum_espresso
 tinker
