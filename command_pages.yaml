@@ -356,6 +356,7 @@ CDENSITY:
   - <CDENSITY:
       count: 3 * NDENSITY
       datatype: MDI_DOUBLE
+      units: Bohr
       description: Receive Cartesian coordinates for grid points.
       doc: >
         The engine sends the Cartesian coordinates of a set of grid points. 
@@ -419,6 +420,7 @@ CELL:
         description: "Receive cell vectors."
         datatype: "MDI_DOUBLE"
         count: 9
+        units: Bohr
         format: "The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector."
         doc: "The engine sends a set of cell vectors to the driver."
         examples:
@@ -461,6 +463,7 @@ CELL:
         description: "Send cell vectors to resize simulation cell."
         datatype: "MDI_DOUBLE"
         count: 9
+        units: Bohr
         doc: "The driver sends a set of cell vectors to the engine, which resizes its simulation cell to the dimensions specified by the cell vectors."
         format: "The first 3 values correspond to the x, y, and z values, respectively, of the first cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the second cell vector. The next 3 values correspond to the x, y, and z values, respectively, of the third cell vector."
         examples:
@@ -509,6 +512,7 @@ CELL_DISPL:
     - '>CELL_DISPL':
         count: 3
         datatype: MDI_DOUBLE
+        units: Bohr
         description: Send cell displacement vector to adjust simulation cell origin.
         doc: The driver sends a displacement vector to the engine, which adjusts the origin
           of its simulation cell to the value of the displacement vector.
@@ -582,6 +586,7 @@ CELL_DISPL:
     - <CELL_DISPL:
         count: 3
         datatype: MDI_DOUBLE
+        units: Bohr
         description: Retrieve the cell displacement vector.
         doc: The engine sends the displacement vector of the origin of its simulation
           cell to the driver.
@@ -627,6 +632,7 @@ CHARGES:
     - '>CHARGES':
         count: NATOMS
         datatype: MDI_DOUBLE
+        units: elementary charge ({math}`e`)
         description: Send atomic charges.
         doc: The driver sends a set of atomic charges to the engine, which replaces its
           atomic charges with those sent by the driver.
@@ -734,6 +740,7 @@ CHARGES:
         count: NATOMS
         datatype: MDI_DOUBLE
         description: Receive atomic charges.
+        units: elementary charge ({math}`e`)
         doc: The engine sends a set of atomic charges to the driver.
         examples:
           cpp: '#include "mdi.h"
@@ -791,6 +798,7 @@ CLATTICE:
     - '>CLATTICE':
         count: 3 * NLATTICE
         datatype: MDI_DOUBLE
+        units: Bohr
         description: Send lattice coordinates.
         doc: |
           This command, along with the [>NLATTICE](NLATTICE) and [>LATTICE](LATTICE)
@@ -868,6 +876,7 @@ COORDS:
     - '>COORDS':
         count: 3 * NATOMS
         datatype: MDI_DOUBLE
+        units: Bohr
         description: Send atomic coordinates.
         doc: 'The driver sends a set of atomic coordinates to the engine,  which replaces
           its atomic coordinates with those sent by the driver.
@@ -888,6 +897,7 @@ COORDS:
         category: 2
         count: 3 * NATOMS
         datatype: MDI_DOUBLE
+        units: Bohr
         description: Receive atomic coordinates.
         doc: 'The engine sends a set of atomic coordinates to the driver.
 
@@ -946,6 +956,7 @@ CPOTENTIAL:
         category: 2
         count: 3 * NPOTENTIAL
         datatype: MDI_DOUBLE
+        units: Bohr
         description: Send Cartesian coordinates of grid points.
         doc: 'The driver sends the Cartesian coordinates of a set of grid points.  This
           command is intended to be used in conjuction with the [>NPOTENTIAL](NPOTENTIAL)
@@ -1056,6 +1067,7 @@ FORCES:
         count: 3 * NATOMS
         datatype: MDI_DOUBLE
         description: Send atomic forces.
+        units: Hartree/Bohr
         doc: 'The driver sends a set of atomic forces to the engine,  which replaces its
           internal forces with the forces sent by the driver.
 
@@ -1096,6 +1108,7 @@ FORCES:
     - <FORCES:
         count: 3 * NATOMS
         datatype: MDI_DOUBLE
+        units: Hartree/Bohr
         description: Receive atomic forces.
         doc: 'If the engine is at the [@DEFAULT](#@DEFAULT-target) node, it calculates and sends
           its atomic forces to the driver.  These forces include all force contributions,
@@ -1183,7 +1196,7 @@ DENSITY:
     - '<DENSITY':
         count: 3 * NDENSITY
         datatype: MDI_DOUBLE
-        description: Send atomic forces.
+        description: Retrieve electronic density on a set of grid points.
         doc: > 
           The engine sends the value of its electronic density on a set of grid points. 
           This command is intended to be used in conjuction with the [<NDENSITY](NDENSITY) and [<CDENSITY](CDENSITY) commands; 

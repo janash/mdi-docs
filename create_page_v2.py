@@ -72,6 +72,9 @@ def create_page(command_group_info, command_list):
             if command_dict.get("datatype"):
                 page_text += f"\n**Datatype:** `{command_dict['datatype']}`  "
                 page_text += f"\n**Quantity**: `{command_dict['count']}`  "
+            
+            if command_dict.get("units"):
+                page_text += f"\n**Units:** {command_dict['units']}\n"
 
             if command_dict.get("format"):
                 page_text += f"\n**Format:** {command_dict['format']}"
@@ -146,7 +149,7 @@ def generate_api_pages(arg1=None, arg2=None):
 
     # Create index page
     index_text = create_main_index(command_categories)
-    with open("api/mdi_standard/index.md", "w") as f:
+    with open("api/mdi_standard/mdi_standard_category.md", "w") as f:
         f.write(index_text)
     
     # Loop through commands for category - put in table and make API page
