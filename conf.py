@@ -138,8 +138,8 @@ html_theme_options = {
     "footer_start": [ "molssi_footer" ],
     "footer_end": [],
     "icon_links": [],
-    "pygment_light_style": "default",
-    "pygment_dark_style": "native"
+    "pygments_light_style": "default",
+    "pygments_dark_style": "native"
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

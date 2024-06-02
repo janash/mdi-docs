@@ -118,27 +118,36 @@ def create_page(command_group_info, command_list):
     return page_text
 
 def create_main_index(categories):
-    index_text = "# MDI Standard by Category\n\n"
+    index_text = "# MDI Standard\n\n"
     index_text += "This section provides details on the commands defined by the MDI Standard."
-    index_text += "The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines."
-
-    index_text += "\n\n## Command Categories\n\n"
+    index_text += "The MDI Standard defines a set of commands that can be used to control simulations and communicate data between engines.\n\n"
     
+    index_text += "You can also [tags](../../_tags/tagsindex) for the MDI Standard.\n\n"
+
     list_section = ""
     toc_section = ""
     for _, category_info in categories.items():
         category_slug = category_info["slug"]
-        category_name = category_info["name"]
-        list_section += f"**- {category_name}**: {category_info['description']}  \n"
         toc_section += f"commands/{category_slug}/index\n"
 
+    toc_section += "../../_tags/tagsindex\n"
     index_text += list_section + "\n\n"
 
-    index_text += "```{toctree}\n:hidden:\n:maxdepth:3\n\n" + toc_section + "```\n"
-
+    index_text += "```{toctree}\n:hidden:\n\n" + toc_section + "```\n"
+    
     return index_text
 
+def create_command_tables(category_slug, category_info):
+    #table_text = f"{category_info['description']}\n\n"
+    table_text = "Command Name | Description\n"
+    table_text += "------------ | -----------\n"
+    toc_section = ""
 
+    for command_name, command_info in category_info.items():
+        table_text += f"[{command_name}](commands/{category_slug}/{command_name}) | {command_info['summary']}\n"
+        toc_section += f"{command_name}\n"
+
+    return table_text, toc_section
 
 def generate_api_pages(arg1=None, arg2=None):
     # remove commands directory
@@ -149,11 +158,20 @@ def generate_api_pages(arg1=None, arg2=None):
 
     # Create index page
     index_text = create_main_index(command_categories)
-    with open("api/mdi_standard/mdi_standard_category.md", "w") as f:
-        f.write(index_text)
     
     # Loop through commands for category - put in table and make API page
     for category_id, category_info in grouped_commands.items():
+
+        category_slug = command_categories[category_id]["slug"]
+        category_description = command_categories[category_id]["description"]
+
+        index_text += f"\n\n## {category_info['name']}\n\n"
+        index_text += f"{category_description}\n\n"
+
+        # Create a table of commands
+        table_text, toc_section = create_command_tables(category_slug, category_info["commands"])
+
+        index_text += table_text
 
         category_slug = command_categories[category_id]["slug"]
         category_name = command_categories[category_id]["name"]
@@ -164,10 +182,6 @@ def generate_api_pages(arg1=None, arg2=None):
 
         # Create the category index page
         category_commands = category_info["commands"]
-
-        ## Build the table text and the table of contents text
-        table_text = ""
-        toc_text = "```{toctree}\n:hidden:\n\n"
         
         for command_name, command_info in category_commands.items():
 
@@ -181,15 +195,18 @@ def generate_api_pages(arg1=None, arg2=None):
             with open(f"api/mdi_standard/commands/{category_slug}/{command_name}.md", "w+") as f:
                 f.write(page_text)
 
-            table_text += f"[{command_name}]({command_name}) | {command_info['summary']}\n"
-            toc_text += f"{command_name}\n"
-
         with open(f"api/mdi_standard/commands/{category_slug}/index.md", "w") as f:
             f.write(f"# {category_name}\n\n{category_description}\n\n")
-            f.write("Command Name | Description\n")
-            f.write("------------ | -----------\n")
-            f.write(table_text)
-            f.write(toc_text)
+            f.write(table_text.replace(f"commands/{category_slug}/", ""))
+            f.write("\n\n```{toctree}\n:hidden:\n\n")
+            f.write(toc_section)
+
+    # Write the index page
+    with open("api/mdi_standard/index.md", "w") as f:
+        f.write(index_text)
+    
+    
+        
 
        
 
